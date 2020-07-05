@@ -141,7 +141,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Z17-sZ-CUH">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="53" width="375" height="614"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="t3z-Js-0Xz">
@@ -175,10 +175,19 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caL-9e-3iv">
+                                <rect key="frame" x="8" y="0.0" width="359" height="53"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="44"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Z17-sZ-CUH" firstAttribute="top" secondItem="zh5-Vb-0ph" secondAttribute="top" id="Kjc-WP-S3Q"/>
+                            <constraint firstItem="zh5-Vb-0ph" firstAttribute="trailing" secondItem="caL-9e-3iv" secondAttribute="trailing" constant="8" id="15v-u3-BX7"/>
+                            <constraint firstItem="caL-9e-3iv" firstAttribute="top" secondItem="zh5-Vb-0ph" secondAttribute="top" id="L7Z-3y-8mh"/>
+                            <constraint firstItem="caL-9e-3iv" firstAttribute="leading" secondItem="zh5-Vb-0ph" secondAttribute="leading" constant="8" id="LSQ-Tb-jZH"/>
+                            <constraint firstItem="Z17-sZ-CUH" firstAttribute="top" secondItem="caL-9e-3iv" secondAttribute="bottom" id="gUz-Uw-VQO"/>
                             <constraint firstItem="zh5-Vb-0ph" firstAttribute="trailing" secondItem="Z17-sZ-CUH" secondAttribute="trailing" id="wfL-ve-Tw8"/>
                             <constraint firstItem="zh5-Vb-0ph" firstAttribute="bottom" secondItem="Z17-sZ-CUH" secondAttribute="bottom" id="z9H-Ip-lZQ"/>
                             <constraint firstItem="Z17-sZ-CUH" firstAttribute="leading" secondItem="zh5-Vb-0ph" secondAttribute="leading" id="zHP-Do-laR"/>
@@ -191,7 +200,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="89r-AT-4xR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1990" y="63"/>
+            <point key="canvasLocation" x="1989.5999999999999" y="62.518740629685162"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="eMd-Bp-G19">
@@ -292,6 +301,9 @@
                                 <rect key="frame" x="147" y="314.5" width="81" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="Let's Go!"/>
+                                <connections>
+                                    <action selector="didTapGo:" destination="vex-qi-Kk7" eventType="touchUpInside" id="8j7-Ee-bkV"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCp-0y-8L8">
                                 <rect key="frame" x="16" y="121" width="89.5" height="42"/>
@@ -330,7 +342,7 @@
                     <connections>
                         <outlet property="nameText" destination="2sL-gt-7ri" id="bT7-Gx-m21"/>
                         <outlet property="numberText" destination="mgk-rb-pau" id="zUe-82-1gf"/>
-                        <segue destination="XCo-DU-ZnC" kind="presentation" modalPresentationStyle="fullScreen" id="TNG-Hf-cnB"/>
+                        <segue destination="XCo-DU-ZnC" kind="presentation" identifier="playersSegue" modalPresentationStyle="fullScreen" id="TNG-Hf-cnB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="72U-X3-Bqa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class PlayersViewController: UIViewController {
     // create players array of document ref
-    // var myDocument!
+    var myDocument: String?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print(myDocument as Any)
         // Do any additional setup after loading the view.
     }
     // when vc loads
