@@ -27,7 +27,7 @@ Here's a walkthrough of implemented user stories:
 
 <img src='http://g.recordit.co/iLTC83xT6v.gif' title='Video Walkthrough' />
 
-GIF created with [Recordit](http://www.record.it/).
+GIF created with [Recordit](http://www.recordit.co/).
 
 ## Notes
 While I was building this app. I had to first create the whole skeleton of the project. I found myself thinking of more things I could do. **FireStore** did make some things easier for me. For instance, when getting data from the  Firestore database and when setting up a listener to stay up to date.
