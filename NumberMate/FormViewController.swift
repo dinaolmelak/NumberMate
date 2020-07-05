@@ -10,13 +10,17 @@ import UIKit
 
 class FormViewController: UIViewController {
 
+    @IBOutlet weak var nameText: UITextField!
+    @IBOutlet weak var numberText: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
-
+    // When lets go is tapped
+    // 1. create a collection(players) in the db
+    // 2. create a document in players containing nametext, numberText, isOnline: true and opponent: nil
+    // pass document to myDocument to players VC
     /*
     // MARK: - Navigation
 
