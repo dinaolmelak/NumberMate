@@ -66,9 +66,9 @@ class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewD
             if error != nil{
                 print(error as Any)
             }else{
-                print(QuerySnapshot!)
+                //print(QuerySnapshot!)
                 for document in QuerySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
+                    //print("\(document.documentID) => \(document.data())")
                     self.players.append(document.documentID)
                     self.tableView.reloadData()
                 }
@@ -98,11 +98,15 @@ class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let isOnline = doc!["isOnline"] as! Bool
                 let isPlaying = doc!["isPlaying"] as! Bool
                 cell.playerNameLabel.text = name
-                if isOnline{
+                if document.documentID == self.myDocument!{
+                    cell.isHighlighted = true
+                    cell.isUserInteractionEnabled = false
+                }
+                if isOnline {
                     cell.playerStatusLabel.text = "online"
-                }else if isPlaying{
+                }else if isPlaying {
                     cell.playerStatusLabel.text = "playing"
-                }else{
+                }else {
                     cell.playerStatusLabel.text = "offline"
                 }
             } else {
@@ -111,6 +115,22 @@ class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         return cell
     }
+    
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let gameVC = segue.destination as! GameViewController
+        let playerCell = sender as! PlayerCell
+        let indexPath = tableView.indexPath(for: playerCell)!
+        let opponentId = players[indexPath.row]
+        gameVC.myDoc = self.myDocument
+        gameVC.opponentId = opponentId
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    
+}
     // when loading tableView
     // - for tableView size return players.count
     
@@ -134,15 +154,7 @@ class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewD
     //          -> set myDocument.opponent_number = player.document.hidden_number
     //          -> (optional) myDocument.opponent_id = player.document
     //      -> pass myDocument and segue to game
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     
     
@@ -157,4 +169,3 @@ class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewD
             //              - segue to gameVC
             //          -> if reject
             //              - set myDocument.opponent == nil
-}
