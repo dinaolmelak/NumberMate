@@ -8,6 +8,34 @@
 
 import UIKit
 import FirebaseFirestore
+struct guess{
+    var guess: Int
+    var group: Int
+    var order: Int
+    mutating func guess(_ inGuess: Int,_ inGroup: Int,_ inOrder: Int){
+        guess = inGuess
+        group = inGroup
+        order = inOrder
+    }
+//    func setGuess(_ num: Int){
+//        guess = num
+//    }
+    func getGuess() -> Int{
+        return guess
+    }
+//    func setGroup(_ groupNum: Int){
+//        group = groupNum
+//    }
+    func getGroup() -> Int{
+        return group
+    }
+//    func setOrder(_ orderNum: Int){
+//        order = orderNum
+//    }
+    func getOrder() -> Int{
+        return order
+    }
+}
 
 class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -15,7 +43,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     var opponentId: String?
     var myDoc: String!
     var opponentNumber: Int?
-    var guesses = [Int]()
+    var guesses = [guess]()
     @IBOutlet weak var opponentNameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -53,13 +81,46 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GuessCell", for: indexPath) as! GuessCell
-        //let guess = guesses[indexPath.row]
-        
+        let guess = guesses[indexPath.row]
+        cell.guess.text = String(guess.getGuess())
+        cell.group.text = String(guess.getGroup())
+        cell.order.text = String(guess.getOrder())
         
         
         return cell
     }
     @IBAction func didTapAddGuess(_ sender: Any) {
+        var newNum = Int()
+        let hiddenNum = opponentNumber!
+        let alert = UIAlertController(title: "New Guess", message: "Enter your guess NUMBER!", preferredStyle: .alert)
+
+        //2. Add the text field. You can configure it however you need.
+//        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+//            textField.text = "Some default text."
+//        })
+//        alert.addTextField { (textfield) in
+//            newNum = Int(textfield.text!)!
+//        }
+        alert.addTextField { (textField)  in
+            textField.text = ""
+        }
+        let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let guessAction = UIAlertAction(title: "Guess", style: .default, handler: { [weak alert] (action) -> Void in
+            let textField = alert?.textFields![0]
+            newNum = Int(textField!.text!)!
+            print("here is newNum")
+            print(newNum)
+            let newNumGroup = self.getGroup(guessNum: String(newNum), hiddenNum: String(hiddenNum))
+            let newNumOrder = self.getOrder(guessNum: String(newNum), hiddenNum: String(hiddenNum))
+            
+            let newGuess = guess(guess: newNum, group: newNumGroup, order: newNumOrder)
+            self.guesses.append(newGuess)
+            self.tableView.reloadData()
+        })
+        alert.addAction(actionCancel)
+        alert.addAction(guessAction)
+        
+        self.present(alert, animated: true, completion: nil)
         
         
     }
@@ -80,11 +141,11 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         //return true
     }
-    func getGroup(myNum: String, uNum: String) -> Int{
+    func getGroup(guessNum: String, hiddenNum: String) -> Int{
         var counter = 0;
         
-        for i in myNum{
-            for x in uNum{
+        for i in guessNum{
+            for x in hiddenNum{
                 if i == x{
                     counter += 1
                 }
@@ -93,12 +154,12 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         return counter
     }
-    func getOrder(myNum: String, uNum: String) -> Int{
+    func getOrder(guessNum: String, hiddenNum: String) -> Int{
         var counter = 0
         var myIndex = 0
         var uIndex = 0
-        for i in myNum{
-            for x in uNum{
+        for i in guessNum{
+            for x in hiddenNum{
                 if i == x && myIndex == uIndex{
                     counter += 1
                 }

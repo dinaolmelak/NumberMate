@@ -228,28 +228,34 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="115"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Guess" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXJ-Jy-TLF">
-                                                    <rect key="frame" x="15" y="47" width="49" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guess" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXJ-Jy-TLF">
+                                                    <rect key="frame" x="23" y="47" width="49" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Order" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oc8-ea-v9Q">
-                                                    <rect key="frame" x="305" y="47" width="45" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oc8-ea-v9Q">
+                                                    <rect key="frame" x="307" y="47" width="45" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QlS-f4-Ca1">
-                                                    <rect key="frame" x="225" y="47" width="48" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QlS-f4-Ca1">
+                                                    <rect key="frame" x="227" y="47" width="48" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="QlS-f4-Ca1" firstAttribute="centerY" secondItem="JXJ-Jy-TLF" secondAttribute="centerY" id="Bu7-WN-0ON"/>
+                                                <constraint firstItem="Oc8-ea-v9Q" firstAttribute="centerY" secondItem="QlS-f4-Ca1" secondAttribute="centerY" id="FO2-Ym-qus"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="JXJ-Jy-TLF" secondAttribute="bottom" constant="36" id="fXo-3k-BQI"/>
+                                                <constraint firstItem="JXJ-Jy-TLF" firstAttribute="top" secondItem="Ndg-bW-l8H" secondAttribute="topMargin" constant="36" id="hPq-2w-LFT"/>
+                                                <constraint firstItem="Oc8-ea-v9Q" firstAttribute="leading" secondItem="QlS-f4-Ca1" secondAttribute="trailing" constant="32" id="k3K-eP-EiV"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Oc8-ea-v9Q" secondAttribute="trailing" constant="8" id="qUX-ZV-chU"/>
+                                                <constraint firstItem="JXJ-Jy-TLF" firstAttribute="leading" secondItem="Ndg-bW-l8H" secondAttribute="leadingMargin" constant="8" id="uGX-LZ-1NH"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="group" destination="QlS-f4-Ca1" id="dsU-tW-n21"/>
