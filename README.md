@@ -18,6 +18,8 @@ The following **Additional** functionalities were not implemented due to shortag
 
 * [ ] Winners Page - shows players with the most win count
 * [ ] Help Page - gives detail explanation along with some animations to help user understand the game
+* [ ] Authentification - Enable players to sign up for an account
+* [ ] Settings Page - Enable Users to increase the difficulty thereby being promoted to a whole new Arena! :)
 
 ## Video Walkthrough 
 
@@ -25,11 +27,10 @@ Here's a walkthrough of implemented user stories:
 
 <img src='http://g.recordit.co/iLTC83xT6v.gif' title='Video Walkthrough' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+GIF created with [Recordit](http://www.record.it/).
 
 ## Notes
-
-Describe any challenges encountered while building the app.
+While I was building this app. I had to first create the whole skeleton of the project. I found myself thinking of more things I could do. **FireStore** did make some things easier for me. For instance, when getting data from the  Firestore database and when setting up a listener to stay up to date.
 
 ## License
 
