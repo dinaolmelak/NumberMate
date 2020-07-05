@@ -1,6 +1,6 @@
 # *NumberMate*
 
-**NumberMate** is a simple fun game where a player guesses other players numbers. each guess is graded based on group(number of numbers found) and order(number of numbers in order).
+**NumberMate** is a simple fun game where a player guesses other players numbers. each guess is graded based on Group (number of numbers found) and Order(number of numbers found in the right place).
 
 Submitted by: **Dinaol Tadesse**
 
@@ -13,6 +13,11 @@ The following **required** functionality is complete:
 * [x] User can guess other players numbers.
 * [x] Uses Firestore collection database
 
+
+The following **Additional** functionalities were not implemented due to shortage of time:
+
+* [ ] Winners Page - shows players with the most win count
+* [ ] Help Page - gives detail explanation along with some animations to help user understand the game
 
 ## Video Walkthrough 
 
