@@ -41,7 +41,9 @@ class FormViewController: UIViewController {
         var ref: DocumentReference? = nil
         ref = db.collection("players").addDocument(data: [
             "name": nameText.text!,
-            "hidden_number": Int(numberText.text!)!
+            "hidden_number": Int(numberText.text!)!,
+            "isOnline": true,
+            "isPlaying": false
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")

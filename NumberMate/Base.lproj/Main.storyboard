@@ -144,7 +144,7 @@
                                 <rect key="frame" x="0.0" y="53" width="375" height="614"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="t3z-Js-0Xz">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlayerCell" rowHeight="100" id="t3z-Js-0Xz" customClass="PlayerCell" customModule="NumberMate" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t3z-Js-0Xz" id="dw7-4R-Lek">
@@ -172,6 +172,10 @@
                                                 <constraint firstItem="4s2-zD-kBu" firstAttribute="leading" secondItem="dw7-4R-Lek" secondAttribute="leadingMargin" constant="14" id="gjN-XR-0TT"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="playerNameLabel" destination="4s2-zD-kBu" id="CqK-5e-fYR"/>
+                                            <outlet property="playerStatusLabel" destination="g1e-u2-jRj" id="tHu-Me-nTH"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -195,6 +199,7 @@
                         <viewLayoutGuide key="safeArea" id="zh5-Vb-0ph"/>
                     </view>
                     <connections>
+                        <outlet property="tableView" destination="Z17-sZ-CUH" id="KCK-DE-jp6"/>
                         <segue destination="mWJ-gY-RiO" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="bad-UG-Ml0"/>
                     </connections>
                 </viewController>

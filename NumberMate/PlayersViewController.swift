@@ -9,30 +9,84 @@
 import UIKit
 import FirebaseFirestore
 
-class PlayersViewController: UIViewController {
+class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // create players array of document ref
+    var db: Firestore!
+    var myName: String?
+    var players = [String]()//array of players docID
     var myDocument: String?
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         print(myDocument as Any)
         // Do any additional setup after loading the view.
+        let settings = FirestoreSettings()
+
+        Firestore.firestore().settings = settings
+        // [END setup]
+        db = Firestore.firestore()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        let docRef = db.collection("players").document(myDocument!)
+
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let doc = document.data()
+                let name = doc!["name"] as! String
+                self.myName = name
+            } else {
+                print("Document does not exist")
+            }
+        }
+        
     }
-    // when vc loads
-    // - setup a listener to Players collection
-    // - get the documents and add it to players array
+    override func viewDidAppear(_ animated: Bool) {
+        db.collection("players").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                    self.players.append(document.documentID)
+                    self.tableView.reloadData()
+                }
+            }
+        }
+        // when vc appears
+        // - setup a listener to Players collection
+        // - get the documents and add it to players array
+    }
+        
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return players.count
+    }
     
-    
-    // - create an @obj updateDoc() function sync every 30 sec to get the documents updated
-    
-    
-    // - create an @obj opponentFound() function sync every sec to check if myDocument.opponent != nil
-    //      -> show alert opponent wants to play: accept or reject
-    //          -> if accept
-    //              - set myDocument.status == "playing"
-    //              - segue to gameVC
-    //          -> if reject
-    //              - set myDocument.opponent == nil
-    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerCell", for: indexPath) as! PlayerCell
+        let playerDoc = players[indexPath.row]
+        let docRef = db.collection("players").document(playerDoc)
+
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let doc = document.data()
+                let name = doc!["name"] as! String
+                let isOnline = doc!["isOnline"] as! Bool
+                let isPlaying = doc!["isPlaying"] as! Bool
+                cell.playerNameLabel.text = name
+                if isOnline{
+                    cell.playerStatusLabel.text = "online"
+                }else if isPlaying{
+                    cell.playerStatusLabel.text = "playing"
+                }else{
+                    cell.playerStatusLabel.text = "offline"
+                }
+            } else {
+                print("Document does not exist")
+            }
+        }
+        return cell
+    }
     // when loading tableView
     // - for tableView size return players.count
     
@@ -65,5 +119,18 @@ class PlayersViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    
+    
+    // Hold off on updateDoc()
+            // - create an @obj updateDoc() function sync every 30 sec to get the documents updated
+            
+            // Hold off on opponentFound()
+            // - create an @obj opponentFound() function sync every sec to check if myDocument.opponent != nil
+            //      -> show alert opponent wants to play: accept or reject
+            //          -> if accept
+            //              - set myDocument.status == "playing"
+            //              - segue to gameVC
+            //          -> if reject
+            //              - set myDocument.opponent == nil
 }
