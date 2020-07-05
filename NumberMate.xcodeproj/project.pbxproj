@@ -18,6 +18,7 @@
 		C009770624B0031D005C68B0 /* PlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009770524B0031D005C68B0 /* PlayersViewController.swift */; };
 		C009770824B0033C005C68B0 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009770724B0033C005C68B0 /* GameViewController.swift */; };
 		C009770C24B063D7005C68B0 /* GettingStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009770B24B063D7005C68B0 /* GettingStartedViewController.swift */; };
+		C009771024B1946A005C68B0 /* WinnersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009770F24B1946A005C68B0 /* WinnersViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		C009770524B0031D005C68B0 /* PlayersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersViewController.swift; sourceTree = "<group>"; };
 		C009770724B0033C005C68B0 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		C009770B24B063D7005C68B0 /* GettingStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartedViewController.swift; sourceTree = "<group>"; };
+		C009770F24B1946A005C68B0 /* WinnersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnersViewController.swift; sourceTree = "<group>"; };
 		DB0742A3FD1B54616E529596 /* Pods_NumberMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NumberMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6E4D19CC39C47E5197037DA /* Pods-NumberMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumberMate.release.xcconfig"; path = "Target Support Files/Pods-NumberMate/Pods-NumberMate.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,6 +101,7 @@
 				C009770524B0031D005C68B0 /* PlayersViewController.swift */,
 				C009770724B0033C005C68B0 /* GameViewController.swift */,
 				C009770B24B063D7005C68B0 /* GettingStartedViewController.swift */,
+				C009770F24B1946A005C68B0 /* WinnersViewController.swift */,
 			);
 			path = NumberMate;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				C009770424B002D3005C68B0 /* FormViewController.swift in Sources */,
 				C009770624B0031D005C68B0 /* PlayersViewController.swift in Sources */,
 				C009770C24B063D7005C68B0 /* GettingStartedViewController.swift in Sources */,
+				C009771024B1946A005C68B0 /* WinnersViewController.swift in Sources */,
 				C009770824B0033C005C68B0 /* GameViewController.swift in Sources */,
 				C00976F024AFBF15005C68B0 /* SceneDelegate.swift in Sources */,
 			);
