@@ -34,17 +34,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDB-5B-50p">
-                                <rect key="frame" x="147" y="421" width="80" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDB-5B-50p">
+                                <rect key="frame" x="147.5" y="421" width="80" height="30"/>
                                 <state key="normal" title="Get Started"/>
                                 <connections>
                                     <segue destination="vex-qi-Kk7" kind="show" id="Sg1-cF-lBM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FOn-E4-vKb">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FOn-E4-vKb">
                                 <rect key="frame" x="23" y="617" width="32" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Help"/>
                                 <connections>
                                     <segue destination="xAb-xR-LNT" kind="presentation" id="qLO-83-chC"/>
@@ -62,12 +60,16 @@
                         <constraints>
                             <constraint firstItem="6eZ-Hs-Io3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="34S-kS-qWx"/>
                             <constraint firstItem="6eZ-Hs-Io3" firstAttribute="top" secondItem="1J0-Uz-cEq" secondAttribute="bottom" constant="10" id="82n-1b-QCj"/>
+                            <constraint firstItem="cDB-5B-50p" firstAttribute="top" secondItem="6eZ-Hs-Io3" secondAttribute="bottom" constant="46" id="8Sd-Mp-v6w"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="FOn-E4-vKb" secondAttribute="bottom" constant="20" id="Jfe-cw-4wK"/>
                             <constraint firstItem="CGc-8J-7Sa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="M9Y-ys-Jc4"/>
                             <constraint firstItem="1J0-Uz-cEq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="S9T-6Y-Stq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SbN-Ot-htZ" secondAttribute="bottom" constant="20" id="UM0-eG-pR7"/>
                             <constraint firstItem="CGc-8J-7Sa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="XcL-NQ-TpX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SbN-Ot-htZ" secondAttribute="trailing" constant="16" id="bNL-qA-2wu"/>
                             <constraint firstItem="1J0-Uz-cEq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bsY-PS-L96"/>
+                            <constraint firstItem="cDB-5B-50p" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jPi-ui-X4u"/>
+                            <constraint firstItem="FOn-E4-vKb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="23" id="nZy-gJ-zaq"/>
                             <constraint firstItem="CGc-8J-7Sa" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="shJ-6g-6vX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

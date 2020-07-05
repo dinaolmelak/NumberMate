@@ -28,6 +28,8 @@ class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         tableView.delegate = self
         tableView.dataSource = self
+//        Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
+        
         let docRef = db.collection("players").document(myDocument!)
 
         docRef.getDocument { (document, error) in
@@ -36,16 +38,18 @@ class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let name = doc!["name"] as! String
                 self.myName = name
             } else {
-                print("Document does not exist")
+                //print("Document does not exist")
             }
         }
         
     }
-    override func viewDidAppear(_ animated: Bool) {
+    /*
+    @objc func onTimer(){
         db.collection("players").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
+                self.players.removeAll()
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
                     self.players.append(document.documentID)
@@ -53,6 +57,26 @@ class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
             }
         }
+
+    }
+    */
+    override func viewDidAppear(_ animated: Bool) {
+        //onTimer()
+        db.collection("players").addSnapshotListener { (QuerySnapshot, error) in
+            if error != nil{
+                print(error as Any)
+            }else{
+                print(QuerySnapshot!)
+                for document in QuerySnapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                    self.players.append(document.documentID)
+                    self.tableView.reloadData()
+                }
+            }
+        }
+        
+        // listener.remove()
+        
         // when vc appears
         // - setup a listener to Players collection
         // - get the documents and add it to players array
