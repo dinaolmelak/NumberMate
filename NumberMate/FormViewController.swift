@@ -38,6 +38,9 @@ class FormViewController: UIViewController {
         if nameText.text == nil || nameText.text == ""{
             showAlert("Number missing!", "Please enter a 4 digit Number")
         }
+        if isRepeated(numberText.text!){
+            showAlert("Number Repeated!", "Please enter a 4 digit Number that has no repeating digits(3487✅,1226❌)")
+        }
         var ref: DocumentReference? = nil
         ref = db.collection("players").addDocument(data: [
             "name": nameText.text!,
@@ -57,10 +60,27 @@ class FormViewController: UIViewController {
     
     func showAlert(_ title: String,_ message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction()
+        let okAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
         alert.addAction(okAction)
         present(alert, animated: true)
     }
+    func isRepeated(_ inString: String)->Bool{
+        var num = 0
+        for i in inString {
+            for x in inString{
+                if i == x{
+                    num += 1
+                }
+            }
+        }
+        if num == 4{
+            return false//their is no number repeating
+        }else{
+            return true
+        }
+        //return true
+    }
+
     
     // MARK: - Navigation
 

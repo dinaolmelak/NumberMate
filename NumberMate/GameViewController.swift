@@ -125,22 +125,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-    func isRepeated(ofString inString: String)->Bool{
-        var num = 0
-        for i in inString {
-            for x in inString{
-                if i == x{
-                    num += 1
-                }
-            }
-        }
-        if num == 4{
-            return false//their is no number repeating
-        }else{
-            return true
-        }
-        //return true
-    }
     func getGroup(guessNum: String, hiddenNum: String) -> Int{
         var counter = 0;
         
