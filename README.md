@@ -5,8 +5,21 @@
 Submitted by: **Dinaol Tadesse**
 
 Time spent: **24** hours spent in total
-
-## User Stories
+## Category:
+Finance, LifeStyle, Social Networking
+## Mobile:
+Mobile app (currently implementing for iOS, Please email me [here](mailto:dinaoltadesse63@gmail.com) if you would like to assist me in building it for Android as well :)
+## Market:
+Anyone 
+## Habit:
+People can be very competitive and by checking the winner’s board they get to see if they are in the first place so that they can get the reward they deserve.
+## Scope:
+This app can be used by 10s and 100,000s of people.
+## Problem:
+Have you ever been in a situation where you just needed some money?, Do you want to add a way to make extra money for the month?
+## Story:
+This app is a social tournament game where the winner gets 25$ by the end of a month if that person remains on the 1st place in the leaderboard. 
+### User Stories
 
 The following **required** functionality is complete:
 
@@ -31,19 +44,6 @@ GIF created with [Recordit](http://www.recordit.co/).
 
 ## Notes
 While I was building this app. I had to first create the whole skeleton of the project. I found myself thinking of more things I could do. **FireStore** did make some things easier for me. For instance, when getting data from the  Firestore database and when setting up a listener to stay up to date.
+NumberMate is an app that lets you guess other people’s hidden 4 digit number. In doing so, that player gets a point every time he/she gets another person’s number.
 
-## License
 
-    Copyright [yyyy] [name of copyright owner]
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-        http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
