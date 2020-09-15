@@ -1,14 +1,14 @@
 //
-//  GettingStartedViewController.swift
+//  ProfilePicViewController.swift
 //  NumberMate
 //
-//  Created by Dinaol Melak on 7/4/20.
+//  Created by Dinaol Melak on 9/15/20.
 //  Copyright © 2020 Dinaol Melak. All rights reserved.
 //
 
 import UIKit
 
-class GettingStartedViewController: UIViewController {
+class ProfilePicViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

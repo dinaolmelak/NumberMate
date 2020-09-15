@@ -14,7 +14,7 @@ class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewD
     var db: Firestore!
     var myName: String?
     var players = [String]()//array of players docID
-    var myDocument: String?
+    var myDocument: String? // is set from the prev VC
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,30 +38,14 @@ class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let name = doc!["name"] as! String
                 self.myName = name
             } else {
-                //print("Document does not exist")
+                print("Document does not exist!")
             }
         }
         
     }
-    /*
-    @objc func onTimer(){
-        db.collection("players").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                self.players.removeAll()
-                for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
-                    self.players.append(document.documentID)
-                    self.tableView.reloadData()
-                }
-            }
-        }
-
-    }
-    */
     override func viewDidAppear(_ animated: Bool) {
         //onTimer()
+        // MARK: - loading players----
         db.collection("players").addSnapshotListener { (QuerySnapshot, error) in
             if error != nil{
                 print(error as Any)
@@ -69,8 +53,10 @@ class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewD
                 //print(QuerySnapshot!)
                 for document in QuerySnapshot!.documents {
                     //print("\(document.documentID) => \(document.data())")
-                    self.players.append(document.documentID)
-                    self.tableView.reloadData()
+                    if document.documentID != self.myDocument{
+                        self.players.append(document.documentID)
+                        self.tableView.reloadData()
+                    }
                 }
             }
         }
@@ -98,10 +84,6 @@ class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let isOnline = doc!["isOnline"] as! Bool
                 let isPlaying = doc!["isPlaying"] as! Bool
                 cell.playerNameLabel.text = name
-                if document.documentID == self.myDocument!{
-                    cell.isHighlighted = true
-                    cell.isUserInteractionEnabled = false
-                }
                 if isOnline {
                     cell.playerStatusLabel.text = "online"
                 }else if isPlaying {

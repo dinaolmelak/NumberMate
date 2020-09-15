@@ -21,6 +21,9 @@
 		C009771024B1946A005C68B0 /* WinnersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009770F24B1946A005C68B0 /* WinnersViewController.swift */; };
 		C009771224B1B51A005C68B0 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009771124B1B51A005C68B0 /* PlayerCell.swift */; };
 		C009771424B1D384005C68B0 /* GuessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009771324B1D384005C68B0 /* GuessCell.swift */; };
+		C0AB1E1724C0EBF3008DEF05 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AB1E1624C0EBF3008DEF05 /* SignInViewController.swift */; };
+		C0AB1E1924C0EC64008DEF05 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AB1E1824C0EC64008DEF05 /* SignUpViewController.swift */; };
+		C0F1076D251144FA000F719F /* ProfilePicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F1076C251144FA000F719F /* ProfilePicViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		C009770F24B1946A005C68B0 /* WinnersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnersViewController.swift; sourceTree = "<group>"; };
 		C009771124B1B51A005C68B0 /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
 		C009771324B1D384005C68B0 /* GuessCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessCell.swift; sourceTree = "<group>"; };
+		C0AB1E1624C0EBF3008DEF05 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		C0AB1E1824C0EC64008DEF05 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		C0F1076C251144FA000F719F /* ProfilePicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePicViewController.swift; sourceTree = "<group>"; };
 		DB0742A3FD1B54616E529596 /* Pods_NumberMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NumberMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6E4D19CC39C47E5197037DA /* Pods-NumberMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumberMate.release.xcconfig"; path = "Target Support Files/Pods-NumberMate/Pods-NumberMate.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,18 +104,69 @@
 				C00976EF24AFBF15005C68B0 /* SceneDelegate.swift */,
 				C00976F324AFBF15005C68B0 /* Main.storyboard */,
 				C00976F624AFBF20005C68B0 /* Assets.xcassets */,
+				C0AB1E1F24C0ED47008DEF05 /* PlayerInformation */,
+				C0AB1E1E24C0ED26008DEF05 /* Leaderboard */,
+				C0AB1E1D24C0ED09008DEF05 /* Game */,
+				C0AB1E1C24C0ECDC008DEF05 /* Players */,
+				C0AB1E1B24C0EC96008DEF05 /* Welcome */,
+				C0AB1E1A24C0EC71008DEF05 /* Authentication */,
 				C00976F824AFBF20005C68B0 /* LaunchScreen.storyboard */,
 				C00976FB24AFBF20005C68B0 /* Info.plist */,
 				C009770124AFE8D5005C68B0 /* GoogleService-Info.plist */,
-				C009770324B002D3005C68B0 /* FormViewController.swift */,
-				C009770524B0031D005C68B0 /* PlayersViewController.swift */,
-				C009770724B0033C005C68B0 /* GameViewController.swift */,
-				C009770B24B063D7005C68B0 /* GettingStartedViewController.swift */,
-				C009770F24B1946A005C68B0 /* WinnersViewController.swift */,
-				C009771124B1B51A005C68B0 /* PlayerCell.swift */,
-				C009771324B1D384005C68B0 /* GuessCell.swift */,
 			);
 			path = NumberMate;
+			sourceTree = "<group>";
+		};
+		C0AB1E1A24C0EC71008DEF05 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				C0AB1E1624C0EBF3008DEF05 /* SignInViewController.swift */,
+				C0AB1E1824C0EC64008DEF05 /* SignUpViewController.swift */,
+				C0F1076C251144FA000F719F /* ProfilePicViewController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		C0AB1E1B24C0EC96008DEF05 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				C009770B24B063D7005C68B0 /* GettingStartedViewController.swift */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		C0AB1E1C24C0ECDC008DEF05 /* Players */ = {
+			isa = PBXGroup;
+			children = (
+				C009770524B0031D005C68B0 /* PlayersViewController.swift */,
+				C009771124B1B51A005C68B0 /* PlayerCell.swift */,
+			);
+			path = Players;
+			sourceTree = "<group>";
+		};
+		C0AB1E1D24C0ED09008DEF05 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				C009770724B0033C005C68B0 /* GameViewController.swift */,
+				C009771324B1D384005C68B0 /* GuessCell.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		C0AB1E1E24C0ED26008DEF05 /* Leaderboard */ = {
+			isa = PBXGroup;
+			children = (
+				C009770F24B1946A005C68B0 /* WinnersViewController.swift */,
+			);
+			path = Leaderboard;
+			sourceTree = "<group>";
+		};
+		C0AB1E1F24C0ED47008DEF05 /* PlayerInformation */ = {
+			isa = PBXGroup;
+			children = (
+				C009770324B002D3005C68B0 /* FormViewController.swift */,
+			);
+			path = PlayerInformation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,6 +181,7 @@
 				C00976E724AFBF14005C68B0 /* Frameworks */,
 				C00976E824AFBF14005C68B0 /* Resources */,
 				E43C33826E2BE372A3D91AE7 /* [CP] Embed Pods Frameworks */,
+				34F87FE71E37E7FCBC68F336 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -182,6 +240,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		34F87FE71E37E7FCBC68F336 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NumberMate/Pods-NumberMate-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NumberMate/Pods-NumberMate-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NumberMate/Pods-NumberMate-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		CBD6081C0D07066ABDD7D7ED /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -228,14 +303,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0AB1E1924C0EC64008DEF05 /* SignUpViewController.swift in Sources */,
 				C009771224B1B51A005C68B0 /* PlayerCell.swift in Sources */,
 				C00976EE24AFBF15005C68B0 /* AppDelegate.swift in Sources */,
 				C009770424B002D3005C68B0 /* FormViewController.swift in Sources */,
 				C009771424B1D384005C68B0 /* GuessCell.swift in Sources */,
+				C0F1076D251144FA000F719F /* ProfilePicViewController.swift in Sources */,
 				C009770624B0031D005C68B0 /* PlayersViewController.swift in Sources */,
 				C009770C24B063D7005C68B0 /* GettingStartedViewController.swift in Sources */,
 				C009771024B1946A005C68B0 /* WinnersViewController.swift in Sources */,
 				C009770824B0033C005C68B0 /* GameViewController.swift in Sources */,
+				C0AB1E1724C0EBF3008DEF05 /* SignInViewController.swift in Sources */,
 				C00976F024AFBF15005C68B0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
