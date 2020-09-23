@@ -1,14 +1,15 @@
 //
-//  WinnersViewController.swift
+//  WinIntroViewController.swift
 //  NumberMate
 //
-//  Created by Dinaol Melak on 7/4/20.
+//  Created by Dinaol Melak on 9/22/20.
 //  Copyright © 2020 Dinaol Melak. All rights reserved.
 //
 
 import UIKit
 
-class WinnersViewController: UIViewController {
+
+class WinIntroViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,10 +17,10 @@ class WinnersViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func didSwipeEdge(_ sender: Any) {
-        
+
+    @IBAction func didTapGo(_ sender: Any) {
+        performSegue(withIdentifier: "StartSegue", sender: self)
     }
-    
     /*
     // MARK: - Navigation
 

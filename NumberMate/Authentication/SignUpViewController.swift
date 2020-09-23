@@ -16,8 +16,6 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var fnameTextfield: UITextField!
     @IBOutlet weak var lnameTextfield: UITextField!
     @IBOutlet weak var emailTextfield: UITextField!
-    @IBOutlet weak var usernameTextfield: UITextField!
-    @IBOutlet weak var phoneNumberTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
     
     var handle: AuthStateDidChangeListenerHandle?
@@ -44,15 +42,12 @@ class SignUpViewController: UIViewController {
         if promptTextfield(lnameTextfield, "Last Name Required!", "please fill in your first Name") == false{
             saveBool = false
         }
-        if promptTextfield(usernameTextfield, "Username Required!", "please fill in your preferred Username") == false{
-            saveBool = false
-        }
+        
         if saveBool == true{
             var ref: DocumentReference? = nil
             ref = db.collection("players").addDocument(data: [
                 "fname": fnameTextfield.text!,
                 "lname": lnameTextfield.text!,
-                "username": usernameTextfield.text!,
                 "email": emailTextfield.text!
             ]) { err in
                 if let err = err {
@@ -62,9 +57,12 @@ class SignUpViewController: UIViewController {
                     Auth.auth().createUser(withEmail: self.emailTextfield.text!, password: self.passwordTextfield.text!) { authResult, error in
                         if let user = authResult?.user {
                             print("\(String(describing: user.email)) created!")
+                            self.performSegue(withIdentifier: "SignedUpSegue", sender: self)
                         }else{
                             print(error as Any)
                         }
+                        
+                        
                         
                     }
                     //self.myDocId = ref!.documentID
@@ -74,7 +72,11 @@ class SignUpViewController: UIViewController {
         }
     }
     
-
+    @IBAction func didTapHaveAccount(_ sender: Any) {
+        performSegue(withIdentifier: "signInSegue", sender: self)
+    }
+            
+    
     @IBAction func didTapGesture(_ sender: Any) {
         view.endEditing(true)
     }
@@ -82,6 +84,7 @@ class SignUpViewController: UIViewController {
         Auth.auth().removeStateDidChangeListener(handle!)
     }
     func promptTextfield(_ inField: UITextField,_ title: String,_ message: String)->Bool{
+        //check textfield and prompt for value
         if(inField.text == nil || inField.text == ""){
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)

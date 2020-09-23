@@ -6,14 +6,9 @@ target 'NumberMate' do
   use_frameworks!
 
   # Pods for NumberMate
-  # add the Firebase pod for Google Analytics
-	pod 'FirebaseUI'
-	pod 'FirebaseUI/Google'
-	pod 'FirebaseUI/Facebook'
-    	pod 'Firebase/Analytics'
-    	pod 'Firebase/Firestore'
-    	pod 'Firebase/Auth'
-  # add pods for any other desired Firebase products
-  # https://firebase.google.com/docs/ios/setup#available-pods
+	pod 'Firebase/Auth'
+	pod 'Firebase/Firestore'
+	pod 'AlamofireImage'
+	pod 'FSCalendar'
 
 end
