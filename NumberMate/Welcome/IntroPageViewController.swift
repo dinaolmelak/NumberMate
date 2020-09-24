@@ -16,6 +16,10 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
         
         if !UserDefaults.standard.bool(forKey: "isFirstTime"){
             print("yes")
+//            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
+//            //modalPresentationStyle
+//            vc.modalPresentationStyle = .fullScreen
+//            present(vc, animated: true, completion: nil)
         } else{
             print("not First time")
         }

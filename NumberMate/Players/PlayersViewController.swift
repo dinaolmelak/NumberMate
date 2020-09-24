@@ -75,7 +75,10 @@ class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewD
         // - setup a listener to Players collection
         // - get the documents and add it to players array
     }
-        
+    @IBAction func didTapCalender(_ sender: Any) {
+        performSegue(withIdentifier: "CalendarSegue", sender: self)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return players.count
     }

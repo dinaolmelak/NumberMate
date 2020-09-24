@@ -23,6 +23,8 @@
 		C0366495251B04770096AE3C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0366494251B04770096AE3C /* ProfileViewController.swift */; };
 		C0366497251C5F780096AE3C /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0366496251C5F780096AE3C /* File.swift */; };
 		C0366499251C74460096AE3C /* Guess.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0366498251C74460096AE3C /* Guess.swift */; };
+		C036649B251C9F950096AE3C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C036649A251C9F950096AE3C /* SettingsViewController.swift */; };
+		C036649D251CA3A80096AE3C /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C036649C251CA3A70096AE3C /* CalendarViewController.swift */; };
 		C0718E54251AA34C0055B342 /* IntroPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0718E53251AA34C0055B342 /* IntroPageViewController.swift */; };
 		C0718E56251AA5930055B342 /* PlayIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0718E55251AA5930055B342 /* PlayIntroViewController.swift */; };
 		C0718E58251AA5BE0055B342 /* PointsIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0718E57251AA5BE0055B342 /* PointsIntroViewController.swift */; };
@@ -53,6 +55,8 @@
 		C0366494251B04770096AE3C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C0366496251C5F780096AE3C /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		C0366498251C74460096AE3C /* Guess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guess.swift; sourceTree = "<group>"; };
+		C036649A251C9F950096AE3C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		C036649C251CA3A70096AE3C /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		C0718E53251AA34C0055B342 /* IntroPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPageViewController.swift; sourceTree = "<group>"; };
 		C0718E55251AA5930055B342 /* PlayIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayIntroViewController.swift; sourceTree = "<group>"; };
 		C0718E57251AA5BE0055B342 /* PointsIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsIntroViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 			children = (
 				C009770524B0031D005C68B0 /* PlayersViewController.swift */,
 				C009771124B1B51A005C68B0 /* PlayerCell.swift */,
+				C036649C251CA3A70096AE3C /* CalendarViewController.swift */,
 			);
 			path = Players;
 			sourceTree = "<group>";
@@ -183,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				C0366494251B04770096AE3C /* ProfileViewController.swift */,
+				C036649A251C9F950096AE3C /* SettingsViewController.swift */,
 			);
 			path = PlayerInformation;
 			sourceTree = "<group>";
@@ -303,11 +309,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C036649D251CA3A80096AE3C /* CalendarViewController.swift in Sources */,
 				C0718E5A251AA5D80055B342 /* WinIntroViewController.swift in Sources */,
 				C0AB1E1924C0EC64008DEF05 /* SignUpViewController.swift in Sources */,
 				C009771224B1B51A005C68B0 /* PlayerCell.swift in Sources */,
 				C00976EE24AFBF15005C68B0 /* AppDelegate.swift in Sources */,
 				C0718E54251AA34C0055B342 /* IntroPageViewController.swift in Sources */,
+				C036649B251C9F950096AE3C /* SettingsViewController.swift in Sources */,
 				C0366499251C74460096AE3C /* Guess.swift in Sources */,
 				C009771424B1D384005C68B0 /* GuessCell.swift in Sources */,
 				C0366495251B04770096AE3C /* ProfileViewController.swift in Sources */,

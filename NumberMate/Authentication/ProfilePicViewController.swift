@@ -16,7 +16,6 @@ class ProfilePicViewController: UIViewController,UITableViewDelegate, UITableVie
     @IBOutlet weak var minimumTimeLabel: UILabel!
     @IBOutlet weak var gameCount: UILabel!
     @IBOutlet weak var npointsLabel: UILabel!
-    @IBOutlet weak var statusTextField: UITextField!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var fullNameLabel: UILabel!
     override func viewDidLoad() {
@@ -36,6 +35,8 @@ class ProfilePicViewController: UIViewController,UITableViewDelegate, UITableVie
         let cell = UITableViewCell()
         
         return cell
+    }
+    @IBAction func didTapSetting(_ sender: Any) {
     }
     /*
     // MARK: - Navigation
