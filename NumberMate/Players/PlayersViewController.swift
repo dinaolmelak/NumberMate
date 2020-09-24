@@ -50,14 +50,6 @@ class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.tableView.reloadData()
             }
         }
-            //            if let document = document, document.exists {
-            //                let doc = document.data()
-            //                let name = doc!["name"] as! String
-            //                self.myName = name
-            //            } else {
-            //                print("Document does not exist!")
-            //            }
-        
 
         
     }
@@ -111,41 +103,4 @@ class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
 }
-    // when loading tableView
-    // - for tableView size return players.count
     
-    // when loading up each players from players.document
-    // -  if name == myName:
-    //      -> disable that cell
-    //      -> set status to online
-    // -  if name != myName && isStatus == "online"
-    //      -> enable that cell
-    //      -> set status to online
-    // -  if name != myName  and isStatus == "offline"
-    //      -> disable that cell
-    //      -> set status to offline
-    // -  if name != myName  and isStatus == "playing"
-    //      -> disable that cell
-    //      -> set status to playing
-
-    // when tapped on cell
-    //      -> get player.document
-    //          -> set myDocument.opponent = player.document.name
-    //          -> set myDocument.opponent_number = player.document.hidden_number
-    //          -> (optional) myDocument.opponent_id = player.document
-    //      -> pass myDocument and segue to game
-
-    
-    
-    
-    // Hold off on updateDoc()
-            // - create an @obj updateDoc() function sync every 30 sec to get the documents updated
-            
-            // Hold off on opponentFound()
-            // - create an @obj opponentFound() function sync every sec to check if myDocument.opponent != nil
-            //      -> show alert opponent wants to play: accept or reject
-            //          -> if accept
-            //              - set myDocument.status == "playing"
-            //              - segue to gameVC
-            //          -> if reject
-            //              - set myDocument.opponent == nil

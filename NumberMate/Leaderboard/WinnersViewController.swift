@@ -16,8 +16,8 @@ class WinnersViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func didSwipeEdge(_ sender: Any) {
-        
+    @IBAction func onPlay(_ sender: Any) {
+        performSegue(withIdentifier: "GameSegue", sender: self)
     }
     
     /*

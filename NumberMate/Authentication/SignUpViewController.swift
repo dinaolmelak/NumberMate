@@ -18,7 +18,6 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
     
-    var handle: AuthStateDidChangeListenerHandle?
     override func viewDidLoad() {
         super.viewDidLoad()
         // [START setup]
@@ -29,11 +28,7 @@ class SignUpViewController: UIViewController {
         db = Firestore.firestore()
         // Do any additional setup after loading the view.
     }
-    override func viewWillAppear(_ animated: Bool) {
-        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            print("VWA: \(user?.email)")
-        }
-    }
+    
     @IBAction func didTapSignUp(_ sender: Any) {
         var saveBool = true
         if promptTextfield(fnameTextfield, "First Name Required!", "please fill in your first Name") == false{
@@ -44,11 +39,23 @@ class SignUpViewController: UIViewController {
         }
         
         if saveBool == true{
+            var newUserUID = String()
+            Auth.auth().createUser(withEmail: self.emailTextfield.text!, password: self.passwordTextfield.text!) { authResult, error in
+                if let user = authResult?.user {
+                    print("\(String(describing: user.email)) created!")
+                    let userUID = authResult!.user.uid
+                    newUserUID = userUID
+                }else{
+                    print(error as Any)
+                }
+                
+            }
             var ref: DocumentReference? = nil
             ref = db.collection("players").addDocument(data: [
                 "fname": fnameTextfield.text!,
                 "lname": lnameTextfield.text!,
                 "email": emailTextfield.text!,
+                "userUID": newUserUID,
                 "points": 0,
                 "min_time_taken": 0,
                 "game_count": 0
@@ -57,22 +64,13 @@ class SignUpViewController: UIViewController {
                     print("Error adding document: \(err)")
                 } else {
                     print("Document added with ID: \(ref!.documentID)")
-                    Auth.auth().createUser(withEmail: self.emailTextfield.text!, password: self.passwordTextfield.text!) { authResult, error in
-                        if let user = authResult?.user {
-                            print("\(String(describing: user.email)) created!")
-                            self.performSegue(withIdentifier: "SignedUpSegue", sender: self)
-                        }else{
-                            print(error as Any)
-                        }
-                        
-                        
-                        
-                    }
-                    //self.myDocId = ref!.documentID
-                    //self.performSegue(withIdentifier: "playersSegue", sender: self)
+
                 }
             }
         }
+        
+        self.performSegue(withIdentifier: "SignedUpSegue", sender: self)
+        
     }
     
     @IBAction func didTapHaveAccount(_ sender: Any) {
@@ -82,9 +80,6 @@ class SignUpViewController: UIViewController {
     
     @IBAction func didTapGesture(_ sender: Any) {
         view.endEditing(true)
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        Auth.auth().removeStateDidChangeListener(handle!)
     }
     func promptTextfield(_ inField: UITextField,_ title: String,_ message: String)->Bool{
         //check textfield and prompt for value

@@ -22,6 +22,7 @@
 		C009771424B1D384005C68B0 /* GuessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009771324B1D384005C68B0 /* GuessCell.swift */; };
 		C0366495251B04770096AE3C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0366494251B04770096AE3C /* ProfileViewController.swift */; };
 		C0366497251C5F780096AE3C /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0366496251C5F780096AE3C /* File.swift */; };
+		C0366499251C74460096AE3C /* Guess.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0366498251C74460096AE3C /* Guess.swift */; };
 		C0718E54251AA34C0055B342 /* IntroPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0718E53251AA34C0055B342 /* IntroPageViewController.swift */; };
 		C0718E56251AA5930055B342 /* PlayIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0718E55251AA5930055B342 /* PlayIntroViewController.swift */; };
 		C0718E58251AA5BE0055B342 /* PointsIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0718E57251AA5BE0055B342 /* PointsIntroViewController.swift */; };
@@ -51,6 +52,7 @@
 		C009771324B1D384005C68B0 /* GuessCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessCell.swift; sourceTree = "<group>"; };
 		C0366494251B04770096AE3C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C0366496251C5F780096AE3C /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		C0366498251C74460096AE3C /* Guess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guess.swift; sourceTree = "<group>"; };
 		C0718E53251AA34C0055B342 /* IntroPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPageViewController.swift; sourceTree = "<group>"; };
 		C0718E55251AA5930055B342 /* PlayIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayIntroViewController.swift; sourceTree = "<group>"; };
 		C0718E57251AA5BE0055B342 /* PointsIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsIntroViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				C00976FB24AFBF20005C68B0 /* Info.plist */,
 				C009770124AFE8D5005C68B0 /* GoogleService-Info.plist */,
 				C0366496251C5F780096AE3C /* File.swift */,
+				C0366498251C74460096AE3C /* Guess.swift */,
 			);
 			path = NumberMate;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				C009771224B1B51A005C68B0 /* PlayerCell.swift in Sources */,
 				C00976EE24AFBF15005C68B0 /* AppDelegate.swift in Sources */,
 				C0718E54251AA34C0055B342 /* IntroPageViewController.swift in Sources */,
+				C0366499251C74460096AE3C /* Guess.swift in Sources */,
 				C009771424B1D384005C68B0 /* GuessCell.swift in Sources */,
 				C0366495251B04770096AE3C /* ProfileViewController.swift in Sources */,
 				C0F1076D251144FA000F719F /* ProfilePicViewController.swift in Sources */,

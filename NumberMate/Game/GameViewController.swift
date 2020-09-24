@@ -8,71 +8,26 @@
 
 import UIKit
 import FirebaseFirestore
-struct guess{
-    var guess: Int
-    var group: Int
-    var order: Int
-    mutating func guess(_ inGuess: Int,_ inGroup: Int,_ inOrder: Int){
-        guess = inGuess
-        group = inGroup
-        order = inOrder
-    }
-//    func setGuess(_ num: Int){
-//        guess = num
-//    }
-    func getGuess() -> Int{
-        return guess
-    }
-//    func setGroup(_ groupNum: Int){
-//        group = groupNum
-//    }
-    func getGroup() -> Int{
-        return group
-    }
-//    func setOrder(_ orderNum: Int){
-//        order = orderNum
-//    }
-    func getOrder() -> Int{
-        return order
-    }
-}
 
 class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var db: Firestore!
-    var opponentId: String?
+    
     var myDoc: String!
-    var opponentNumber: Int?
+    var hiddenNumber: Int?
     var guesses = [guess]()
-    @IBOutlet weak var opponentNameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         let settings = FirestoreSettings()
-
+        hiddenNumber = playingNumberGenerator()
         Firestore.firestore().settings = settings
         // [END setup]
         db = Firestore.firestore()
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
-        // set opponentLabel from myDocumentRef.opponent Name
-        // set oppoenetNumber from myDocumentRef.opponent Number
-        let docRef = db.collection("players").document(opponentId!)
-
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                print(document.data()!)
-                let doc = document.data()
-                let name = doc!["name"] as! String
-                let oppNum = doc!["hidden_number"] as! Int
-                self.opponentNumber = oppNum
-                self.opponentNameLabel.text = name
-                
-            } else {
-                print("Document does not exist")
-            }
-        }
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -89,9 +44,12 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         return cell
     }
+    @IBAction func onTapBack(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     @IBAction func didTapAddGuess(_ sender: Any) {
-        var newNum = Int()
-        let hiddenNum = opponentNumber!
+        
+        let hiddenNum = hiddenNumber!
         let alert = UIAlertController(title: "New Guess", message: "Enter your guess NUMBER!", preferredStyle: .alert)
 
         //2. Add the text field. You can configure it however you need.
@@ -107,7 +65,15 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let guessAction = UIAlertAction(title: "Guess", style: .default, handler: { [weak alert] (action) -> Void in
             let textField = alert?.textFields![0]
-            newNum = Int(textField!.text!)!
+            guard ((textField?.text) != nil) else{
+                return
+            }
+            if self.isRepeated(textField!.text!){
+                self.showAlert("ERROR", "Enter a number that is distinct")
+                return
+            }
+            let newNum = Int(textField!.text!)!
+            
             print("here is newNum")
             print(newNum)
             let newNumGroup = self.getGroup(guessNum: String(newNum), hiddenNum: String(hiddenNum))
@@ -155,9 +121,48 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         return counter
     }
+    
+    
+    func playingNumberGenerator()->Int{
+        let digits = 0...9
+        // Shuffle them
+        let shuffledDigits = digits.shuffled()
+
+         // Take the number of digits you would like
+        let fourDigits = shuffledDigits.prefix(4)
+
+         // Add them up with place values
+        let value = fourDigits.reduce(0) {
+             $0*10 + $1
+        }
+        return value
+    }
+    func isRepeated(_ inString: String)->Bool{
+        var num = 0
+        for i in inString {
+            for x in inString{
+                if i == x{
+                    num += 1
+                }
+            }
+        }
+        if num == 4{
+            return false//their is no number repeating
+        }else{
+            return true
+        }
+        //return true
+    }
+    func showAlert(_ title: String,_ message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    }
+
     // for each cells in tableView
     // when tapped add guess
-        // check guess group and order against opponentNumber
+        // check guess group and order against hiddenNumber
         // disable the cell and store number in guesses array
         // if group and order of guess == 4
         //      -> display winner alert
