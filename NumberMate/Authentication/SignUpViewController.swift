@@ -48,7 +48,10 @@ class SignUpViewController: UIViewController {
             ref = db.collection("players").addDocument(data: [
                 "fname": fnameTextfield.text!,
                 "lname": lnameTextfield.text!,
-                "email": emailTextfield.text!
+                "email": emailTextfield.text!,
+                "points": 0,
+                "min_time_taken": 0,
+                "game_count": 0
             ]) { err in
                 if let err = err {
                     print("Error adding document: \(err)")

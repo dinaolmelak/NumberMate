@@ -13,12 +13,11 @@ class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewD
     // create players array of document ref
     var db: Firestore!
     var myName: String?
-    var players = [String]()//array of players docID
-    var myDocument: String? // is set from the prev VC
+    var players = [playersInfo]()//array of players docID
+    
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(myDocument as Any)
         // Do any additional setup after loading the view.
         let settings = FirestoreSettings()
 
@@ -30,33 +29,50 @@ class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.dataSource = self
 //      Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
         
-        let docRef = db.collection("players").document(myDocument!)
-
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                let doc = document.data()
-                let name = doc!["name"] as! String
-                self.myName = name
-            } else {
-                print("Document does not exist!")
+        db.collection("players").getDocuments { (querySnapshot, error) in
+            if error != nil{
+                    print(error as Any)
+            }else{
+                for document in querySnapshot!.documents{
+                    print ("Loaded____\(document.data())")
+                    let playerArray = document.data()
+                    // let doc = document.data()
+                    let fname = playerArray["fname"] as! String
+                    let lname = playerArray["lname"] as! String
+                    let email = playerArray["email"] as! String
+                    let points = playerArray["points"] as! Int
+                    let gameCounter = playerArray["game_count"] as! Int
+                    let timeTaken = playerArray["min_time_taken"] as! Int
+                    
+                    let playerInfo = playersInfo(_fname: fname, _lname: lname, _email: email, _minTime: timeTaken, _points: points, _gameCount: gameCounter)
+                    self.players.append(playerInfo)
+                }
+                self.tableView.reloadData()
             }
         }
+            //            if let document = document, document.exists {
+            //                let doc = document.data()
+            //                let name = doc!["name"] as! String
+            //                self.myName = name
+            //            } else {
+            //                print("Document does not exist!")
+            //            }
+        
+
         
     }
     override func viewDidAppear(_ animated: Bool) {
         //onTimer()
         // MARK: - loading players----
+        
         db.collection("players").addSnapshotListener { (QuerySnapshot, error) in
             if error != nil{
                 print(error as Any)
             }else{
                 //print(QuerySnapshot!)
                 for document in QuerySnapshot!.documents {
-                    //print("\(document.documentID) => \(document.data())")
-                    if document.documentID != self.myDocument{
-                        self.players.append(document.documentID)
-                        self.tableView.reloadData()
-                    }
+                    print("\(document.documentID) => \(document.data())")
+                    
                 }
             }
         }
@@ -74,27 +90,9 @@ class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerCell", for: indexPath) as! PlayerCell
-//        let playerDoc = players[indexPath.row]
-//        let docRef = db.collection("players").document(playerDoc)
-//
-//        docRef.getDocument { (document, error) in
-//            if let document = document, document.exists {
-//                let doc = document.data()
-//                let name = doc!["name"] as! String
-//                let isOnline = doc!["isOnline"] as! Bool
-//                let isPlaying = doc!["isPlaying"] as! Bool
-//                cell.playerNameLabel.text = name
-//                if isOnline {
-//                    cell.playerStatusLabel.text = "online"
-//                }else if isPlaying {
-//                    cell.playerStatusLabel.text = "playing"
-//                }else {
-//                    cell.playerStatusLabel.text = "offline"
-//                }
-//            } else {
-//                print("Document does not exist")
-//            }
-//        }
+        let playerDoc = players[indexPath.row]
+        cell.playerNameLabel.text = playerDoc.fname + " " + playerDoc.lname
+        cell.playerStatusLabel.text = String(playerDoc.points)
         return cell
     }
     
@@ -102,12 +100,12 @@ class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let gameVC = segue.destination as! GameViewController
-        let playerCell = sender as! PlayerCell
-        let indexPath = tableView.indexPath(for: playerCell)!
-        let opponentId = players[indexPath.row]
-        gameVC.myDoc = self.myDocument
-        gameVC.opponentId = opponentId
+//        let gameVC = segue.destination as! GameViewController
+//        let playerCell = sender as! PlayerCell
+//        let indexPath = tableView.indexPath(for: playerCell)!
+//        let opponentId = players[indexPath.row]
+//        gameVC.myDoc = self.myDocument
+//        gameVC.opponentId = opponentId
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }

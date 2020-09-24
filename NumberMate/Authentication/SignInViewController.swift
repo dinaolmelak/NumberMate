@@ -29,6 +29,7 @@ class SignInViewController: UIViewController {
         Auth.auth().signIn(withEmail: emailTextfield.text!, password: passwordTextfield.text!) { (AuthData, error) in
             if let user = AuthData?.user {
                 print("\(String(describing: user.email)) Signed in!")
+                self.performSegue(withIdentifier: "signinhomeSegue", sender: self)
             }else{
                 print(error as Any)
             }

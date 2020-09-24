@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="P5i-5n-dWP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="utE-LB-Ose">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -351,7 +351,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r5e-Kh-LeP">
                                 <rect key="frame" x="16" y="118" width="104.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="name"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="csy-z2-gkc">
                                 <rect key="frame" x="16" y="250" width="343" height="34"/>
@@ -530,14 +530,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Status" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uaL-LJ-Szw">
-                                <rect key="frame" x="119.5" y="275.5" width="136" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="136" id="wrd-6L-9KB"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="PXW-3y-mWD">
                                 <rect key="frame" x="20.5" y="323.5" width="334" height="20.5"/>
                                 <subviews>
@@ -606,7 +598,7 @@
                                 <rect key="frame" x="0.0" y="399" width="375" height="219"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="74" id="ujf-Wa-VLf">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryCell" rowHeight="74" id="ujf-Wa-VLf" customClass="HistoryCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ujf-Wa-VLf" id="VGY-8S-MMw">
@@ -644,7 +636,6 @@
                             <constraint firstItem="6MN-Gu-N7p" firstAttribute="bottom" secondItem="jW9-zo-JQF" secondAttribute="bottom" id="4ef-09-IFB"/>
                             <constraint firstItem="RjF-Hz-zua" firstAttribute="bottom" secondItem="bfO-3N-hzH" secondAttribute="bottom" id="96I-wn-vCY"/>
                             <constraint firstItem="RjF-Hz-zua" firstAttribute="bottom" secondItem="bfO-3N-hzH" secondAttribute="bottom" id="IRd-Hp-Uys"/>
-                            <constraint firstItem="uaL-LJ-Szw" firstAttribute="top" secondItem="nYt-u0-eFn" secondAttribute="bottom" constant="8" id="Mle-Wr-ejB"/>
                             <constraint firstItem="bfO-3N-hzH" firstAttribute="top" secondItem="jW9-zo-JQF" secondAttribute="bottom" constant="9" id="SEP-6i-lck"/>
                             <constraint firstItem="bfO-3N-hzH" firstAttribute="trailing" secondItem="RjF-Hz-zua" secondAttribute="trailing" id="TSw-ZT-b3S"/>
                             <constraint firstItem="B6s-Uu-E3C" firstAttribute="centerX" secondItem="5C0-4P-rjR" secondAttribute="centerX" id="UnH-jz-mWp"/>
@@ -653,7 +644,6 @@
                             <constraint firstItem="Oa4-Kc-b6d" firstAttribute="centerX" secondItem="5C0-4P-rjR" secondAttribute="centerX" id="XYc-FZ-SxB"/>
                             <constraint firstItem="PXW-3y-mWD" firstAttribute="centerX" secondItem="5C0-4P-rjR" secondAttribute="centerX" id="cBF-RS-bzr"/>
                             <constraint firstItem="jW9-zo-JQF" firstAttribute="leading" secondItem="RjF-Hz-zua" secondAttribute="leading" constant="16" id="dru-UB-M5l"/>
-                            <constraint firstItem="uaL-LJ-Szw" firstAttribute="centerX" secondItem="5C0-4P-rjR" secondAttribute="centerX" id="lbq-1b-2Kg"/>
                             <constraint firstItem="nYt-u0-eFn" firstAttribute="top" secondItem="B6s-Uu-E3C" secondAttribute="bottom" constant="4" id="m6j-lc-ELc"/>
                             <constraint firstItem="Oa4-Kc-b6d" firstAttribute="top" secondItem="PXW-3y-mWD" secondAttribute="bottom" constant="-3" id="ngf-17-9Ni"/>
                             <constraint firstItem="bfO-3N-hzH" firstAttribute="leading" secondItem="RjF-Hz-zua" secondAttribute="leading" id="oT5-1Q-mgE"/>
@@ -663,6 +653,15 @@
                         <viewLayoutGuide key="safeArea" id="RjF-Hz-zua"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="c8R-VI-XaQ"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="nYt-u0-eFn" id="zaf-X4-IUa"/>
+                        <outlet property="fullNameLabel" destination="B6s-Uu-E3C" id="Hiv-Jj-Ck4"/>
+                        <outlet property="gameCount" destination="MLN-I0-yBf" id="FNM-x5-XAK"/>
+                        <outlet property="gamesTableView" destination="bfO-3N-hzH" id="Kwn-ui-nD9"/>
+                        <outlet property="minimumTimeLabel" destination="Mnu-a0-7U8" id="fZu-dU-rST"/>
+                        <outlet property="npointsLabel" destination="JjM-sd-oGl" id="bOJ-mH-z00"/>
+                        <outlet property="rankLabel" destination="ivG-4q-fRI" id="9Eg-UA-tuW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ew-Kq-mbF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -784,11 +783,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rY1-hE-ccI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2919" y="5214"/>
+            <point key="canvasLocation" x="-2066" y="5209"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="avS-wi-lpm"/>
+        <segue reference="TCe-Ej-bst"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="iTunesArtwork" width="512" height="512"/>
