@@ -1,23 +1,25 @@
 //
-//  WinnersViewController.swift
+//  CalendarViewController.swift
 //  NumberMate
 //
-//  Created by Dinaol Melak on 7/4/20.
+//  Created by Dinaol Melak on 9/24/20.
 //  Copyright © 2020 Dinaol Melak. All rights reserved.
 //
 
 import UIKit
+import FSCalendar
 
-class WinnersViewController: UIViewController {
+class CalendarViewController: UIViewController {
 
+    @IBOutlet weak var calendar: FSCalendar!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func onPlay(_ sender: Any) {
-        performSegue(withIdentifier: "GameSegue", sender: self)
+    @IBAction func onTapBack(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
     /*
@@ -29,5 +31,6 @@ class WinnersViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
 
 }

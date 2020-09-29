@@ -105,7 +105,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p8a-HR-Ics" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2919" y="1737"/>
+            <point key="canvasLocation" x="-2873" y="1737"/>
         </scene>
         <!--Win Intro View Controller-->
         <scene sceneID="Aka-R9-RBI">
@@ -139,7 +139,7 @@
                         <viewLayoutGuide key="safeArea" id="5G5-bn-QsI"/>
                     </view>
                     <connections>
-                        <segue destination="90z-yM-5fu" kind="presentation" identifier="StartSegue" modalPresentationStyle="fullScreen" id="1py-wk-Rtn"/>
+                        <segue destination="90z-yM-5fu" kind="presentation" identifier="StartSegue" id="1py-wk-Rtn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3aK-DA-XXd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -149,15 +149,19 @@
         <!--Intro Page View Controller-->
         <scene sceneID="x57-uO-gGx">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="9Qr-hP-Yll" customClass="IntroPageViewController" customModule="NumberMate" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="9Qr-hP-Yll" customClass="IntroPageViewController" customModule="NumberMate" customModuleProvider="target" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="utE-LB-Ose" kind="presentation" identifier="SkipIntroSegue" animates="NO" modalPresentationStyle="fullScreen" id="T7G-ty-1O5"/>
+                    </connections>
+                </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UpS-No-BbT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2919" y="1085"/>
+            <point key="canvasLocation" x="-2874" y="946"/>
         </scene>
         <!--Points-->
         <scene sceneID="hiK-5Q-qbJ">
             <objects>
-                <viewController id="jPX-AE-sMV" customClass="WinnersViewController" customModule="NumberMate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jPX-AE-sMV" customClass="PlayViewController" customModule="NumberMate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f8X-xg-wVi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -184,6 +188,9 @@
                                 <state key="normal" title="Watch Small Ad to get 20 points">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="onWatchAd:" destination="jPX-AE-sMV" eventType="touchUpInside" id="YWi-nW-bc9"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G17-9T-no1">
                                 <rect key="frame" x="75" y="353" width="225" height="30"/>
@@ -193,24 +200,37 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YiS-D8-TgK" customClass="GADBannerView">
+                                <rect key="frame" x="27.5" y="568" width="320" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="BNl-aV-ZZN"/>
+                                    <constraint firstAttribute="height" constant="50" id="hNF-ml-MHy"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="YiS-D8-TgK" firstAttribute="centerX" secondItem="f8X-xg-wVi" secondAttribute="centerX" id="1pn-TH-7Ad"/>
                             <constraint firstItem="efN-Cg-4mi" firstAttribute="top" secondItem="2zp-Zt-QQJ" secondAttribute="top" constant="60" id="G0B-hM-fop"/>
+                            <constraint firstItem="2zp-Zt-QQJ" firstAttribute="bottom" secondItem="YiS-D8-TgK" secondAttribute="bottom" id="Z1T-8T-y7M"/>
                             <constraint firstItem="efN-Cg-4mi" firstAttribute="centerX" secondItem="f8X-xg-wVi" secondAttribute="centerX" id="eYU-5e-fsw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2zp-Zt-QQJ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Points" selectedImage="gamecontroller" catalog="system" id="PZc-RM-y5D"/>
+                    <tabBarItem key="tabBarItem" title="Points" selectedImage="gamecontroller" catalog="system" id="PZc-RM-y5D">
+                        <color key="badgeColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="VrX-Kl-zdG"/>
                     <connections>
+                        <outlet property="simpleBannerAd" destination="YiS-D8-TgK" id="rvd-2h-0FO"/>
                         <segue destination="mWJ-gY-RiO" kind="presentation" identifier="GameSegue" modalPresentationStyle="fullScreen" id="1d5-gO-5jO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SAf-xG-8oo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3226.4000000000001" y="4396.5517241379312"/>
+            <point key="canvasLocation" x="-3226" y="4397"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="xrN-6c-GR8">
@@ -302,11 +322,19 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ay5-qW-zpR">
+                                <rect key="frame" x="134.5" y="175" width="106" height="30"/>
+                                <state key="normal" title="Not a Member?"/>
+                                <connections>
+                                    <segue destination="90z-yM-5fu" kind="presentation" id="4cO-T1-psi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="xKy-Xq-eYI" firstAttribute="trailing" secondItem="3p3-Db-fa2" secondAttribute="trailing" constant="16" id="2Bd-YC-CUu"/>
                             <constraint firstItem="5fs-18-HAp" firstAttribute="leading" secondItem="xKy-Xq-eYI" secondAttribute="leading" constant="16" id="6Ed-ZM-5or"/>
+                            <constraint firstItem="ay5-qW-zpR" firstAttribute="centerX" secondItem="mNN-zv-pZy" secondAttribute="centerX" id="9rl-3P-GmW"/>
                             <constraint firstItem="ACW-A3-OBT" firstAttribute="top" secondItem="xKy-Xq-eYI" secondAttribute="top" constant="52" id="FOa-Db-Veh"/>
                             <constraint firstItem="3p3-Db-fa2" firstAttribute="top" secondItem="5fs-18-HAp" secondAttribute="bottom" constant="10" id="Iir-5k-790"/>
                             <constraint firstItem="J0E-mU-Y4X" firstAttribute="top" secondItem="3p3-Db-fa2" secondAttribute="bottom" constant="16" id="SgH-dp-dNC"/>
@@ -315,6 +343,7 @@
                             <constraint firstItem="ACW-A3-OBT" firstAttribute="centerX" secondItem="mNN-zv-pZy" secondAttribute="centerX" id="af7-yx-HJF"/>
                             <constraint firstItem="3p3-Db-fa2" firstAttribute="leading" secondItem="xKy-Xq-eYI" secondAttribute="leading" constant="16" id="heG-sO-WZE"/>
                             <constraint firstItem="xKy-Xq-eYI" firstAttribute="trailing" secondItem="5fs-18-HAp" secondAttribute="trailing" constant="16" id="lqb-ZV-LSe"/>
+                            <constraint firstItem="ay5-qW-zpR" firstAttribute="top" secondItem="3p3-Db-fa2" secondAttribute="bottom" constant="8" id="uA5-Kk-KyG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xKy-Xq-eYI"/>
                     </view>
@@ -333,7 +362,7 @@
             <objects>
                 <viewController storyboardIdentifier="SignUpViewController" id="90z-yM-5fu" customClass="SignUpViewController" customModule="NumberMate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kaj-Lt-E8s">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTg-Ff-oUR">
@@ -438,7 +467,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Z17-sZ-CUH">
-                                <rect key="frame" x="0.0" y="101.5" width="375" height="516.5"/>
+                                <rect key="frame" x="0.0" y="101.5" width="375" height="466.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlayerCell" rowHeight="80" id="t3z-Js-0Xz" customClass="PlayerCell" customModule="NumberMate" customModuleProvider="target">
@@ -491,23 +520,36 @@
                                     <action selector="didTapCalender:" destination="XCo-DU-ZnC" eventType="touchUpInside" id="NIE-YY-Jpa"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BCK-Xq-9YL" customClass="GADBannerView">
+                                <rect key="frame" x="27.5" y="568" width="320" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="BGQ-nB-Zig"/>
+                                    <constraint firstAttribute="height" constant="50" id="I98-uu-leD"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="zh5-Vb-0ph" firstAttribute="trailing" secondItem="caL-9e-3iv" secondAttribute="trailing" constant="8" id="15v-u3-BX7"/>
                             <constraint firstItem="zgc-Ae-hFy" firstAttribute="top" secondItem="zh5-Vb-0ph" secondAttribute="top" constant="17" id="IVu-Tf-qKJ"/>
                             <constraint firstItem="caL-9e-3iv" firstAttribute="leading" secondItem="zh5-Vb-0ph" secondAttribute="leading" constant="8" id="LSQ-Tb-jZH"/>
+                            <constraint firstItem="BCK-Xq-9YL" firstAttribute="top" secondItem="Z17-sZ-CUH" secondAttribute="bottom" id="cer-qO-IMO"/>
+                            <constraint firstItem="BCK-Xq-9YL" firstAttribute="bottom" secondItem="zh5-Vb-0ph" secondAttribute="bottom" id="dqn-eT-h0M"/>
                             <constraint firstItem="caL-9e-3iv" firstAttribute="top" secondItem="zh5-Vb-0ph" secondAttribute="top" constant="51" id="gVa-0b-eW1"/>
                             <constraint firstItem="zh5-Vb-0ph" firstAttribute="trailing" secondItem="zgc-Ae-hFy" secondAttribute="trailing" constant="20" id="to2-7Y-EXz"/>
                             <constraint firstItem="zh5-Vb-0ph" firstAttribute="trailing" secondItem="Z17-sZ-CUH" secondAttribute="trailing" id="wfL-ve-Tw8"/>
                             <constraint firstItem="Z17-sZ-CUH" firstAttribute="top" secondItem="caL-9e-3iv" secondAttribute="bottom" id="wt6-Kf-Cj3"/>
-                            <constraint firstItem="zh5-Vb-0ph" firstAttribute="bottom" secondItem="Z17-sZ-CUH" secondAttribute="bottom" id="z9H-Ip-lZQ"/>
+                            <constraint firstItem="BCK-Xq-9YL" firstAttribute="centerX" secondItem="QCh-d4-l7g" secondAttribute="centerX" id="ysk-3G-fld"/>
                             <constraint firstItem="Z17-sZ-CUH" firstAttribute="leading" secondItem="zh5-Vb-0ph" secondAttribute="leading" id="zHP-Do-laR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zh5-Vb-0ph"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="LeaderBoard" selectedImage="globe" catalog="system" id="jg1-AH-1PC"/>
+                    <tabBarItem key="tabBarItem" title="LeaderBoard" selectedImage="globe" catalog="system" id="jg1-AH-1PC">
+                        <color key="badgeColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
                     <connections>
+                        <outlet property="simplePlayerBanner" destination="BCK-Xq-9YL" id="0XZ-tw-ohi"/>
                         <outlet property="tableView" destination="Z17-sZ-CUH" id="KCK-DE-jp6"/>
                         <segue destination="P5i-5n-dWP" kind="presentation" identifier="CalendarSegue" modalPresentationStyle="fullScreen" id="LNm-3U-RMK"/>
                     </connections>
@@ -519,7 +561,7 @@
         <!--Profile-->
         <scene sceneID="yYQ-bF-cLx">
             <objects>
-                <viewController storyboardIdentifier="ProfilePicViewController" id="IeM-D1-WQd" customClass="ProfilePicViewController" customModule="NumberMate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="IeM-D1-WQd" customClass="ProfileViewController" customModule="NumberMate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5C0-4P-rjR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -601,7 +643,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bfO-3N-hzH">
-                                <rect key="frame" x="0.0" y="225" width="375" height="393"/>
+                                <rect key="frame" x="0.0" y="225" width="375" height="343"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryCell" rowHeight="74" id="ujf-Wa-VLf" customClass="HistoryCell">
@@ -647,14 +689,21 @@
                                     <action selector="didTapSetting:" destination="IeM-D1-WQd" eventType="touchUpInside" id="FMw-KH-Fdh"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gRC-h6-tkz" customClass="GADBannerView">
+                                <rect key="frame" x="27.5" y="568" width="320" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Jsx-IF-ze5"/>
+                                    <constraint firstAttribute="width" constant="320" id="P1S-vJ-bRM"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6MN-Gu-N7p" firstAttribute="bottom" secondItem="jW9-zo-JQF" secondAttribute="bottom" id="4ef-09-IFB"/>
                             <constraint firstItem="RjF-Hz-zua" firstAttribute="trailing" secondItem="RWA-ZL-qFe" secondAttribute="trailing" constant="16" id="4zy-jY-CyP"/>
                             <constraint firstItem="B6s-Uu-E3C" firstAttribute="top" secondItem="RjF-Hz-zua" secondAttribute="top" constant="100" id="91T-ZJ-SJ3"/>
-                            <constraint firstItem="RjF-Hz-zua" firstAttribute="bottom" secondItem="bfO-3N-hzH" secondAttribute="bottom" id="96I-wn-vCY"/>
-                            <constraint firstItem="RjF-Hz-zua" firstAttribute="bottom" secondItem="bfO-3N-hzH" secondAttribute="bottom" id="IRd-Hp-Uys"/>
+                            <constraint firstItem="gRC-h6-tkz" firstAttribute="bottom" secondItem="RjF-Hz-zua" secondAttribute="bottom" id="RdQ-XP-IMG"/>
                             <constraint firstItem="bfO-3N-hzH" firstAttribute="top" secondItem="jW9-zo-JQF" secondAttribute="bottom" constant="9" id="SEP-6i-lck"/>
                             <constraint firstItem="bfO-3N-hzH" firstAttribute="trailing" secondItem="RjF-Hz-zua" secondAttribute="trailing" id="TSw-ZT-b3S"/>
                             <constraint firstItem="B6s-Uu-E3C" firstAttribute="centerX" secondItem="5C0-4P-rjR" secondAttribute="centerX" id="UnH-jz-mWp"/>
@@ -663,16 +712,20 @@
                             <constraint firstItem="jW9-zo-JQF" firstAttribute="top" secondItem="Oa4-Kc-b6d" secondAttribute="bottom" constant="8" id="Wct-qA-vmG"/>
                             <constraint firstItem="Oa4-Kc-b6d" firstAttribute="centerX" secondItem="5C0-4P-rjR" secondAttribute="centerX" id="XYc-FZ-SxB"/>
                             <constraint firstItem="PXW-3y-mWD" firstAttribute="centerX" secondItem="5C0-4P-rjR" secondAttribute="centerX" id="cBF-RS-bzr"/>
+                            <constraint firstItem="gRC-h6-tkz" firstAttribute="centerX" secondItem="5C0-4P-rjR" secondAttribute="centerX" id="cYg-a3-VE9"/>
                             <constraint firstItem="jW9-zo-JQF" firstAttribute="leading" secondItem="RjF-Hz-zua" secondAttribute="leading" constant="16" id="dru-UB-M5l"/>
                             <constraint firstItem="RWA-ZL-qFe" firstAttribute="top" secondItem="RjF-Hz-zua" secondAttribute="top" constant="16" id="fn1-An-e2C"/>
                             <constraint firstItem="nYt-u0-eFn" firstAttribute="top" secondItem="B6s-Uu-E3C" secondAttribute="bottom" constant="4" id="m6j-lc-ELc"/>
                             <constraint firstItem="Oa4-Kc-b6d" firstAttribute="top" secondItem="PXW-3y-mWD" secondAttribute="bottom" constant="-3" id="ngf-17-9Ni"/>
                             <constraint firstItem="bfO-3N-hzH" firstAttribute="leading" secondItem="RjF-Hz-zua" secondAttribute="leading" id="oT5-1Q-mgE"/>
                             <constraint firstItem="nYt-u0-eFn" firstAttribute="centerX" secondItem="5C0-4P-rjR" secondAttribute="centerX" id="scH-xy-yRt"/>
+                            <constraint firstItem="RjF-Hz-zua" firstAttribute="bottom" secondItem="bfO-3N-hzH" secondAttribute="bottom" constant="50" id="xWj-HH-ehf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RjF-Hz-zua"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" selectedImage="person" catalog="system" id="c8R-VI-XaQ"/>
+                    <tabBarItem key="tabBarItem" title="Profile" selectedImage="person" catalog="system" id="c8R-VI-XaQ">
+                        <color key="badgeColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="emailLabel" destination="nYt-u0-eFn" id="zaf-X4-IUa"/>
                         <outlet property="fullNameLabel" destination="B6s-Uu-E3C" id="Hiv-Jj-Ck4"/>
@@ -681,17 +734,18 @@
                         <outlet property="minimumTimeLabel" destination="Mnu-a0-7U8" id="fZu-dU-rST"/>
                         <outlet property="npointsLabel" destination="JjM-sd-oGl" id="bOJ-mH-z00"/>
                         <outlet property="rankLabel" destination="ivG-4q-fRI" id="9Eg-UA-tuW"/>
-                        <segue destination="AJE-NT-4kJ" kind="presentation" modalPresentationStyle="fullScreen" id="I7w-fU-EX6"/>
+                        <outlet property="simpleBannerAd" destination="gRC-h6-tkz" id="bPg-M3-vbr"/>
+                        <segue destination="AJE-NT-4kJ" kind="presentation" identifier="SettingsSegue" modalPresentationStyle="fullScreen" id="I7w-fU-EX6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ew-Kq-mbF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2066.4000000000001" y="4396.5517241379312"/>
+            <point key="canvasLocation" x="-2276" y="4396.5517241379312"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="aTw-d3-MrF">
             <objects>
-                <viewController id="AJE-NT-4kJ" customClass="SettingsViewController" customModule="NumberMate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsViewController" id="AJE-NT-4kJ" customClass="SettingsViewController" customModule="NumberMate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sXq-Z4-6mR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -759,7 +813,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mzn-q2-rvR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2066" y="5221"/>
+            <point key="canvasLocation" x="-2276" y="5221"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="eMd-Bp-G19">
@@ -891,6 +945,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="sZ2-J4-cWi"/>
                     <connections>
+                        <outlet property="addGuessButton" destination="82h-81-4Pj" id="VjJ-02-Nar"/>
                         <outlet property="tableView" destination="ILi-Z7-ZzR" id="wE1-Rf-1JN"/>
                     </connections>
                 </viewController>
@@ -900,6 +955,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="4cO-T1-psi"/>
         <segue reference="avS-wi-lpm"/>
     </inferredMetricsTieBreakers>
     <resources>

@@ -39,36 +39,37 @@ class SignUpViewController: UIViewController {
         }
         
         if saveBool == true{
-            var newUserUID = String()
             Auth.auth().createUser(withEmail: self.emailTextfield.text!, password: self.passwordTextfield.text!) { authResult, error in
                 if let user = authResult?.user {
                     print("\(String(describing: user.email)) created!")
                     let userUID = authResult!.user.uid
-                    newUserUID = userUID
+                    var ref: DocumentReference? = nil
+                    ref = self.db.collection("players").addDocument(data: [
+                        "fname": self.fnameTextfield.text!,
+                        "lname": self.lnameTextfield.text!,
+                        "email": self.emailTextfield.text!,
+                        "userUID": userUID,
+                        "start_date": Timestamp(date: Date()),
+                        "points": 0,
+                        "min_time_taken": 0,
+                        "game_count": 0
+                    ]) { err in
+                        if let err = err {
+                            print("Error adding document: \(err)")
+                        } else {
+                            print("Document added with ID: \(ref!.documentID)")
+
+                        }
+                    }
+                    
                 }else{
                     print(error as Any)
                 }
                 
             }
-            var ref: DocumentReference? = nil
-            ref = db.collection("players").addDocument(data: [
-                "fname": fnameTextfield.text!,
-                "lname": lnameTextfield.text!,
-                "email": emailTextfield.text!,
-                "userUID": newUserUID,
-                "points": 0,
-                "min_time_taken": 0,
-                "game_count": 0
-            ]) { err in
-                if let err = err {
-                    print("Error adding document: \(err)")
-                } else {
-                    print("Document added with ID: \(ref!.documentID)")
-
-                }
-            }
+            
         }
-        
+        UserDefaults.standard.set(true, forKey: "isUser")
         self.performSegue(withIdentifier: "SignedUpSegue", sender: self)
         
     }

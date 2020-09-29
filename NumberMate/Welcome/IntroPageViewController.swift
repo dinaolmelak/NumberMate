@@ -14,21 +14,23 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if !UserDefaults.standard.bool(forKey: "isFirstTime"){
-            print("yes")
-//            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
-//            //modalPresentationStyle
-//            vc.modalPresentationStyle = .fullScreen
-//            present(vc, animated: true, completion: nil)
-        } else{
-            print("not First time")
-        }
-        
         dataSource = self
         // Do any additional setup after loading the view.
         addingViewControllers()
         if let firstVC = myControllers.first{
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
+        }
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        if UserDefaults.standard.bool(forKey: "isUser") == false{
+            print("yes")
+            //            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
+            //            //modalPresentationStyle
+            //            vc.modalPresentationStyle = .fullScreen
+            //            present(vc, animated: true, completion: nil)
+        } else{
+            performSegue(withIdentifier: "SkipIntroSegue", sender: self)
+            print("not First time")
         }
     }
     

@@ -7,23 +7,25 @@
 //
 
 import UIKit
+import FirebaseAuth
 import FirebaseFirestore
 
 class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var db: Firestore!
     
-    var myDoc: String!
-    var hiddenNumber: Int?
+    @IBOutlet weak var addGuessButton: UIButton!
+    var documentID: String?
+    var hiddenNumber:  Int?
     var guesses = [guess]()
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         let settings = FirestoreSettings()
-        hiddenNumber = playingNumberGenerator()
         Firestore.firestore().settings = settings
-        // [END setup]
         db = Firestore.firestore()
+        // [END setup]
+        hiddenNumber = playingNumberGenerator()
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
@@ -45,6 +47,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     @IBAction func onTapBack(_ sender: Any) {
+        AddGuessesTodb()
         dismiss(animated: true, completion: nil)
     }
     @IBAction func didTapAddGuess(_ sender: Any) {
@@ -73,15 +76,17 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 return
             }
             let newNum = Int(textField!.text!)!
-            
-            print("here is newNum")
-            print(newNum)
             let newNumGroup = self.getGroup(guessNum: String(newNum), hiddenNum: String(hiddenNum))
             let newNumOrder = self.getOrder(guessNum: String(newNum), hiddenNum: String(hiddenNum))
             
             let newGuess = guess(guess: newNum, group: newNumGroup, order: newNumOrder)
             self.guesses.append(newGuess)
             self.tableView.reloadData()
+            if newNumGroup == 4 && newNumOrder == 4{
+                self.showAlert("Congratulations!", "You Won!!!")
+                self.AddGuessesTodb()
+                self.addGuessButton.isEnabled = false
+            }
         })
         alert.addAction(actionCancel)
         alert.addAction(guessAction)
@@ -159,17 +164,34 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         alert.addAction(okAction)
         present(alert, animated: true)
     }
-
-    // for each cells in tableView
-    // when tapped add guess
-        // check guess group and order against hiddenNumber
-        // disable the cell and store number in guesses array
-        // if group and order of guess == 4
-        //      -> display winner alert
-        //      -> if name !exists in winners collection
-        //          store name in winners collection and numWin = 1
-        //      -> else numWin += 1
-        
+    
+    func AddGuessesTodb(){
+        if Auth.auth().currentUser != nil {
+          // User is signed in.
+            let user = Auth.auth().currentUser
+            db.collection("players").whereField("userUID", isEqualTo: user!.uid).getDocuments { (querySnapshot, error) in
+                if error != nil {
+                    print(error!)
+                }else{
+                    let snapshot = querySnapshot!.documents
+                    let docID = snapshot[0].documentID
+                    
+                    let newData = self.db.collection("players").document(docID).collection("games").document()
+                    var guessedArray = [Int]()
+                    for guess in self.guesses{
+                        guessedArray.append(guess.guess)
+                    }
+                    if self.guesses.isEmpty != true{
+                        newData.setData(["guesses": guessedArray,"hidden_number": self.hiddenNumber!,"gameDate": Timestamp(date: Date())])
+                    }
+                }
+            }
+        } else {
+            showAlert("Account", "User not signed in")
+        }
+    }
+    
+    
     /*
     // MARK: - Navigation
 

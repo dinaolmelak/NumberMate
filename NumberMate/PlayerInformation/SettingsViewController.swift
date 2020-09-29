@@ -29,7 +29,7 @@ class SettingsViewController: UIViewController {
     }
     @IBAction func onTapDelete(_ sender: Any) {
         // delete account
-        
+        UserDefaults.standard.set(false, forKey: "isUser")
         dismiss(animated: true, completion: nil)
     }
     

@@ -29,12 +29,12 @@ class SignInViewController: UIViewController {
         Auth.auth().signIn(withEmail: emailTextfield.text!, password: passwordTextfield.text!) { (AuthData, error) in
             if let user = AuthData?.user {
                 print("\(String(describing: user.email)) Signed in!")
+                UserDefaults.standard.set(true, forKey: "isUser")
                 self.performSegue(withIdentifier: "signinhomeSegue", sender: self)
             }else{
                 print(error as Any)
             }
         }
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

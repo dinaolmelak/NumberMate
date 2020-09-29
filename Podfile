@@ -10,5 +10,6 @@ target 'NumberMate' do
 	pod 'Firebase/Firestore'
 	pod 'AlamofireImage'
 	pod 'FSCalendar'
+	pod 'Google-Mobile-Ads-SDK'
 
 end

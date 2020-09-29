@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseFirestore
+import GoogleMobileAds
 
 class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // create players array of document ref
@@ -15,6 +16,7 @@ class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewD
     var myName: String?
     var players = [playersInfo]()//array of players docID
     
+    @IBOutlet weak var simplePlayerBanner: GADBannerView!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,33 +26,14 @@ class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewD
         Firestore.firestore().settings = settings
         // [END setup]
         db = Firestore.firestore()
-        
+        let ads = MobAds()
+        let fire = Fire()
+        ads.bannerDisplay(simplePlayerBanner,self)
         tableView.delegate = self
         tableView.dataSource = self
 //      Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
+        players = fire.getPlayersInfo(FirestoreDatabase: db)
         
-        db.collection("players").getDocuments { (querySnapshot, error) in
-            if error != nil{
-                    print(error as Any)
-            }else{
-                for document in querySnapshot!.documents{
-                    print ("Loaded____\(document.data())")
-                    let playerArray = document.data()
-                    // let doc = document.data()
-                    let fname = playerArray["fname"] as! String
-                    let lname = playerArray["lname"] as! String
-                    let email = playerArray["email"] as! String
-                    let points = playerArray["points"] as! Int
-                    let gameCounter = playerArray["game_count"] as! Int
-                    let timeTaken = playerArray["min_time_taken"] as! Int
-                    
-                    let playerInfo = playersInfo(_fname: fname, _lname: lname, _email: email, _minTime: timeTaken, _points: points, _gameCount: gameCounter)
-                    self.players.append(playerInfo)
-                }
-                self.tableView.reloadData()
-            }
-        }
-
         
     }
     override func viewDidAppear(_ animated: Bool) {
