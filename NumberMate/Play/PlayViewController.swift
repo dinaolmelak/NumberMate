@@ -16,12 +16,13 @@ class PlayViewController: UIViewController, GADRewardedAdDelegate {
     @IBOutlet weak var simpleBannerAd: GADBannerView!
     var rewardedAd: GADRewardedAd?
     var ad = MobAds()
+    var show = Function()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         ad.bannerDisplay(simpleBannerAd, self)
-        rewardedAd = ad.createAndLoadRewardedAd()
+        self.rewardedAd = ad.createAndLoadRewardedAd()
     }
     
     @IBAction func onPlay(_ sender: Any) {
@@ -29,21 +30,30 @@ class PlayViewController: UIViewController, GADRewardedAdDelegate {
     }
     
     @IBAction func onWatchAd(_ sender: Any) {
-        if self.rewardedAd?.isReady == true{
-            self.rewardedAd?.present(fromRootViewController: self, delegate: self)
-            let show = Function()
-            
-            show.showQuestion(Title: "More Points!", Message: "Watch a short Ad to get 20 points",ViewController: self)
+        //show.showQuestion(Title: , Message: ,ViewController: self)
+        let alert = UIAlertController(title: "More Points!", message: "Watch a short Ad to get 20 points?", preferredStyle: .alert)
+        let noAction = UIAlertAction(title: "NO", style: .cancel, handler: nil)
+        let yesAction = UIAlertAction(title: "YES", style: .default) { (UIAlertAction) in
+            if self.rewardedAd?.isReady == true{
+                self.rewardedAd?.present(fromRootViewController: self, delegate: self)
+                
+            }
         }
-        
+        alert.addAction(noAction)
+        alert.addAction(yesAction)
+        present(alert, animated: true)
+
     }
     func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
           print("Reward received with currency: \(reward.type), amount \(reward.amount).")
           print("___\(reward.amount.doubleValue)")
-
+        if rewardedAd.responseInfo != nil{
+          show.showAlert(Title: "Earned", Message: "You have earned \(reward.amount.intValue * 2)", ViewController: self)
+        }
     }
     func rewardedAdDidDismiss(_ rewardedAd: GADRewardedAd) {
         self.rewardedAd = ad.createAndLoadRewardedAd()
+        
     }
     
     /*
