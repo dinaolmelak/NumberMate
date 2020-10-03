@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GettingStartedViewController: UIViewController {
+class GettingStartedViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlayerCell: UITableViewCell {
+class LeaderCell: UITableViewCell {
 
     @IBOutlet weak var playerNameLabel: UILabel!
     @IBOutlet weak var playerStatusLabel: UILabel!

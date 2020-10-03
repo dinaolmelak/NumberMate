@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import FSCalendar
 
-class CalendarViewController: UIViewController {
-
-    @IBOutlet weak var calendar: FSCalendar!
+class MonthViewController: UIViewController{
+   
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +20,7 @@ class CalendarViewController: UIViewController {
     @IBAction func onTapBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
     
     /*
     // MARK: - Navigation

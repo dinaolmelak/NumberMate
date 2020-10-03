@@ -251,45 +251,39 @@
             </objects>
             <point key="canvasLocation" x="-3226" y="3583"/>
         </scene>
-        <!--Calendar View Controller-->
+        <!--Month View Controller-->
         <scene sceneID="2fE-ez-oli">
             <objects>
-                <viewController id="P5i-5n-dWP" customClass="CalendarViewController" customModule="NumberMate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CalendarViewController" id="P5i-5n-dWP" customClass="MonthViewController" customModule="NumberMate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uSO-lj-pWd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ja-dw-pnX" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="133.5" width="375" height="200"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="6ja-dw-pnX" secondAttribute="height" multiplier="15:8" id="ZBB-kH-YTm"/>
-                                    <constraint firstAttribute="width" constant="375" id="dXq-jl-wic"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="itZ-Ba-wHJ">
-                                <rect key="frame" x="22" y="20" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="itZ-Ba-wHJ">
+                                <rect key="frame" x="16" y="16" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
                                     <action selector="onTapBack:" destination="P5i-5n-dWP" eventType="touchUpInside" id="4hS-Nt-AfP"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hcm-kt-Eev">
+                                <rect key="frame" x="329" y="16" width="30" height="30"/>
+                                <state key="normal" title="Pay"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="6ja-dw-pnX" firstAttribute="centerX" secondItem="uSO-lj-pWd" secondAttribute="centerX" id="LDv-ps-hrq"/>
-                            <constraint firstItem="6ja-dw-pnX" firstAttribute="centerY" secondItem="uSO-lj-pWd" secondAttribute="centerY" constant="-100" id="vZV-Bb-Cvn"/>
+                            <constraint firstItem="feV-A0-bvH" firstAttribute="trailing" secondItem="Hcm-kt-Eev" secondAttribute="trailing" constant="16" id="Xbs-EU-e5v"/>
+                            <constraint firstItem="itZ-Ba-wHJ" firstAttribute="leading" secondItem="feV-A0-bvH" secondAttribute="leading" constant="16" id="dzI-2F-o8v"/>
+                            <constraint firstItem="itZ-Ba-wHJ" firstAttribute="top" secondItem="feV-A0-bvH" secondAttribute="top" constant="16" id="p6q-hV-ZB7"/>
+                            <constraint firstItem="Hcm-kt-Eev" firstAttribute="top" secondItem="feV-A0-bvH" secondAttribute="top" constant="16" id="yhn-aU-nhB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="feV-A0-bvH"/>
                     </view>
-                    <connections>
-                        <outlet property="calendar" destination="6ja-dw-pnX" id="i6I-K1-7KL"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jv3-vb-oz0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4282" y="5221"/>
+            <point key="canvasLocation" x="-4282.3999999999996" y="5220.5397301349331"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="oF0-Zv-J8g">
@@ -461,7 +455,7 @@
         <!--LeaderBoard-->
         <scene sceneID="4qS-zP-KR2">
             <objects>
-                <viewController id="XCo-DU-ZnC" customClass="PlayersViewController" customModule="NumberMate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XCo-DU-ZnC" customClass="LeadersViewController" customModule="NumberMate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QCh-d4-l7g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -470,7 +464,7 @@
                                 <rect key="frame" x="0.0" y="101.5" width="375" height="466.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlayerCell" rowHeight="80" id="t3z-Js-0Xz" customClass="PlayerCell" customModule="NumberMate" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LeaderCell" rowHeight="80" id="t3z-Js-0Xz" customClass="LeaderCell" customModule="NumberMate" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t3z-Js-0Xz" id="dw7-4R-Lek">
@@ -517,7 +511,7 @@
                                     <color key="titleColor" red="0.38846325999999998" green="0.65191998259999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="didTapCalender:" destination="XCo-DU-ZnC" eventType="touchUpInside" id="NIE-YY-Jpa"/>
+                                    <action selector="didTapCalender:" destination="XCo-DU-ZnC" eventType="touchUpInside" id="4iy-eJ-2lr"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BCK-Xq-9YL" customClass="GADBannerView">
@@ -551,7 +545,7 @@
                     <connections>
                         <outlet property="simplePlayerBanner" destination="BCK-Xq-9YL" id="0XZ-tw-ohi"/>
                         <outlet property="tableView" destination="Z17-sZ-CUH" id="KCK-DE-jp6"/>
-                        <segue destination="P5i-5n-dWP" kind="presentation" identifier="CalendarSegue" modalPresentationStyle="fullScreen" id="LNm-3U-RMK"/>
+                        <segue destination="P5i-5n-dWP" kind="presentation" identifier="MonthlyViewSegue" modalPresentationStyle="fullScreen" id="xnK-96-NWh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="89r-AT-4xR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

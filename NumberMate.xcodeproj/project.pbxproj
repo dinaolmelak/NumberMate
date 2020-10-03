@@ -7,26 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		87FF723B25CDFCCDD45A9242 /* Pods_NumberMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F06F104E0CA247B6A8217B4 /* Pods_NumberMate.framework */; };
+		02F2FB2B5D20B6305F5268D2 /* Pods_NumberMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63DCAE75453692AA66D2B7F3 /* Pods_NumberMate.framework */; };
 		C00976EE24AFBF15005C68B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00976ED24AFBF15005C68B0 /* AppDelegate.swift */; };
 		C00976F024AFBF15005C68B0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00976EF24AFBF15005C68B0 /* SceneDelegate.swift */; };
 		C00976F524AFBF15005C68B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C00976F324AFBF15005C68B0 /* Main.storyboard */; };
 		C00976F724AFBF20005C68B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C00976F624AFBF20005C68B0 /* Assets.xcassets */; };
 		C00976FA24AFBF20005C68B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C00976F824AFBF20005C68B0 /* LaunchScreen.storyboard */; };
 		C009770224AFE8D5005C68B0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C009770124AFE8D5005C68B0 /* GoogleService-Info.plist */; };
-		C009770624B0031D005C68B0 /* PlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009770524B0031D005C68B0 /* PlayersViewController.swift */; };
+		C009770624B0031D005C68B0 /* LeadersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009770524B0031D005C68B0 /* LeadersViewController.swift */; };
 		C009770824B0033C005C68B0 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009770724B0033C005C68B0 /* GameViewController.swift */; };
 		C009770C24B063D7005C68B0 /* GettingStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009770B24B063D7005C68B0 /* GettingStartedViewController.swift */; };
-		C009771224B1B51A005C68B0 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009771124B1B51A005C68B0 /* PlayerCell.swift */; };
+		C009771224B1B51A005C68B0 /* LeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009771124B1B51A005C68B0 /* LeaderCell.swift */; };
 		C009771424B1D384005C68B0 /* GuessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009771324B1D384005C68B0 /* GuessCell.swift */; };
-		C021B5F025233EF6002AA9EC /* Fire.swift in Sources */ = {isa = PBXBuildFile; fileRef = C021B5EF25233EF6002AA9EC /* Fire.swift */; };
+		C021B5F025233EF6002AA9EC /* Parse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C021B5EF25233EF6002AA9EC /* Parse.swift */; };
 		C021B5F225234383002AA9EC /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = C021B5F125234383002AA9EC /* Function.swift */; };
 		C0244862251E5EA100F8996B /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0244861251E5EA100F8996B /* PlayViewController.swift */; };
 		C0244864251E784600F8996B /* Advertisements.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0244863251E784500F8996B /* Advertisements.swift */; };
 		C0366497251C5F780096AE3C /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0366496251C5F780096AE3C /* File.swift */; };
 		C0366499251C74460096AE3C /* Guess.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0366498251C74460096AE3C /* Guess.swift */; };
 		C036649B251C9F950096AE3C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C036649A251C9F950096AE3C /* SettingsViewController.swift */; };
-		C036649D251CA3A80096AE3C /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C036649C251CA3A70096AE3C /* CalendarViewController.swift */; };
+		C036649D251CA3A80096AE3C /* MonthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C036649C251CA3A70096AE3C /* MonthViewController.swift */; };
+		C05AE6AF2529038300FE5604 /* Paypal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05AE6AE2529038300FE5604 /* Paypal.swift */; };
 		C0718E54251AA34C0055B342 /* IntroPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0718E53251AA34C0055B342 /* IntroPageViewController.swift */; };
 		C0718E56251AA5930055B342 /* PlayIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0718E55251AA5930055B342 /* PlayIntroViewController.swift */; };
 		C0718E58251AA5BE0055B342 /* PointsIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0718E57251AA5BE0055B342 /* PointsIntroViewController.swift */; };
@@ -37,9 +38,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		42EF655D2724B99CD80701FC /* Pods-NumberMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumberMate.release.xcconfig"; path = "Target Support Files/Pods-NumberMate/Pods-NumberMate.release.xcconfig"; sourceTree = "<group>"; };
-		8F06F104E0CA247B6A8217B4 /* Pods_NumberMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NumberMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		98CF4EB8BEDC9606F429871A /* Pods-NumberMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumberMate.debug.xcconfig"; path = "Target Support Files/Pods-NumberMate/Pods-NumberMate.debug.xcconfig"; sourceTree = "<group>"; };
+		2BB058CBC007EB02A8A9ECCE /* Pods-NumberMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumberMate.release.xcconfig"; path = "Target Support Files/Pods-NumberMate/Pods-NumberMate.release.xcconfig"; sourceTree = "<group>"; };
+		4108689398A20BE7B7E1A4A5 /* Pods-NumberMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumberMate.debug.xcconfig"; path = "Target Support Files/Pods-NumberMate/Pods-NumberMate.debug.xcconfig"; sourceTree = "<group>"; };
+		63DCAE75453692AA66D2B7F3 /* Pods_NumberMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NumberMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C00976EA24AFBF15005C68B0 /* NumberMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NumberMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C00976ED24AFBF15005C68B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C00976EF24AFBF15005C68B0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,19 +49,20 @@
 		C00976F924AFBF20005C68B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C00976FB24AFBF20005C68B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C009770124AFE8D5005C68B0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		C009770524B0031D005C68B0 /* PlayersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersViewController.swift; sourceTree = "<group>"; };
+		C009770524B0031D005C68B0 /* LeadersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadersViewController.swift; sourceTree = "<group>"; };
 		C009770724B0033C005C68B0 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		C009770B24B063D7005C68B0 /* GettingStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartedViewController.swift; sourceTree = "<group>"; };
-		C009771124B1B51A005C68B0 /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
+		C009771124B1B51A005C68B0 /* LeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderCell.swift; sourceTree = "<group>"; };
 		C009771324B1D384005C68B0 /* GuessCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessCell.swift; sourceTree = "<group>"; };
-		C021B5EF25233EF6002AA9EC /* Fire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fire.swift; sourceTree = "<group>"; };
+		C021B5EF25233EF6002AA9EC /* Parse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parse.swift; sourceTree = "<group>"; };
 		C021B5F125234383002AA9EC /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
 		C0244861251E5EA100F8996B /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		C0244863251E784500F8996B /* Advertisements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertisements.swift; sourceTree = "<group>"; };
 		C0366496251C5F780096AE3C /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		C0366498251C74460096AE3C /* Guess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guess.swift; sourceTree = "<group>"; };
 		C036649A251C9F950096AE3C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		C036649C251CA3A70096AE3C /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		C036649C251CA3A70096AE3C /* MonthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthViewController.swift; sourceTree = "<group>"; };
+		C05AE6AE2529038300FE5604 /* Paypal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paypal.swift; sourceTree = "<group>"; };
 		C0718E53251AA34C0055B342 /* IntroPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPageViewController.swift; sourceTree = "<group>"; };
 		C0718E55251AA5930055B342 /* PlayIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayIntroViewController.swift; sourceTree = "<group>"; };
 		C0718E57251AA5BE0055B342 /* PointsIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsIntroViewController.swift; sourceTree = "<group>"; };
@@ -75,7 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87FF723B25CDFCCDD45A9242 /* Pods_NumberMate.framework in Frameworks */,
+				02F2FB2B5D20B6305F5268D2 /* Pods_NumberMate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,18 +87,10 @@
 		3AF833078189DD94F496007A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				98CF4EB8BEDC9606F429871A /* Pods-NumberMate.debug.xcconfig */,
-				42EF655D2724B99CD80701FC /* Pods-NumberMate.release.xcconfig */,
+				4108689398A20BE7B7E1A4A5 /* Pods-NumberMate.debug.xcconfig */,
+				2BB058CBC007EB02A8A9ECCE /* Pods-NumberMate.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		67A2266A6FB663133CEDE470 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				8F06F104E0CA247B6A8217B4 /* Pods_NumberMate.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		C00976E124AFBF14005C68B0 = {
@@ -105,7 +99,7 @@
 				C00976EC24AFBF15005C68B0 /* NumberMate */,
 				C00976EB24AFBF15005C68B0 /* Products */,
 				3AF833078189DD94F496007A /* Pods */,
-				67A2266A6FB663133CEDE470 /* Frameworks */,
+				C26056E87F79F2CD27231D54 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,8 +138,9 @@
 				C0244863251E784500F8996B /* Advertisements.swift */,
 				C0366498251C74460096AE3C /* Guess.swift */,
 				C0366496251C5F780096AE3C /* File.swift */,
-				C021B5EF25233EF6002AA9EC /* Fire.swift */,
+				C021B5EF25233EF6002AA9EC /* Parse.swift */,
 				C021B5F125234383002AA9EC /* Function.swift */,
+				C05AE6AE2529038300FE5604 /* Paypal.swift */,
 			);
 			path = CodeFiles;
 			sourceTree = "<group>";
@@ -174,9 +169,9 @@
 		C0AB1E1C24C0ECDC008DEF05 /* LeaderBoard */ = {
 			isa = PBXGroup;
 			children = (
-				C009770524B0031D005C68B0 /* PlayersViewController.swift */,
-				C009771124B1B51A005C68B0 /* PlayerCell.swift */,
-				C036649C251CA3A70096AE3C /* CalendarViewController.swift */,
+				C009770524B0031D005C68B0 /* LeadersViewController.swift */,
+				C009771124B1B51A005C68B0 /* LeaderCell.swift */,
+				C036649C251CA3A70096AE3C /* MonthViewController.swift */,
 			);
 			path = LeaderBoard;
 			sourceTree = "<group>";
@@ -207,6 +202,14 @@
 			path = PlayerInformation;
 			sourceTree = "<group>";
 		};
+		C26056E87F79F2CD27231D54 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				63DCAE75453692AA66D2B7F3 /* Pods_NumberMate.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -214,11 +217,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C00976FE24AFBF20005C68B0 /* Build configuration list for PBXNativeTarget "NumberMate" */;
 			buildPhases = (
-				64DAE5E5F69DC2FA944E81DC /* [CP] Check Pods Manifest.lock */,
+				DD3B856FA527A1FD451ADDDB /* [CP] Check Pods Manifest.lock */,
 				C00976E624AFBF14005C68B0 /* Sources */,
 				C00976E724AFBF14005C68B0 /* Frameworks */,
 				C00976E824AFBF14005C68B0 /* Resources */,
-				1A992FCA5E83C7762227DDEB /* [CP] Embed Pods Frameworks */,
+				0BC27542282959C5E80B9690 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -277,7 +280,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1A992FCA5E83C7762227DDEB /* [CP] Embed Pods Frameworks */ = {
+		0BC27542282959C5E80B9690 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -294,7 +297,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NumberMate/Pods-NumberMate-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		64DAE5E5F69DC2FA944E81DC /* [CP] Check Pods Manifest.lock */ = {
+		DD3B856FA527A1FD451ADDDB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -323,21 +326,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C036649D251CA3A80096AE3C /* CalendarViewController.swift in Sources */,
+				C036649D251CA3A80096AE3C /* MonthViewController.swift in Sources */,
 				C0718E5A251AA5D80055B342 /* WinIntroViewController.swift in Sources */,
 				C0AB1E1924C0EC64008DEF05 /* SignUpViewController.swift in Sources */,
-				C009771224B1B51A005C68B0 /* PlayerCell.swift in Sources */,
+				C009771224B1B51A005C68B0 /* LeaderCell.swift in Sources */,
 				C00976EE24AFBF15005C68B0 /* AppDelegate.swift in Sources */,
 				C0718E54251AA34C0055B342 /* IntroPageViewController.swift in Sources */,
 				C036649B251C9F950096AE3C /* SettingsViewController.swift in Sources */,
 				C0366499251C74460096AE3C /* Guess.swift in Sources */,
 				C0244862251E5EA100F8996B /* PlayViewController.swift in Sources */,
 				C009771424B1D384005C68B0 /* GuessCell.swift in Sources */,
-				C021B5F025233EF6002AA9EC /* Fire.swift in Sources */,
+				C021B5F025233EF6002AA9EC /* Parse.swift in Sources */,
 				C0F1076D251144FA000F719F /* ProfileViewController.swift in Sources */,
+				C05AE6AF2529038300FE5604 /* Paypal.swift in Sources */,
 				C0718E56251AA5930055B342 /* PlayIntroViewController.swift in Sources */,
 				C0718E58251AA5BE0055B342 /* PointsIntroViewController.swift in Sources */,
-				C009770624B0031D005C68B0 /* PlayersViewController.swift in Sources */,
+				C009770624B0031D005C68B0 /* LeadersViewController.swift in Sources */,
 				C0366497251C5F780096AE3C /* File.swift in Sources */,
 				C009770C24B063D7005C68B0 /* GettingStartedViewController.swift in Sources */,
 				C009770824B0033C005C68B0 /* GameViewController.swift in Sources */,
@@ -486,7 +490,7 @@
 		};
 		C00976FF24AFBF20005C68B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98CF4EB8BEDC9606F429871A /* Pods-NumberMate.debug.xcconfig */;
+			baseConfigurationReference = 4108689398A20BE7B7E1A4A5 /* Pods-NumberMate.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -505,7 +509,7 @@
 		};
 		C009770024AFBF20005C68B0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 42EF655D2724B99CD80701FC /* Pods-NumberMate.release.xcconfig */;
+			baseConfigurationReference = 2BB058CBC007EB02A8A9ECCE /* Pods-NumberMate.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

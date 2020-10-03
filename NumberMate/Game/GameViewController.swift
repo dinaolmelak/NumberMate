@@ -7,13 +7,10 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseFirestore
+
 
 class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var db: Firestore!
-    var fire = Fire()
     let funcs = Function()
     
     @IBOutlet weak var addGuessButton: UIButton!
@@ -23,10 +20,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let settings = FirestoreSettings()
-        Firestore.firestore().settings = settings
-        db = Firestore.firestore()
-        // [END setup]
+        
         hiddenNumber = funcs.playingNumberGenerator()
         print("DINAOL \(String(describing: hiddenNumber))")
         // Do any additional setup after loading the view.
@@ -92,13 +86,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func AddGuessesTodb(){
-        let doc = fire.getPlayerDocID(FirestoreDatabase: db) { (string) in
-            
-        }
-        print(doc)
-//        if self.guesses.isEmpty != true{
-//            fire.AddGuessesTodb(FirestoreDatabase: db, Guesses: self.guesses, HiddenNumber: self.hiddenNumber!, Document: doc)
-//        }
+        
+
     }
     
     

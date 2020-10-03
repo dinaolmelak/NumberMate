@@ -7,12 +7,11 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseFirestore
+
 
 class SignUpViewController: UIViewController {
     // email and password
-    var db: Firestore!
+    
     @IBOutlet weak var fnameTextfield: UITextField!
     @IBOutlet weak var lnameTextfield: UITextField!
     @IBOutlet weak var emailTextfield: UITextField!
@@ -20,12 +19,6 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // [START setup]
-        let settings = FirestoreSettings()
-
-        Firestore.firestore().settings = settings
-        // [END setup]
-        db = Firestore.firestore()
         // Do any additional setup after loading the view.
     }
     
@@ -39,34 +32,7 @@ class SignUpViewController: UIViewController {
         }
         
         if saveBool == true{
-            Auth.auth().createUser(withEmail: self.emailTextfield.text!, password: self.passwordTextfield.text!) { authResult, error in
-                if let user = authResult?.user {
-                    print("\(String(describing: user.email)) created!")
-                    let userUID = authResult!.user.uid
-                    var ref: DocumentReference? = nil
-                    ref = self.db.collection("players").addDocument(data: [
-                        "fname": self.fnameTextfield.text!,
-                        "lname": self.lnameTextfield.text!,
-                        "email": self.emailTextfield.text!,
-                        "userUID": userUID,
-                        "start_date": Timestamp(date: Date()),
-                        "points": 0,
-                        "min_time_taken": 0,
-                        "game_count": 0
-                    ]) { err in
-                        if let err = err {
-                            print("Error adding document: \(err)")
-                        } else {
-                            print("Document added with ID: \(ref!.documentID)")
-
-                        }
-                    }
-                    
-                }else{
-                    print(error as Any)
-                }
-                
-            }
+            // sign user In
             
         }
         UserDefaults.standard.set(true, forKey: "isUser")

@@ -6,10 +6,6 @@ target 'NumberMate' do
   use_frameworks!
 
   # Pods for NumberMate
-	pod 'Firebase/Auth'
-	pod 'Firebase/Firestore'
-	pod 'AlamofireImage'
-	pod 'FSCalendar'
 	pod 'Google-Mobile-Ads-SDK'
-
+	pod 'Parse'
 end
