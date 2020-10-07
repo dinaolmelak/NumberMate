@@ -52,7 +52,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
     }
     
     func getDataFromdb(){
-        fire.getPlayerInfo(Firestore: db) { (playerInfo) in
+        fire.listenPlayerInfo(Firestore: db) { (playerInfo) in
             self.setDataToLabel(FName: playerInfo.fname, LName: playerInfo.lname, email: playerInfo.email, Points: playerInfo.points, GameCount: playerInfo.game_count, TimeTaken: playerInfo.min_time_taken)
         }
     }

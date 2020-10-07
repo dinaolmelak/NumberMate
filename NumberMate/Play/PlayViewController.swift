@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import FirebaseAuth
 import GoogleMobileAds
 
 class PlayViewController: UIViewController, GADRewardedAdDelegate {
@@ -17,9 +19,13 @@ class PlayViewController: UIViewController, GADRewardedAdDelegate {
     var rewardedAd: GADRewardedAd?
     var ad = MobAds()
     var show = Function()
+    var fire = Fire()
+    var db: Firestore!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let settings = FirestoreSettings()
+        Firestore.firestore().settings = settings
+        db = Firestore.firestore()
         // Do any additional setup after loading the view.
         ad.bannerDisplay(simpleBannerAd, self)
         self.rewardedAd = ad.createAndLoadRewardedAd()
@@ -31,6 +37,9 @@ class PlayViewController: UIViewController, GADRewardedAdDelegate {
     
     @IBAction func onWatchAd(_ sender: Any) {
         //show.showQuestion(Title: , Message: ,ViewController: self)
+        guard self.rewardedAd?.isReady == true else{
+            return
+        }
         let alert = UIAlertController(title: "More Points!", message: "Watch a short Ad to get 20 points?", preferredStyle: .alert)
         let noAction = UIAlertAction(title: "NO", style: .cancel, handler: nil)
         let yesAction = UIAlertAction(title: "YES", style: .default) { (UIAlertAction) in
@@ -45,8 +54,15 @@ class PlayViewController: UIViewController, GADRewardedAdDelegate {
 
     }
     func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
-          print("Reward received with currency: \(reward.type), amount \(reward.amount).")
-          print("___\(reward.amount.doubleValue)")
+        print("Reward received with currency: \(reward.type), amount \(reward.amount).")
+        print("___\(reward.amount.doubleValue)")
+        fire.increamentPoints(Firebase: db, by: reward.amount.intValue) { (error) in
+            if let error = error{
+                print(error as Any)
+            }else{
+                print("Success increament \(reward.amount.intValue)")
+            }
+        }
         if rewardedAd.responseInfo != nil{
           show.showAlert(Title: "Earned", Message: "You have earned \(reward.amount.intValue * 2)", ViewController: self)
         }
