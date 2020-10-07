@@ -13,6 +13,7 @@ import UIKit
 class playersInfo{
     var fname: String!
     var lname: String!
+    var displayName: String!
     var email: String!
     var min_time_taken: Int!
     var points: Int!
@@ -20,9 +21,10 @@ class playersInfo{
     
     
     
-    init(_fname first: String,_lname second:String, _email inEmail: String,_minTime minTime: Int,_points inPoints: Int,_gameCount gameCount: Int){
+    init(_fname first: String,_lname second:String,_dName dname:String,  _email inEmail: String,_minTime minTime: Int,_points inPoints: Int,_gameCount gameCount: Int){
         fname = first
         lname = second
+        displayName = dname
         email = inEmail
         min_time_taken = minTime
         points = inPoints

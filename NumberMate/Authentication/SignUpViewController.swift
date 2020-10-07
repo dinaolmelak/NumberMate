@@ -41,7 +41,7 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func didTapHaveAccount(_ sender: Any) {
-        performSegue(withIdentifier: "signInSegue", sender: self)
+        self.performSegue(withIdentifier: "signInSegue", sender: self)
     }
             
     

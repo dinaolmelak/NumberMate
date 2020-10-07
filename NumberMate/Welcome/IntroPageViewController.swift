@@ -24,10 +24,6 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
     override func viewDidAppear(_ animated: Bool) {
         if UserDefaults.standard.bool(forKey: "isUser") == false{
             print("yes")
-            //            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
-            //            //modalPresentationStyle
-            //            vc.modalPresentationStyle = .fullScreen
-            //            present(vc, animated: true, completion: nil)
         } else{
             performSegue(withIdentifier: "SkipIntroSegue", sender: self)
             print("not First time")

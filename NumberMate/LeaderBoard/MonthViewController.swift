@@ -20,8 +20,6 @@ class MonthViewController: UIViewController{
     @IBAction func onTapBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
-    
     /*
     // MARK: - Navigation
 
@@ -31,6 +29,4 @@ class MonthViewController: UIViewController{
         // Pass the selected object to the new view controller.
     }
     */
-    
-
 }

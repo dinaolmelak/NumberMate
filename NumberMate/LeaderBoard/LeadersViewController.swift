@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 import GoogleMobileAds
 
 class LeadersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -14,24 +16,31 @@ class LeadersViewController: UIViewController, UITableViewDelegate, UITableViewD
     var myName: String?
     var players = [playersInfo]()//array of players docID
     let ads = MobAds()
+    let fire = Fire()
+    var db : Firestore!
     @IBOutlet weak var simplePlayerBanner: GADBannerView!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        let settings = FirestoreSettings()
+        Firestore.firestore().settings = settings
+        db = Firestore.firestore()
         
         ads.bannerDisplay(simplePlayerBanner,self)
         tableView.delegate = self
         tableView.dataSource = self
 //      Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
-        print("testPlayer\(players)")
-        
+        fire.getPlayersInfo(Firestore: db){ (playerslist) in
+            self.players = playerslist
+            print(self.players)
+            self.tableView.reloadData()
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         //onTimer()
         // MARK: - loading players----
-        print("_-_-_-_\(players)")
+        
         
         // listener.remove()
         
@@ -48,7 +57,7 @@ class LeadersViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MonthlyViewSegue", for: indexPath) as! LeaderCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LeaderCell", for: indexPath) as! LeaderCell
         let playerDoc = players[indexPath.row]
         cell.playerNameLabel.text = playerDoc.fname + " " + playerDoc.lname
         cell.playerStatusLabel.text = String(playerDoc.points)

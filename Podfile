@@ -7,5 +7,6 @@ target 'NumberMate' do
 
   # Pods for NumberMate
 	pod 'Google-Mobile-Ads-SDK'
-	pod 'Parse'
+	pod 'Firebase/Auth'
+	pod 'Firebase/Firestore'
 end

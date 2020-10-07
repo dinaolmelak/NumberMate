@@ -42,6 +42,10 @@ class Payment{
         semaphore.wait()
     }
     
+    func paymentHistory(){
+        
+    }
+    
     func pay(BatchID batchID: Int, Token token: String,Email email:String){
         let semaphore = DispatchSemaphore (value: 0)
         
