@@ -12,12 +12,11 @@ import Foundation
 class Payment{
         let price  = 25
         let senderItemId = 202003140001 // 201403140001
-        func getToken(Token completion: @escaping (String)-> Void){
+    
+    func getToken(Token completion: @escaping (String)-> Void){
         let semaphore = DispatchSemaphore (value: 0)
-
         let parameters = "grant_type=client_credentials"
         let postData =  parameters.data(using: .utf8)
-
         var request = URLRequest(url: URL(string: "https://api.sandbox.paypal.com/v1/oauth2/token")!,timeoutInterval: Double.infinity)
         request.addValue("Basic QWJ4aUhTaWM5cmp2NUpQdEV2WUhaMi1hWmVySWFoTHdDVDEza004UURLY3RMWGtXN3lpTFRfVGpFVllVMXB5NFhKcGtxXzdYSVpYRmhkaFc6RVBUbUVZSWg2OE1FVG9FSjEyT0lHdzFKWkFGNTVza2Q2SjNiRmpLYkxMTEJiOTY3akRhQkdRREt1S29yTWN4amZ3Rm00X0VCa1dvUzJkejM=", forHTTPHeaderField: "Authorization")
 

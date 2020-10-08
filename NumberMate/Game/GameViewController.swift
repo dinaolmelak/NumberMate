@@ -7,19 +7,27 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import FirebaseAuth
+import GoogleMobileAds
 
 
 class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let funcs = Function()
-    
+    let fire = Fire()
+    @IBOutlet weak var bannerAd: GADBannerView!
     @IBOutlet weak var addGuessButton: UIButton!
     var documentID: String?
     var hiddenNumber:  Int?
     var guesses = [guess]()
+    var db: Firestore!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        let settings = FirestoreSettings()
+        Firestore.firestore().settings = settings
+        db = Firestore.firestore()
         
         hiddenNumber = funcs.playingNumberGenerator()
         print("DINAOL \(String(describing: hiddenNumber))")
@@ -73,7 +81,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.tableView.reloadData()
             if newNumGroup == 4 && newNumOrder == 4{
                 self.funcs.showAlert(Title: "Congratulations!", Message: "You Won!!!",ViewController: self)
-                self.AddGuessesTodb()
+                //self.AddGuessesTodb()
                 self.addGuessButton.isEnabled = false
             }
         })
@@ -86,7 +94,16 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func AddGuessesTodb(){
-        
+        if (guesses.count != 0){
+            fire.AddGuessesTodb(Firestore: db, Guesses: guesses, HiddenNumber: hiddenNumber!)
+            fire.increamentGameCount(Firebase: db) { (error) in
+                if let error = error{
+                    print(error as Any)
+                }else{
+                    print("game increamented")
+                }
+            }
+        }
 
     }
     

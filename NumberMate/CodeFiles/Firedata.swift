@@ -15,6 +15,7 @@ class Fire{
     let user = Auth.auth().currentUser
     let collectionString = "players"
     let gameString = "games"
+    let gameCounter = "game_count"
     let hiddenNumber = "hidden_number"
     let gameDate = "gameDate"
     let gamePoints = "points"
@@ -47,11 +48,11 @@ class Fire{
         
     }
     
-    func increamentGameCount(Firebase db: Firestore,by gcount:Int, completion: @escaping(Error?)->Void){
+    func increamentGameCount(Firebase db: Firestore, completion: @escaping(Error?)->Void){
         getPlayerInfo(Firestore: db) { (playerInfo) in
             let playerGames = playerInfo.game_count!
             self.getPlayerDocID(Firestore: db) { (docID) in
-                db.collection(self.collectionString).document(docID).setData([self.gamePoints : gcount + playerGames], merge: true) { (error) in
+                db.collection(self.collectionString).document(docID).setData([self.gameCounter : 1 + playerGames], merge: true) { (error) in
                     completion(error)
                 }
             }
