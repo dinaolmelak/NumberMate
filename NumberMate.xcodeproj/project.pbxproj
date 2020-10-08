@@ -123,6 +123,7 @@
 				C0AB1E1F24C0ED47008DEF05 /* PlayerInformation */,
 				C0AB1E1D24C0ED09008DEF05 /* Game */,
 				C0AB1E1C24C0ECDC008DEF05 /* LeaderBoard */,
+				C09C6946252FB1A900647CF7 /* CalendarView */,
 				C0AB1E1E24C0ED26008DEF05 /* Play */,
 				C00976F824AFBF20005C68B0 /* LaunchScreen.storyboard */,
 				C00976FB24AFBF20005C68B0 /* Info.plist */,
@@ -143,6 +144,14 @@
 				C05AE6AE2529038300FE5604 /* Paypal.swift */,
 			);
 			path = CodeFiles;
+			sourceTree = "<group>";
+		};
+		C09C6946252FB1A900647CF7 /* CalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				C036649C251CA3A70096AE3C /* MonthViewController.swift */,
+			);
+			path = CalendarView;
 			sourceTree = "<group>";
 		};
 		C0AB1E1A24C0EC71008DEF05 /* Authentication */ = {
@@ -171,7 +180,6 @@
 			children = (
 				C009770524B0031D005C68B0 /* LeadersViewController.swift */,
 				C009771124B1B51A005C68B0 /* LeaderCell.swift */,
-				C036649C251CA3A70096AE3C /* MonthViewController.swift */,
 			);
 			path = LeaderBoard;
 			sourceTree = "<group>";
