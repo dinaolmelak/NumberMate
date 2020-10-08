@@ -20,6 +20,11 @@ class MonthViewController: UIViewController{
     @IBAction func onTapBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func payPerson(_ sender: Any) {
+        
+    }
+    
     /*
     // MARK: - Navigation
 

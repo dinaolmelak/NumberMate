@@ -13,7 +13,12 @@ import GoogleMobileAds
 
 
 class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+    let gameRewardPoints = 200
+    var won = false
+    @IBOutlet weak var timer: UILabel!
+    var gameTimer:Timer?
+    var timeLeft = 60
+    var started = false
     let funcs = Function()
     let fire = Fire()
     @IBOutlet weak var bannerAd: GADBannerView!
@@ -52,7 +57,16 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     @IBAction func onTapBack(_ sender: Any) {
-        AddGuessesTodb()
+        if (won == true){
+            AddGuessesTodb(Won: true)
+            fire.increamentPoints(Firebase: db, by: gameRewardPoints) { (error) in
+                if let error = error{
+                    print(error)
+                }
+            }
+        }else{
+            AddGuessesTodb(Won: false)
+        }
         dismiss(animated: true, completion: nil)
     }
     @IBAction func didTapAddGuess(_ sender: Any) {
@@ -78,11 +92,18 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             let newGuess = guess(guess: newNum, group: newNumGroup, order: newNumOrder)
             self.guesses.append(newGuess)
+            if self.started != true{
+                self.started = true
+                self.gameTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.onTimerFires), userInfo: nil, repeats: true)
+                
+            }
             self.tableView.reloadData()
             if newNumGroup == 4 && newNumOrder == 4{
                 self.funcs.showAlert(Title: "Congratulations!", Message: "You Won!!!",ViewController: self)
                 //self.AddGuessesTodb()
                 self.addGuessButton.isEnabled = false
+                self.won = true
+                self.gameTimer?.invalidate()
             }
         })
         alert.addAction(actionCancel)
@@ -91,11 +112,25 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.present(alert, animated: true, completion: nil)
         
         
+        
     }
     
-    func AddGuessesTodb(){
+    @objc func onTimerFires()
+    {
+        timeLeft -= 1
+        timer.text = "\(timeLeft) sec"
+        if(timeLeft < 30){
+            timer.textColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        }
+        if timeLeft <= 0 {
+            gameTimer?.invalidate()
+            gameTimer = nil
+        }
+    }
+    
+    func AddGuessesTodb(Won winning: Bool){
         if (guesses.count != 0){
-            fire.AddGuessesTodb(Firestore: db, Guesses: guesses, HiddenNumber: hiddenNumber!)
+            fire.AddGuessesTodb(Firestore: db, Guesses: guesses, HiddenNumber: hiddenNumber!, Won: winning)
             fire.increamentGameCount(Firebase: db) { (error) in
                 if let error = error{
                     print(error as Any)

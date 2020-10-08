@@ -14,13 +14,13 @@ import FirebaseFirestore
 class Fire{
     let user = Auth.auth().currentUser
     let collectionString = "players"
-    let gameString = "games"
     let gameCounter = "game_count"
-    let hiddenNumber = "hidden_number"
-    let gameDate = "gameDate"
     let gamePoints = "points"
+    let gameString = "games"
     
-    
+    let gameDate = "gameDate"
+    let gameWon = "win_status"
+    let hiddenNumber = "hidden_number"
     // func createUser()
     
     func getPlayerDocID(Firestore db:Firestore,completion: @escaping (String) -> Void) {
@@ -145,14 +145,14 @@ class Fire{
         }
     }
     
-    func AddGuessesTodb(Firestore db:Firestore,Guesses guesses:[guess],HiddenNumber hNumber: Int){
+    func AddGuessesTodb(Firestore db:Firestore,Guesses guesses:[guess],HiddenNumber hNumber: Int,Won wonGame: Bool){
         getPlayerDocID(Firestore: db) { (docId) in
             let newData = db.collection(self.collectionString).document(docId).collection(self.gameString).document()
             var guessedArray = [Int]()
             for guess in guesses{
                 guessedArray.append(guess.guess)
             }
-            newData.setData(["guesses": guessedArray, self.hiddenNumber: hNumber,self.gameDate: Timestamp(date: Date())])
+            newData.setData(["guesses": guessedArray, self.gameWon: wonGame, self.hiddenNumber: hNumber,self.gameDate: Timestamp(date: Date())])
 
         }
     }
