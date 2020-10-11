@@ -16,6 +16,7 @@ class PlayViewController: UIViewController, GADRewardedAdDelegate {
     
 
     @IBOutlet weak var simpleBannerAd: GADBannerView!
+    @IBOutlet weak var playButton: UIButton!
     var rewardedAd: GADRewardedAd?
     var ad = MobAds()
     var show = Function()
@@ -27,6 +28,7 @@ class PlayViewController: UIViewController, GADRewardedAdDelegate {
         Firestore.firestore().settings = settings
         db = Firestore.firestore()
         // Do any additional setup after loading the view.
+        playButton.layer.cornerRadius = 20
         ad.bannerDisplay(simpleBannerAd, self)
         self.rewardedAd = ad.createAndLoadRewardedAd()
     }

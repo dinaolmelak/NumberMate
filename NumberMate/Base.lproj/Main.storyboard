@@ -219,11 +219,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2zp-Zt-QQJ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Points" selectedImage="gamecontroller" catalog="system" id="PZc-RM-y5D">
+                    <tabBarItem key="tabBarItem" title="Points" image="gamecontroller" catalog="system" selectedImage="gamecontroller" id="PZc-RM-y5D">
                         <color key="badgeColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="VrX-Kl-zdG"/>
                     <connections>
+                        <outlet property="playButton" destination="efN-Cg-4mi" id="Zh9-sB-th1"/>
                         <outlet property="simpleBannerAd" destination="YiS-D8-TgK" id="rvd-2h-0FO"/>
                         <segue destination="mWJ-gY-RiO" kind="presentation" identifier="GameSegue" modalPresentationStyle="fullScreen" id="1d5-gO-5jO"/>
                     </connections>
@@ -467,7 +468,7 @@
                                 <rect key="frame" x="0.0" y="101.5" width="375" height="466.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LeaderCell" rowHeight="80" id="t3z-Js-0Xz" customClass="LeaderCell" customModule="NumberMate" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="LeaderCell" rowHeight="80" id="t3z-Js-0Xz" customClass="LeaderCell" customModule="NumberMate" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t3z-Js-0Xz" id="dw7-4R-Lek">
@@ -542,7 +543,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zh5-Vb-0ph"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="LeaderBoard" selectedImage="globe" catalog="system" id="jg1-AH-1PC">
+                    <tabBarItem key="tabBarItem" title="LeaderBoard" image="globe" catalog="system" selectedImage="globe" id="jg1-AH-1PC">
                         <color key="badgeColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <connections>
@@ -732,7 +733,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RjF-Hz-zua"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" selectedImage="person" catalog="system" id="c8R-VI-XaQ">
+                    <tabBarItem key="tabBarItem" title="Profile" image="person" catalog="system" selectedImage="person" id="c8R-VI-XaQ">
                         <color key="badgeColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <connections>
