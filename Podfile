@@ -10,4 +10,5 @@ target 'NumberMate' do
 	pod 'Firebase/Auth'
 	pod 'Firebase/Firestore'
 	pod 'lottie-ios'
+	pod 'FSCalendar'
 end
