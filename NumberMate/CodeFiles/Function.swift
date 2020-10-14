@@ -75,6 +75,21 @@ class Function {
         return value
     }
     
+    func batchIDGenerator()->Int{
+        let digits = 0...9
+        // Shuffle them
+        let shuffledDigits = digits.shuffled()
+
+         // Take the number of digits you would like
+        let fourDigits = shuffledDigits.prefix(10)
+
+         // Add them up with place values
+        let value = fourDigits.reduce(0) {
+             $0*10 + $1
+        }
+        
+        return value
+    }
     
     func showQuestion(Title title:String, Message message:  String,ViewController vc:UIViewController){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

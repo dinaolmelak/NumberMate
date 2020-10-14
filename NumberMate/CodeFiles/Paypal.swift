@@ -10,11 +10,12 @@ import Foundation
 
 
 class Payment{
+        //sender_batch_id = 2014021807
         let price  = 25
         let senderItemId = 202003140001 // 201403140001
     
     func getToken(Token completion: @escaping (String)-> Void){
-        let semaphore = DispatchSemaphore (value: 0)
+        //let semaphore = DispatchSemaphore (value: 0)
         let parameters = "grant_type=client_credentials"
         let postData =  parameters.data(using: .utf8)
         var request = URLRequest(url: URL(string: "https://api.sandbox.paypal.com/v1/oauth2/token")!,timeoutInterval: Double.infinity)
@@ -34,20 +35,20 @@ class Payment{
             let accessToken = my4Data["access_token"] as! String
             
             completion(accessToken)
-            semaphore.signal()
+            //semaphore.signal()
         }
-
+        //task.cancel()
         task.resume()
-        semaphore.wait()
+        //semaphore.wait()
     }
     
     func paymentHistory(){
         
     }
     
-    func pay(BatchID batchID: Int, Token token: String,Email email:String){
-        let semaphore = DispatchSemaphore (value: 0)
+    func pay(SenderBatchID batchID: Int, Token token: String,Email email:String){
         
+        //let semaphore = DispatchSemaphore (value: 0)
         let parameters = "{\n  \"sender_batch_header\": {\n    \"sender_batch_id\": \"\(batchID)\",\n    \"recipient_type\": \"EMAIL\",\n    \"email_subject\": \"You have money Dinaol!\",\n    \"email_message\": \"You received a payment. Thanks for using NumberMate!\"\n  },\n  \"items\": [\n    {\n      \"amount\": {\n        \"value\": \"\(String(price))\",\n        \"currency\": \"USD\"\n      },\n      \"sender_item_id\": \"\(senderItemId)\",\n      \"recipient_wallet\": \"PAYPAL\",\n      \"receiver\": \"\(email)\"\n    }\n  ]\n}"
         let postData = parameters.data(using: .utf8)
 
@@ -64,11 +65,11 @@ class Payment{
             return
           }
           print(String(data: data, encoding: .utf8)!)
-          semaphore.signal()
+          //semaphore.signal()
         }
-
+        //task.cancel()
         task.resume()
-        semaphore.wait()
+        //semaphore.wait()
     }
     
     

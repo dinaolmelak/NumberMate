@@ -14,6 +14,7 @@ import FirebaseFirestore
 class Fire{
     let user = Auth.auth().currentUser
     let collectionString = "players"
+    let winnerCollectionString = "Winner"
     let gameCounter = "game_count"
     let gamePoints = "points"
     let gameString = "games"
@@ -21,6 +22,12 @@ class Fire{
     let gameDate = "gameDate"
     let gameWon = "win_status"
     let hiddenNumber = "hidden_number"
+    let gameGuess = "guesses"
+    //------payment info -------
+    let paymentDate = "paymentDate"
+    let winnerEmail = "winner_email"
+    let winnerBatchID = "winnerBatchID"
+    let winnerUid = "winner_uid"
     // func createUser()
     
     func getPlayerDocID(Firestore db:Firestore,completion: @escaping (String) -> Void) {
@@ -34,8 +41,6 @@ class Fire{
             }
         }
     }
-    
-    
     func increamentPoints(Firebase db: Firestore, by npoint: Int, completion: @escaping(Error?)->Void){
         getPlayerInfo(Firestore: db) { (playerInfo) in
             let playerPoint = playerInfo.points
@@ -47,7 +52,6 @@ class Fire{
         }
         
     }
-    
     func increamentGameCount(Firebase db: Firestore, completion: @escaping(Error?)->Void){
         getPlayerInfo(Firestore: db) { (playerInfo) in
             let playerGames = playerInfo.game_count!
@@ -76,7 +80,6 @@ class Fire{
             
         }
     }
-    
     func listenPlayerInfo(Firestore db: Firestore, completion: @escaping (playersInfo) -> Void){
         getPlayerDocID(Firestore: db) { (docID) in
             db.collection(self.collectionString).document(docID).addSnapshotListener{ (documentSnap, error) in
@@ -98,7 +101,6 @@ class Fire{
             }
         }
     }
-    
     func getPlayerInfo(Firestore db: Firestore, completion: @escaping (playersInfo) -> Void){
         getPlayerDocID(Firestore: db) { (docID) in
             db.collection(self.collectionString).document(docID).getDocument { (documentSnap, error) in
@@ -144,19 +146,24 @@ class Fire{
             }
         }
     }
-    
-    func AddGuessesTodb(Firestore db:Firestore,Guesses guesses:[guess],HiddenNumber hNumber: Int,Won wonGame: Bool){
+    func addGuessesTodb(Firestore db:Firestore,Guesses guesses:[guess],HiddenNumber hNumber: Int,Won wonGame: Bool){
         getPlayerDocID(Firestore: db) { (docId) in
             let newData = db.collection(self.collectionString).document(docId).collection(self.gameString).document()
             var guessedArray = [Int]()
             for guess in guesses{
                 guessedArray.append(guess.guess)
             }
-            newData.setData(["guesses": guessedArray, self.gameWon: wonGame, self.hiddenNumber: hNumber,self.gameDate: Timestamp(date: Date())])
+            newData.setData([self.gameGuess: guessedArray, self.gameWon: wonGame, self.hiddenNumber: hNumber,self.gameDate: Timestamp(date: Date())])
 
         }
     }
-
+    
+    func addPaidPlayerTodb(Firestore db:Firestore,SenderBatchID batchID: Int,WinnerEmail email:String,WinnerUID winnerUID:String){
+        let newData = db.collection(self.winnerCollectionString).document()
+        
+        newData.setData([self.winnerUid: winnerUID, self.winnerBatchID: batchID, self.winnerEmail: email, self.paymentDate: Timestamp(date: Date())])
+    }
+    
     func deleteCurrentAccountData(){
         
     }

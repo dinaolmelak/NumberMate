@@ -15,18 +15,18 @@ import GoogleMobileAds
 class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let gameRewardPoints = 200
     var won = false
-    @IBOutlet weak var timer: UILabel!
     var gameTimer:Timer?
     var timeLeft = 60
     var started = false
     let funcs = Function()
     let fire = Fire()
-    @IBOutlet weak var bannerAd: GADBannerView!
-    @IBOutlet weak var addGuessButton: UIButton!
     var documentID: String?
     var hiddenNumber:  Int?
     var guesses = [guess]()
     var db: Firestore!
+    @IBOutlet weak var timer: UILabel!
+    @IBOutlet weak var bannerAd: GADBannerView!
+    @IBOutlet weak var addGuessButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,7 +130,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func AddGuessesTodb(Won winning: Bool){
         if (guesses.count != 0){
-            fire.AddGuessesTodb(Firestore: db, Guesses: guesses, HiddenNumber: hiddenNumber!, Won: winning)
+            fire.addGuessesTodb(Firestore: db, Guesses: guesses, HiddenNumber: hiddenNumber!, Won: winning)
             fire.increamentGameCount(Firebase: db) { (error) in
                 if let error = error{
                     print(error as Any)

@@ -8,14 +8,20 @@
 
 import UIKit
 import FSCalendar
+import FirebaseAuth
+import FirebaseFirestore
 
 class MonthViewController: UIViewController{
    
-    
+    var paying = Payment()
+    var db: Firestore!
+    var fire = Fire()
     @IBOutlet weak var calendar: FSCalendar!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let settings = FirestoreSettings()
+        Firestore.firestore().settings = settings
+        db = Firestore.firestore()
         // Do any additional setup after loading the view.
     }
     
@@ -24,7 +30,18 @@ class MonthViewController: UIViewController{
     }
     
     @IBAction func payPerson(_ sender: Any) {
-        
+        let generateID = Function()
+        let generatedBatchID = generateID.batchIDGenerator()
+        //let userEmail = Auth.auth().currentUser!.email!
+        let userUID = Auth.auth().currentUser!.uid
+        let userEmail = "sb-mnb763321420@personal.example.com"
+        print(generatedBatchID)
+        paying.getToken { (token) in
+            self.paying.pay(SenderBatchID: generatedBatchID, Token: token, Email: userEmail)
+            
+            
+        }
+        fire.addPaidPlayerTodb(Firestore: db, SenderBatchID: generatedBatchID, WinnerEmail: userEmail, WinnerUID: userUID)
     }
     
     /*
