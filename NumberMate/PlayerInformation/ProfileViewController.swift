@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 import FirebaseAuth
 import FirebaseFirestore
 import GoogleMobileAds
@@ -16,6 +17,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
     var ad = MobAds()
     var db: Firestore!
     let fire = Fire()
+    var carAnimationView: AnimationView?
     @IBOutlet weak var simpleBannerAd: GADBannerView!
     @IBOutlet weak var gamesTableView: UITableView!
     @IBOutlet weak var rankLabel: UILabel!
@@ -31,10 +33,16 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
         Firestore.firestore().settings = settings
         db = Firestore.firestore()
         
+        //carAnimation = .init(name: "1204-car")
+        //carAnimation.loopMode = .loop
+        
         ad.bannerDisplay(simpleBannerAd, self)
         gamesTableView.delegate = self
         gamesTableView.dataSource = self
         getDataFromdb()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        playCarAnimation()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,6 +63,20 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
         fire.listenPlayerInfo(Firestore: db) { (playerInfo) in
             self.setDataToLabel(FName: playerInfo.fname, LName: playerInfo.lname, email: playerInfo.email, Points: playerInfo.points, GameCount: playerInfo.game_count, TimeTaken: playerInfo.min_time_taken)
         }
+    }
+    
+    func playCarAnimation(){
+        carAnimationView = .init(name: "1204-car")
+        
+        carAnimationView!.contentMode = .scaleAspectFit
+        /// Converts a rect
+        //carAnimationView!.bounds.width = view.bounds.width
+        //carAnimationView!.bounds.height = view.bounds.height
+        carAnimationView!.frame = CGRect(x: view.frame.width / 4, y: 0, width: 250, height: 200)
+        view.addSubview(carAnimationView!)
+        carAnimationView!.loopMode = .loop
+        carAnimationView!.animationSpeed = 2
+        carAnimationView!.play()
     }
     
     func setDataToLabel(FName fName: String, LName lName: String, email inEmail: String,Points inPoint: Int, GameCount inGame: Int, TimeTaken timeTaken: Int){

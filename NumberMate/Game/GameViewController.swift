@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 import FirebaseFirestore
 import FirebaseAuth
 import GoogleMobileAds
@@ -24,6 +25,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     var hiddenNumber:  Int?
     var guesses = [guess]()
     var db: Firestore!
+    var animationView: AnimationView?
+    
     @IBOutlet weak var timer: UILabel!
     @IBOutlet weak var bannerAd: GADBannerView!
     @IBOutlet weak var addGuessButton: UIButton!
@@ -99,8 +102,9 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             self.tableView.reloadData()
             if newNumGroup == 4 && newNumOrder == 4{
-                self.funcs.showAlert(Title: "Congratulations!", Message: "You Won!!!",ViewController: self)
+                //self.funcs.showAlert(Title: "Congratulations!", Message: "You Won!!!",ViewController: self)
                 //self.AddGuessesTodb()
+                self.playWinAnimation()
                 self.addGuessButton.isEnabled = false
                 self.won = true
                 self.gameTimer?.invalidate()
@@ -141,8 +145,24 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
 
     }
+    override func viewDidDisappear(_ animated: Bool) {
+        stopAnimation()
+    }
     
+    func playWinAnimation(){
+        animationView = .init(name: "26182-happy-star")
+        animationView!.frame = CGRect(x: view.frame.width / 4, y: view.frame.height / 3, width: 200, height: 200)
+        animationView!.contentMode = .scaleAspectFit
+        view.addSubview(animationView!)
+        animationView!.loopMode = .loop
+        animationView!.animationSpeed = 2
+        animationView!.play()
+    }
     
+    @objc func stopAnimation(){
+        animationView!.stop()
+        view.subviews.last?.removeFromSuperview()
+    }
     /*
     // MARK: - Navigation
 

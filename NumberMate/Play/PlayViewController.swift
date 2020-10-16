@@ -14,7 +14,8 @@ import GoogleMobileAds
 class PlayViewController: UIViewController, GADRewardedAdDelegate {
     
     
-
+    @IBOutlet weak var inviteFriendButton: UIButton!
+    @IBOutlet weak var getPointsButton: UIButton!
     @IBOutlet weak var simpleBannerAd: GADBannerView!
     @IBOutlet weak var playButton: UIButton!
     var rewardedAd: GADRewardedAd?
@@ -29,6 +30,8 @@ class PlayViewController: UIViewController, GADRewardedAdDelegate {
         db = Firestore.firestore()
         // Do any additional setup after loading the view.
         playButton.layer.cornerRadius = 20
+        getPointsButton.layer.cornerRadius = 5
+        inviteFriendButton.layer.cornerRadius = 5
         ad.bannerDisplay(simpleBannerAd, self)
         self.rewardedAd = ad.createAndLoadRewardedAd()
     }
@@ -55,6 +58,12 @@ class PlayViewController: UIViewController, GADRewardedAdDelegate {
         present(alert, animated: true)
 
     }
+    
+    @IBAction func onAddFriend(_ sender: Any) {
+        print("clicked Add Friend")
+    }
+    
+    
     func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
         print("Reward received with currency: \(reward.type), amount \(reward.amount).")
         print("___\(reward.amount.doubleValue)")

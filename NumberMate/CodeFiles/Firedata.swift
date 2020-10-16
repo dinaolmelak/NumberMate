@@ -23,6 +23,7 @@ class Fire{
     let gameWon = "win_status"
     let hiddenNumber = "hidden_number"
     let gameGuess = "guesses"
+    
     //------payment info -------
     let paymentDate = "paymentDate"
     let winnerEmail = "winner_email"
@@ -157,7 +158,6 @@ class Fire{
 
         }
     }
-    
     func addPaidPlayerTodb(Firestore db:Firestore,SenderBatchID batchID: Int,WinnerEmail email:String,WinnerUID winnerUID:String){
         let newData = db.collection(self.winnerCollectionString).document()
         

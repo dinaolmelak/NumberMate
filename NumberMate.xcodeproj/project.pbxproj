@@ -35,6 +35,9 @@
 		C0AB1E1724C0EBF3008DEF05 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AB1E1624C0EBF3008DEF05 /* SignInViewController.swift */; };
 		C0AB1E1924C0EC64008DEF05 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AB1E1824C0EC64008DEF05 /* SignUpViewController.swift */; };
 		C0F1076D251144FA000F719F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F1076C251144FA000F719F /* ProfileViewController.swift */; };
+		C0F28D942537AE6700C44FA3 /* 26182-happy-star.json in Resources */ = {isa = PBXBuildFile; fileRef = C0F28D932537AE6700C44FA3 /* 26182-happy-star.json */; };
+		C0F28D972537E2F100C44FA3 /* AddFriendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F28D962537E2F000C44FA3 /* AddFriendVC.swift */; };
+		C0F28D992537E92700C44FA3 /* 1204-car.json in Resources */ = {isa = PBXBuildFile; fileRef = C0F28D982537E92600C44FA3 /* 1204-car.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +73,9 @@
 		C0AB1E1624C0EBF3008DEF05 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		C0AB1E1824C0EC64008DEF05 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C0F1076C251144FA000F719F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		C0F28D932537AE6700C44FA3 /* 26182-happy-star.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "26182-happy-star.json"; sourceTree = "<group>"; };
+		C0F28D962537E2F000C44FA3 /* AddFriendVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendVC.swift; sourceTree = "<group>"; };
+		C0F28D982537E92600C44FA3 /* 1204-car.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "1204-car.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,11 +130,13 @@
 				C0AB1E1D24C0ED09008DEF05 /* Game */,
 				C0AB1E1C24C0ECDC008DEF05 /* LeaderBoard */,
 				C09C6946252FB1A900647CF7 /* CalendarView */,
+				C0F28D952537E28E00C44FA3 /* AddFriend */,
 				C0AB1E1E24C0ED26008DEF05 /* Play */,
 				C00976F824AFBF20005C68B0 /* LaunchScreen.storyboard */,
 				C00976FB24AFBF20005C68B0 /* Info.plist */,
 				C009770124AFE8D5005C68B0 /* GoogleService-Info.plist */,
 				C021B5EE25233EA7002AA9EC /* CodeFiles */,
+				C0F28D922537AE2400C44FA3 /* AnimationFiles */,
 			);
 			path = NumberMate;
 			sourceTree = "<group>";
@@ -210,6 +218,23 @@
 			path = PlayerInformation;
 			sourceTree = "<group>";
 		};
+		C0F28D922537AE2400C44FA3 /* AnimationFiles */ = {
+			isa = PBXGroup;
+			children = (
+				C0F28D982537E92600C44FA3 /* 1204-car.json */,
+				C0F28D932537AE6700C44FA3 /* 26182-happy-star.json */,
+			);
+			path = AnimationFiles;
+			sourceTree = "<group>";
+		};
+		C0F28D952537E28E00C44FA3 /* AddFriend */ = {
+			isa = PBXGroup;
+			children = (
+				C0F28D962537E2F000C44FA3 /* AddFriendVC.swift */,
+			);
+			path = AddFriend;
+			sourceTree = "<group>";
+		};
 		EC8AD5B61D1FF5E2D441F786 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +306,8 @@
 				C00976FA24AFBF20005C68B0 /* LaunchScreen.storyboard in Resources */,
 				C009770224AFE8D5005C68B0 /* GoogleService-Info.plist in Resources */,
 				C00976F724AFBF20005C68B0 /* Assets.xcassets in Resources */,
+				C0F28D992537E92700C44FA3 /* 1204-car.json in Resources */,
+				C0F28D942537AE6700C44FA3 /* 26182-happy-star.json in Resources */,
 				C00976F524AFBF15005C68B0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,6 +364,7 @@
 				C036649D251CA3A80096AE3C /* MonthViewController.swift in Sources */,
 				C0718E5A251AA5D80055B342 /* WinIntroViewController.swift in Sources */,
 				C0AB1E1924C0EC64008DEF05 /* SignUpViewController.swift in Sources */,
+				C0F28D972537E2F100C44FA3 /* AddFriendVC.swift in Sources */,
 				C009771224B1B51A005C68B0 /* LeaderCell.swift in Sources */,
 				C00976EE24AFBF15005C68B0 /* AppDelegate.swift in Sources */,
 				C0718E54251AA34C0055B342 /* IntroPageViewController.swift in Sources */,
