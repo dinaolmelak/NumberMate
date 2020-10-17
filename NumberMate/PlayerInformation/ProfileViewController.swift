@@ -17,15 +17,17 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
     var ad = MobAds()
     var db: Firestore!
     let fire = Fire()
+    var earnedMoney = [Earned]()
     var carAnimationView: AnimationView?
     @IBOutlet weak var simpleBannerAd: GADBannerView!
-    @IBOutlet weak var gamesTableView: UITableView!
+    @IBOutlet weak var moneyTableView: UITableView!
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var minimumTimeLabel: UILabel!
     @IBOutlet weak var gameCount: UILabel!
     @IBOutlet weak var npointsLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var fullNameLabel: UILabel!
+    @IBOutlet weak var totalEarning: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -37,29 +39,52 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
         //carAnimation.loopMode = .loop
         
         ad.bannerDisplay(simpleBannerAd, self)
-        gamesTableView.delegate = self
-        gamesTableView.dataSource = self
-        getDataFromdb()
+        moneyTableView.delegate = self
+        moneyTableView.dataSource = self
+        
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         playCarAnimation()
+        fire.listenEarnedPayments(Firestore: db) { (earned) in
+            self.earnedMoney = earned
+            self.moneyTableView.reloadData()
+            if self.earnedMoney.isEmpty == true || self.earnedMoney.count == 0{
+                let emptyLabel = UILabel()
+                var myView = UIView()
+                let pic = UIImage(named: "iTunesArtwork")!
+                emptyLabel.text = "Sorry, No Money Earned"
+                emptyLabel.textAlignment = .center
+                let picture = UIImageView(image: pic)
+                //myView = picture
+                myView = emptyLabel
+                self.moneyTableView.backgroundView = myView
+                self.moneyTableView.reloadData()
+                //moneyTableView.backgroundView!.addSubview(emptyLabel)
+            }
+            
+        }
+        
+        playerDataFromdb()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1;
+        return earnedMoney.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell = gamesTableView.dequeueReusableCell(withIdentifier: "HistoryCell", for: indexPath) as UITableViewCell
-        let cell = UITableViewCell()
+        let cell = moneyTableView.dequeueReusableCell(withIdentifier: "MoneyCell", for: indexPath) as! MoneyCell
+        let element = earnedMoney[indexPath.row]
         
+        cell.dateLabel.text = String(element.batchid)
+        cell.amountLabel.text = String(element.amountEarned)
         return cell
     }
     @IBAction func didTapSetting(_ sender: Any) {
         performSegue(withIdentifier: "SettingsSegue", sender: self)
     }
     
-    func getDataFromdb(){
+    func playerDataFromdb(){
         fire.listenPlayerInfo(Firestore: db) { (playerInfo) in
             self.setDataToLabel(FName: playerInfo.fname, LName: playerInfo.lname, email: playerInfo.email, Points: playerInfo.points, GameCount: playerInfo.game_count, TimeTaken: playerInfo.min_time_taken)
         }

@@ -683,7 +683,7 @@
                                 <rect key="frame" x="0.0" y="225" width="375" height="343"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryCell" rowHeight="74" id="ujf-Wa-VLf" customClass="HistoryCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MoneyCell" rowHeight="74" id="ujf-Wa-VLf" customClass="MoneyCell" customModule="NumberMate" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ujf-Wa-VLf" id="VGY-8S-MMw">
@@ -710,6 +710,10 @@
                                                 <constraint firstItem="tBc-O7-hNY" firstAttribute="leading" secondItem="VGY-8S-MMw" secondAttribute="leadingMargin" id="whg-Wt-izp"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="amountLabel" destination="0aN-kH-prQ" id="vnD-iU-wBO"/>
+                                            <outlet property="dateLabel" destination="tBc-O7-hNY" id="x7w-gk-3QC"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -779,11 +783,12 @@
                         <outlet property="emailLabel" destination="nYt-u0-eFn" id="zaf-X4-IUa"/>
                         <outlet property="fullNameLabel" destination="B6s-Uu-E3C" id="Hiv-Jj-Ck4"/>
                         <outlet property="gameCount" destination="MLN-I0-yBf" id="FNM-x5-XAK"/>
-                        <outlet property="gamesTableView" destination="bfO-3N-hzH" id="Kwn-ui-nD9"/>
                         <outlet property="minimumTimeLabel" destination="Mnu-a0-7U8" id="fZu-dU-rST"/>
+                        <outlet property="moneyTableView" destination="bfO-3N-hzH" id="zcu-nH-KZV"/>
                         <outlet property="npointsLabel" destination="JjM-sd-oGl" id="bOJ-mH-z00"/>
                         <outlet property="rankLabel" destination="ivG-4q-fRI" id="9Eg-UA-tuW"/>
                         <outlet property="simpleBannerAd" destination="gRC-h6-tkz" id="bPg-M3-vbr"/>
+                        <outlet property="totalEarning" destination="6MN-Gu-N7p" id="2xD-W6-idd"/>
                         <segue destination="AJE-NT-4kJ" kind="presentation" identifier="SettingsSegue" modalPresentationStyle="fullScreen" id="I7w-fU-EX6"/>
                     </connections>
                 </viewController>

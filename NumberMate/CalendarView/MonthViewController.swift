@@ -38,10 +38,9 @@ class MonthViewController: UIViewController{
         print(generatedBatchID)
         paying.getToken { (token) in
             self.paying.pay(SenderBatchID: generatedBatchID, Token: token, Email: userEmail)
-            
-            
         }
-        fire.addPaidPlayerTodb(Firestore: db, SenderBatchID: generatedBatchID, WinnerEmail: userEmail, WinnerUID: userUID)
+        
+        fire.addPaidPlayerTodb(Firestore: db, SenderBatchID: generatedBatchID, WinnerEmail: userEmail, WinnerUID: userUID, EarnedMoney: paying.price)
     }
     
     /*

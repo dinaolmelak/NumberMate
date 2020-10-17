@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2C7D5E0E63B37F4CB8BC7330 /* Pods_NumberMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BA443A023F74B180B0E0BE5 /* Pods_NumberMate.framework */; };
+		C003BAB12539F2AA009237E5 /* MoneyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003BAB02539F2AA009237E5 /* MoneyCell.swift */; };
+		C003BAB5253A3FD4009237E5 /* Payments.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003BAB4253A3FD4009237E5 /* Payments.swift */; };
 		C00976EE24AFBF15005C68B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00976ED24AFBF15005C68B0 /* AppDelegate.swift */; };
 		C00976F024AFBF15005C68B0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00976EF24AFBF15005C68B0 /* SceneDelegate.swift */; };
 		C00976F524AFBF15005C68B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C00976F324AFBF15005C68B0 /* Main.storyboard */; };
@@ -44,6 +46,8 @@
 		1BA443A023F74B180B0E0BE5 /* Pods_NumberMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NumberMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C3E64A2D39C0A0824697D92 /* Pods-NumberMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumberMate.release.xcconfig"; path = "Target Support Files/Pods-NumberMate/Pods-NumberMate.release.xcconfig"; sourceTree = "<group>"; };
 		B48398CD38A9E0ED805C49EA /* Pods-NumberMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumberMate.debug.xcconfig"; path = "Target Support Files/Pods-NumberMate/Pods-NumberMate.debug.xcconfig"; sourceTree = "<group>"; };
+		C003BAB02539F2AA009237E5 /* MoneyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyCell.swift; sourceTree = "<group>"; };
+		C003BAB4253A3FD4009237E5 /* Payments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payments.swift; sourceTree = "<group>"; };
 		C00976EA24AFBF15005C68B0 /* NumberMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NumberMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C00976ED24AFBF15005C68B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C00976EF24AFBF15005C68B0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,12 +148,13 @@
 		C021B5EE25233EA7002AA9EC /* CodeFiles */ = {
 			isa = PBXGroup;
 			children = (
-				C0244863251E784500F8996B /* Advertisements.swift */,
-				C0366498251C74460096AE3C /* Guess.swift */,
-				C0366496251C5F780096AE3C /* Players.swift */,
 				C021B5EF25233EF6002AA9EC /* Firedata.swift */,
-				C021B5F125234383002AA9EC /* Function.swift */,
+				C0244863251E784500F8996B /* Advertisements.swift */,
 				C05AE6AE2529038300FE5604 /* Paypal.swift */,
+				C0366496251C5F780096AE3C /* Players.swift */,
+				C0366498251C74460096AE3C /* Guess.swift */,
+				C021B5F125234383002AA9EC /* Function.swift */,
+				C003BAB4253A3FD4009237E5 /* Payments.swift */,
 			);
 			path = CodeFiles;
 			sourceTree = "<group>";
@@ -214,6 +219,7 @@
 			children = (
 				C0F1076C251144FA000F719F /* ProfileViewController.swift */,
 				C036649A251C9F950096AE3C /* SettingsViewController.swift */,
+				C003BAB02539F2AA009237E5 /* MoneyCell.swift */,
 			);
 			path = PlayerInformation;
 			sourceTree = "<group>";
@@ -367,6 +373,7 @@
 				C0F28D972537E2F100C44FA3 /* AddFriendVC.swift in Sources */,
 				C009771224B1B51A005C68B0 /* LeaderCell.swift in Sources */,
 				C00976EE24AFBF15005C68B0 /* AppDelegate.swift in Sources */,
+				C003BAB5253A3FD4009237E5 /* Payments.swift in Sources */,
 				C0718E54251AA34C0055B342 /* IntroPageViewController.swift in Sources */,
 				C036649B251C9F950096AE3C /* SettingsViewController.swift in Sources */,
 				C0366499251C74460096AE3C /* Guess.swift in Sources */,
@@ -380,6 +387,7 @@
 				C009770624B0031D005C68B0 /* LeadersViewController.swift in Sources */,
 				C0366497251C5F780096AE3C /* Players.swift in Sources */,
 				C009770C24B063D7005C68B0 /* GettingStartedViewController.swift in Sources */,
+				C003BAB12539F2AA009237E5 /* MoneyCell.swift in Sources */,
 				C009770824B0033C005C68B0 /* GameViewController.swift in Sources */,
 				C0244864251E784600F8996B /* Advertisements.swift in Sources */,
 				C0AB1E1724C0EBF3008DEF05 /* SignInViewController.swift in Sources */,
