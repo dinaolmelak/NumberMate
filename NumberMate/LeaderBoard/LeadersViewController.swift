@@ -30,7 +30,6 @@ class LeadersViewController: UIViewController, UITableViewDelegate, UITableViewD
         ads.bannerDisplay(simplePlayerBanner,self)
         tableView.delegate = self
         tableView.dataSource = self
-//      Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
         fire.getPlayersInfo(Firestore: db){ (playerslist) in
             self.players = playerslist
             print(self.players)
@@ -59,7 +58,7 @@ class LeadersViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LeaderCell", for: indexPath) as! LeaderCell
         let playerDoc = players[indexPath.row]
-        cell.playerNameLabel.text = playerDoc.fname + " " + playerDoc.lname
+        cell.playerNameLabel.text = playerDoc.displayName
         cell.playerStatusLabel.text = String(playerDoc.points)
         return cell
     }
