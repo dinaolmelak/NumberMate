@@ -61,6 +61,8 @@ class PlayViewController: UIViewController, GADRewardedAdDelegate {
     
     @IBAction func onAddFriend(_ sender: Any) {
         print("clicked Add Friend")
+        performSegue(withIdentifier: "InviteSegue", sender: self)
+        
     }
     
     

@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import FirebaseAuth
 
-class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSource{
+class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate{
     
     var myControllers = [UIViewController]()
     override func viewDidLoad() {
         super.viewDidLoad()
         
         dataSource = self
+        delegate = self
         // Do any additional setup after loading the view.
         addingViewControllers()
         if let firstVC = myControllers.first{
@@ -25,8 +27,11 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
         if UserDefaults.standard.bool(forKey: "isUser") == false{
             print("yes")
         } else{
-            performSegue(withIdentifier: "SkipIntroSegue", sender: self)
-            print("not First time")
+            if Auth.auth().currentUser != nil{
+                performSegue(withIdentifier: "SkipIntroSegue", sender: self)
+                print("not First time")
+            }
+            
         }
     }
     

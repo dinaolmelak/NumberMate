@@ -33,14 +33,16 @@ class MonthViewController: UIViewController{
         let generateID = Function()
         let generatedBatchID = generateID.batchIDGenerator()
         //let userEmail = Auth.auth().currentUser!.email!
-        let userUID = Auth.auth().currentUser!.uid
+        let userUID = Auth.auth().currentUser
         let userEmail = "sb-mnb763321420@personal.example.com"
         print(generatedBatchID)
         paying.getToken { (token) in
             self.paying.pay(SenderBatchID: generatedBatchID, Token: token, Email: userEmail)
         }
+        fire.getPlayerInfo(Firestore: db) { (playerInfo) in
+            self.fire.addPaidPlayerTodb(Firestore: self.db, SenderBatchID: generatedBatchID, WinnerFullName: playerInfo.fname + " " + playerInfo.lname, WinnerDisplayName: playerInfo.displayName, WinnerEmail: userEmail, WinnerUID: userUID!.uid, EarnedMoney: self.paying.price)
+        }
         
-        fire.addPaidPlayerTodb(Firestore: db, SenderBatchID: generatedBatchID, WinnerEmail: userEmail, WinnerUID: userUID, EarnedMoney: paying.price)
     }
     
     /*

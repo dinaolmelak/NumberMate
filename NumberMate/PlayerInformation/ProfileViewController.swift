@@ -89,7 +89,13 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
             self.setDataToLabel(FName: playerInfo.fname, LName: playerInfo.lname, email: playerInfo.email, Points: playerInfo.points, GameCount: playerInfo.game_count, TimeTaken: playerInfo.min_time_taken)
         }
     }
-    
+    override func viewDidDisappear(_ animated: Bool) {
+        stopPlayingAnimation()
+    }
+    func stopPlayingAnimation(){
+        carAnimationView?.stop()
+        view.subviews.last?.removeFromSuperview()
+    }
     func playCarAnimation(){
         carAnimationView = .init(name: "1204-car")
         

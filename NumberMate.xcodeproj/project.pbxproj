@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C7D5E0E63B37F4CB8BC7330 /* Pods_NumberMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BA443A023F74B180B0E0BE5 /* Pods_NumberMate.framework */; };
+		54BEB16CD722C1C069FD9D55 /* Pods_NumberMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74CE86055F5AA01BA95CDB7D /* Pods_NumberMate.framework */; };
 		C003BAB12539F2AA009237E5 /* MoneyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003BAB02539F2AA009237E5 /* MoneyCell.swift */; };
 		C003BAB5253A3FD4009237E5 /* Payments.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003BAB4253A3FD4009237E5 /* Payments.swift */; };
 		C00976EE24AFBF15005C68B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00976ED24AFBF15005C68B0 /* AppDelegate.swift */; };
@@ -43,9 +43,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1BA443A023F74B180B0E0BE5 /* Pods_NumberMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NumberMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9C3E64A2D39C0A0824697D92 /* Pods-NumberMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumberMate.release.xcconfig"; path = "Target Support Files/Pods-NumberMate/Pods-NumberMate.release.xcconfig"; sourceTree = "<group>"; };
-		B48398CD38A9E0ED805C49EA /* Pods-NumberMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumberMate.debug.xcconfig"; path = "Target Support Files/Pods-NumberMate/Pods-NumberMate.debug.xcconfig"; sourceTree = "<group>"; };
+		3048ADBE6C93D840EEA45F97 /* Pods-NumberMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumberMate.debug.xcconfig"; path = "Target Support Files/Pods-NumberMate/Pods-NumberMate.debug.xcconfig"; sourceTree = "<group>"; };
+		643DCDDF8A26C0E84BAF917F /* Pods-NumberMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumberMate.release.xcconfig"; path = "Target Support Files/Pods-NumberMate/Pods-NumberMate.release.xcconfig"; sourceTree = "<group>"; };
+		74CE86055F5AA01BA95CDB7D /* Pods_NumberMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NumberMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C003BAB02539F2AA009237E5 /* MoneyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyCell.swift; sourceTree = "<group>"; };
 		C003BAB4253A3FD4009237E5 /* Payments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payments.swift; sourceTree = "<group>"; };
 		C00976EA24AFBF15005C68B0 /* NumberMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NumberMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,7 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C7D5E0E63B37F4CB8BC7330 /* Pods_NumberMate.framework in Frameworks */,
+				54BEB16CD722C1C069FD9D55 /* Pods_NumberMate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,10 +97,18 @@
 		3AF833078189DD94F496007A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B48398CD38A9E0ED805C49EA /* Pods-NumberMate.debug.xcconfig */,
-				9C3E64A2D39C0A0824697D92 /* Pods-NumberMate.release.xcconfig */,
+				3048ADBE6C93D840EEA45F97 /* Pods-NumberMate.debug.xcconfig */,
+				643DCDDF8A26C0E84BAF917F /* Pods-NumberMate.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		3E926BEBBA3E0D7673D47EF9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				74CE86055F5AA01BA95CDB7D /* Pods_NumberMate.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		C00976E124AFBF14005C68B0 = {
@@ -109,7 +117,7 @@
 				C00976EC24AFBF15005C68B0 /* NumberMate */,
 				C00976EB24AFBF15005C68B0 /* Products */,
 				3AF833078189DD94F496007A /* Pods */,
-				EC8AD5B61D1FF5E2D441F786 /* Frameworks */,
+				3E926BEBBA3E0D7673D47EF9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -241,14 +249,6 @@
 			path = AddFriend;
 			sourceTree = "<group>";
 		};
-		EC8AD5B61D1FF5E2D441F786 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1BA443A023F74B180B0E0BE5 /* Pods_NumberMate.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -256,11 +256,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C00976FE24AFBF20005C68B0 /* Build configuration list for PBXNativeTarget "NumberMate" */;
 			buildPhases = (
-				393F294AFE5012B0FBBF6D93 /* [CP] Check Pods Manifest.lock */,
+				F38F68E24D65F66136E2BE6E /* [CP] Check Pods Manifest.lock */,
 				C00976E624AFBF14005C68B0 /* Sources */,
 				C00976E724AFBF14005C68B0 /* Frameworks */,
 				C00976E824AFBF14005C68B0 /* Resources */,
-				C461F8D014EB0160DCF045DB /* [CP] Embed Pods Frameworks */,
+				CC8DF9AB83627AD7CDF6A031 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -321,7 +321,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		393F294AFE5012B0FBBF6D93 /* [CP] Check Pods Manifest.lock */ = {
+		CC8DF9AB83627AD7CDF6A031 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NumberMate/Pods-NumberMate-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NumberMate/Pods-NumberMate-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NumberMate/Pods-NumberMate-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F38F68E24D65F66136E2BE6E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -341,23 +358,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C461F8D014EB0160DCF045DB /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NumberMate/Pods-NumberMate-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NumberMate/Pods-NumberMate-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NumberMate/Pods-NumberMate-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -534,7 +534,7 @@
 		};
 		C00976FF24AFBF20005C68B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B48398CD38A9E0ED805C49EA /* Pods-NumberMate.debug.xcconfig */;
+			baseConfigurationReference = 3048ADBE6C93D840EEA45F97 /* Pods-NumberMate.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -553,7 +553,7 @@
 		};
 		C009770024AFBF20005C68B0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9C3E64A2D39C0A0824697D92 /* Pods-NumberMate.release.xcconfig */;
+			baseConfigurationReference = 643DCDDF8A26C0E84BAF917F /* Pods-NumberMate.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

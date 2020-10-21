@@ -7,15 +7,21 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 class SettingsViewController: UIViewController {
 
-    @IBOutlet weak var firstLabel: UITextField!
-    @IBOutlet weak var lastLabel: UITextField!
+    let firy = Fire()
+    var db: Firestore!
+    @IBOutlet weak var displayNameLabel: UITextField!
     @IBOutlet weak var emailLabel: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let settings = FirestoreSettings()
+        Firestore.firestore().settings = settings
+        db = Firestore.firestore()
+        
         // Do any additional setup after loading the view.
     }
     
@@ -24,13 +30,37 @@ class SettingsViewController: UIViewController {
     }
     @IBAction func onDone(_ sender: Any) {
         // update account
-        
+        if(displayNameLabel.text != nil && displayNameLabel.text != ""){
+            firy.changeDisplayName(Firebase: db, by: displayNameLabel.text!) { (error) in
+                if (error != nil){
+                    print(error as Any)
+                }
+            }
+        }
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func onTapSignOut(_ sender: Any) {
+        UserDefaults.standard.set(false, forKey: "isUser")
+    }
+    
     @IBAction func onTapDelete(_ sender: Any) {
         // delete account
+        let user = Auth.auth().currentUser
+        firy.deleteCurrentUserData(Firestore: db)
+        user?.delete { error in
+            if error != nil {
+            // An error happened.
+            print(error as Any)
+              } else {
+                // Account deleted.
+                print("Account Deleted")
+                
+              }
+        }
         UserDefaults.standard.set(false, forKey: "isUser")
-        dismiss(animated: true, completion: nil)
+        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "SignUpViewController") as SignUpViewController
+        vc.dismiss(animated: true, completion: nil)
     }
     
     /*
