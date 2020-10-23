@@ -14,13 +14,13 @@ import GoogleMobileAds
 
 
 class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    let gameRewardPoints = 200
+    let gameRewardPoints = 70 //points rewarded for winning a game
     var won = false
     var gameTimer:Timer?
     var timeLeft = 60
     var started = false
     let funcs = Function()
-    let fire = Fire()
+    var firy: Fire!
     var documentID: String?
     var hiddenNumber:  Int?
     var guesses = [guess]()
@@ -36,7 +36,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
         db = Firestore.firestore()
-        
+        firy = Fire()
         hiddenNumber = funcs.playingNumberGenerator()
         print("DINAOL \(String(describing: hiddenNumber))")
         // Do any additional setup after loading the view.
@@ -62,7 +62,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func onTapBack(_ sender: Any) {
         if (won == true){
             AddGuessesTodb(Won: true)
-            fire.increamentPoints(Firebase: db, by: gameRewardPoints) { (error) in
+            firy.increamentPoints(by: gameRewardPoints) { (error) in
                 if let error = error{
                     print(error)
                 }
@@ -134,8 +134,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func AddGuessesTodb(Won winning: Bool){
         if (guesses.count != 0){
-            fire.addGuessesTodb(Firestore: db, Guesses: guesses, HiddenNumber: hiddenNumber!, Won: winning)
-            fire.increamentGameCount(Firebase: db) { (error) in
+            firy.addGuessesTodb(Guesses: guesses, HiddenNumber: hiddenNumber!, Won: winning)
+            firy.increamentGameCount() { (error) in
                 if let error = error{
                     print(error as Any)
                 }else{
@@ -160,8 +160,11 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @objc func stopAnimation(){
-        animationView!.stop()
-        view.subviews.last?.removeFromSuperview()
+        if animationView != nil{
+            animationView!.stop()
+            view.subviews.last?.removeFromSuperview()
+        }
+        
     }
     /*
     // MARK: - Navigation

@@ -12,10 +12,22 @@ import FirebaseFirestore
 
 
 class Fire{
-    
+    enum Collections {
+        case Players
+        case Winners
+        case Games
+    }
+    let dbFunc = Function()
+    var myDB: Firestore!
+    var handle: AuthStateDidChangeListenerHandle?
+    var currentPlayer: User!
     // Collection Strings
-    let collectionString = "players"
-    let winnerCollectionString = "Winner"
+    let collectionString = "Players"
+    var userCollectionRef: CollectionReference!
+    let winnerCollectionString = "Winners"
+    var winnerRef: CollectionReference!
+    let gameCollectionString = "Games"
+    var gameRef: CollectionReference!
     // Keys for User CollectionString in Firestore
     let userFirstNameKey = "fname"
     let userLastNameKey = "lname"
@@ -25,7 +37,7 @@ class Fire{
     let userGameCounterKey = "game_count"
     let userGamePointsKey = "points"
     let userGameMinTimeKey = "min_time_taken"
-    let userGameSubCollection = "Games"
+    
     
     // Keys for GameSubCollection in Firestore
     let gameDateKey = "game_Date"
@@ -33,6 +45,7 @@ class Fire{
     let gameHiddenNumberKey = "hidden_number"
     let gameGuessKey = "guesses"
     let gameTimeKey = "game_time"
+    // userUIDKey is also included
     
     // Keys for winnerCollection in Firestore
     let paymentDateKey = "paymentDate"
@@ -43,44 +56,124 @@ class Fire{
     let winnerFullNameKey = "winnerFullName"
     let winnerDisplayName = "winnerDisplayName"
     
-    func getPlayerDocID(Firestore db:Firestore,completion: @escaping (String) -> Void) {
-        let user = Auth.auth().currentUser
-        db.collection(collectionString).whereField(self.userUIDKey, isEqualTo: user!.uid).getDocuments { (querySnap, error) in
-            if error != nil{
-                print(error as Any)
+    init() {
+        let settings = FirestoreSettings()
+        Firestore.firestore().settings = settings
+        myDB = Firestore.firestore()
+        
+        userCollectionRef = myDB.collection(collectionString)
+        winnerRef = myDB.collection(winnerCollectionString)
+        gameRef = myDB.collection(gameCollectionString)
+        handle = Auth.auth().addStateDidChangeListener { (authListened, user) in
+            if let playingPlayer = authListened.currentUser{
+                self.currentPlayer = playingPlayer
             }else{
-                let snapshot = querySnap!.documents
-                let id = snapshot[0].documentID
-                completion(id)
+                print("NO User")
+                print(authListened as Any)
             }
-        }
-    }
-    func getWinnerDocID(Firestore db:Firestore,completion: @escaping (String) -> Void) {
-        let user = Auth.auth().currentUser
-        db.collection(collectionString).whereField(winnerUidKey, isEqualTo: user!.uid).getDocuments { (querySnap, error) in
-            if error != nil{
-                print(error as Any)
-            }else{
-                let snapshot = querySnap!.documents
-                let id = snapshot[0].documentID
-                completion(id)
-            }
-        }
-    }
-    func deleteCurrentUserData(Firestore db:Firestore){
-        getPlayerDocID(Firestore: db) { (playerDocID) in
-            db.collection(self.collectionString).document(playerDocID).delete()
-        }
-        getWinnerDocID(Firestore: db) { (winnerDocID) in
-            db.collection(self.winnerCollectionString).document(winnerDocID).delete()
         }
         
     }
-    func increamentPoints(Firebase db: Firestore, by npoint: Int, completion: @escaping(Error?)->Void){
-        getPlayerInfo(Firestore: db) { (playerInfo) in
+    func getPlayerDocID(FromCollection col:Collections,completion: @escaping (String) -> Void) {
+        switch col {
+        case .Players:
+            userCollectionRef.whereField(self.userUIDKey, isEqualTo: currentPlayer.uid).getDocuments { (querySnap, error) in
+                
+                if error != nil{
+                    print(error as Any)
+                    
+                }else{
+                    let snapshot = querySnap!.documents
+                    let id = snapshot[0].documentID
+                    completion(id)
+                }
+                
+            }
+        case .Winners:
+            winnerRef.whereField(self.winnerUidKey, isEqualTo: currentPlayer.uid).getDocuments { (querySnap, error) in
+                if error != nil{
+                    print(error as Any)
+                }else{
+                    let snapshot = querySnap!.documents
+                    let id = snapshot[0].documentID
+                    completion(id)
+                }
+            }
+                
+        case .Games:
+            gameRef.whereField(self.userUIDKey, isEqualTo: currentPlayer.uid).getDocuments { (querySnap, error) in
+                if error != nil{
+                    print(error as Any)
+                }else{
+                    let snapshot = querySnap!.documents
+                    let id = snapshot[0].documentID
+                    completion(id)
+                }
+            }
+                
+        }
+        
+    }
+    
+    func deleteCurrentUser(){
+        // Delete from the Players collection
+        getPlayerDocID(FromCollection: .Players) { (playerDocID) in
+            self.userCollectionRef.document(playerDocID).delete { (error1) in
+                if error1 != nil{
+                    print("Deleted Player")
+                }else{
+                    print(error1 as Any)
+                }
+            }
+        }
+//        getPlayerDocID(Firestore: db, FromCollection: .Winners) { (winnerDocID) in
+//            db.collection(self.winnerCollectionString).document(winnerDocID).delete { (error2) in
+//                if error2 != nil{
+//                    print("Deleted Winner")
+//                }else{
+//                    print(error2 as Any)
+//                }
+//            }
+//        }
+//        getPlayerDocID(Firestore: db, FromCollection: .Games) { (gameDocID) in
+//            db.collection(self.gameCollectionString).document(gameDocID).delete { (error3) in
+//                if error3 != nil{
+//                    print("Deleted Game")
+//                }else{
+//                    print(error3 as Any)
+//                }
+//            }
+//        }
+//        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+//            user?.delete { error in
+//                if error != nil {
+//                    // An error happened.
+//                    print(error as Any)
+//                } else {
+//                    // Account deleted.
+//                    print("Account Deleted")
+//                }
+//            }
+//        }
+        handle = Auth.auth().addStateDidChangeListener({ (authentication, UserOpt) in
+            
+            if UserOpt != nil {
+                authentication.currentUser!.delete { (error) in
+                    if let err = error{
+                        print(err)
+                    }else{
+                        print("Deleted")
+                    }
+                }
+            }
+        })
+        
+    }
+    func increamentPoints(by npoint: Int, completion: @escaping(Error?)->Void){
+        getPlayerInfo() { (playerInfo) in
             let playerPoint = playerInfo.points
-            self.getPlayerDocID(Firestore: db) { (docID) in
-                db.collection(self.collectionString).document(docID).setData([self.userGamePointsKey : npoint + playerPoint!], merge: true) { (error) in
+            self.getPlayerDocID(FromCollection: .Players) { (docID) in
+                self.userCollectionRef.document(docID).setData([self.userGamePointsKey : npoint + playerPoint!], merge: true) { (error) in
                     completion(error)
                 }
             }
@@ -88,9 +181,9 @@ class Fire{
         
     }
     
-    func changeDisplayName(Firebase db: Firestore, by displayName: String, completion: @escaping(Error?)->Void){
-        self.getPlayerDocID(Firestore: db) { (docID) in
-            db.collection(self.collectionString).document(docID).setData([self.userDisplayNameKey : displayName], merge: true) { (error) in
+    func changeDisplayName(To displayName: String, completion: @escaping(Error?)->Void){
+        self.getPlayerDocID(FromCollection: .Players) { (docID) in
+            self.userCollectionRef.document(docID).setData([self.userDisplayNameKey : displayName], merge: true) { (error) in
                 completion(error)
             }
         }
@@ -98,22 +191,22 @@ class Fire{
         
     }
     
-    func increamentGameCount(Firebase db: Firestore, completion: @escaping(Error?)->Void){
-        getPlayerInfo(Firestore: db) { (playerInfo) in
+    func increamentGameCount(completion: @escaping(Error?)->Void){
+        getPlayerInfo() { (playerInfo) in
             let playerGames = playerInfo.game_count!
-            self.getPlayerDocID(Firestore: db) { (docID) in
-                db.collection(self.collectionString).document(docID).setData([self.userGameCounterKey : 1 + playerGames], merge: true) { (error) in
+            self.getPlayerDocID(FromCollection: .Players) { (docID) in
+                self.userCollectionRef.document(docID).setData([self.userGameCounterKey : 1 + playerGames], merge: true) { (error) in
                     completion(error)
                 }
             }
         }
         
     }
-    func setMinTime(Firebase db: Firestore,by gTime:Int, completion: @escaping(Error?)->Void){
-        getPlayerInfo(Firestore: db) { (playerInfo) in
+    func setMinTime(To gTime:Int, completion: @escaping(Error?)->Void){
+        getPlayerInfo() { (playerInfo) in
             let playerTime = playerInfo.min_time_taken!
-            self.getPlayerDocID(Firestore: db) { (docID) in
-                db.collection(self.collectionString).document(docID).setData([self.userGameMinTimeKey : gTime + playerTime], merge: true) { (error) in
+            self.getPlayerDocID(FromCollection: .Players) { (docID) in
+                self.userCollectionRef.document(docID).setData([self.userGameMinTimeKey : gTime + playerTime], merge: true) { (error) in
                     completion(error)
                 }
             }
@@ -123,17 +216,17 @@ class Fire{
     func signIn(Email email:String, Password pass: String, completion: @escaping(AuthDataResult?,Error?)-> Void) {
         Auth.auth().signIn(withEmail: email, password: pass) { (authDataResult, error) in
             completion(authDataResult,error)
-            
         }
     }
     
-    func signUp(Firestore db:Firestore, First fName:String,Last lName:String,DisplayName dName:String, Email email:String,Password pass: String){
+    func signUp(First fName:String,Last lName:String,DisplayName dName:String, Email email:String,Password pass: String,ViewController vc:UIViewController, completion:@escaping(Bool)->Void){
         Auth.auth().createUser(withEmail: email, password: pass) { (authDataResult, error) in
-            if error != nil{
-                print(error as Any)
+            if let err = error{
+                self.dbFunc.showAlert(Title: "Error", Message: "\(err.self)", ViewController: vc)
+                print("SigningUP ERROR \(err as Any)")
+                completion(false)
             }else{
-                var ref: DocumentReference? = nil
-                ref = db.collection(self.collectionString).addDocument(data: [
+                self.userCollectionRef.addDocument(data: [
                     self.userFirstNameKey: fName,
                     self.userLastNameKey: lName,
                     self.userDisplayNameKey: dName,
@@ -145,27 +238,21 @@ class Fire{
                  ]) { error in
                      if let error = error {
                          print("Error adding document: \(error)")
+                        completion(false)
                      } else {
-                         print("Document added with ID: \(ref!.documentID)")
-                         Auth.auth().createUser(withEmail: email, password: pass) { authResult, error in
-                             if let user = authResult?.user {
-                                 print("\(String(describing: user.email)) created!")
-                             }else{
-                                 print(error as Any)
-                             }
-                             
-                         }
+                        print(authDataResult!.user.email as Any)
                          //self.myDocId = ref!.documentID
                          //self.performSegue(withIdentifier: "playersSegue", sender: self)
+                        completion(true)
                      }
                  }
             }
         }
     }
     
-    func listenPlayerInfo(Firestore db: Firestore, completion: @escaping (playersInfo) -> Void){
-        getPlayerDocID(Firestore: db) { (docID) in
-            db.collection(self.collectionString).document(docID).addSnapshotListener{ (documentSnap, error) in
+    func listenPlayerInfo(completion: @escaping (playersInfo) -> Void){
+        getPlayerDocID(FromCollection: .Players) { (docID) in
+            self.userCollectionRef.document(docID).addSnapshotListener{ (documentSnap, error) in
                 if error != nil{
                     print(error as Any)
                 }else{
@@ -184,9 +271,9 @@ class Fire{
             }
         }
     }
-    func getPlayerInfo(Firestore db: Firestore, completion: @escaping (playersInfo) -> Void){
-        getPlayerDocID(Firestore: db) { (docID) in
-            db.collection(self.collectionString).document(docID).getDocument { (documentSnap, error) in
+    func getPlayerInfo(completion: @escaping (playersInfo) -> Void){
+        getPlayerDocID(FromCollection: .Players) { (docID) in
+            self.userCollectionRef.document(docID).getDocument { (documentSnap, error) in
                 if error != nil{
                     print(error as Any)
                 }else{
@@ -205,8 +292,8 @@ class Fire{
             }
         }
     }
-    func getPlayersInfo(Firestore db:Firestore, completion: @escaping ([playersInfo]) -> Void){
-        db.collection(collectionString).order(by: userGamePointsKey, descending: true).addSnapshotListener{ (querySnap, error) in
+    func getPlayersInfo(completion: @escaping ([playersInfo]) -> Void){
+        userCollectionRef.order(by: userGamePointsKey, descending: true).addSnapshotListener{ (querySnap, error) in
             if error != nil{
                 print(error as Any)
             }else{
@@ -229,8 +316,8 @@ class Fire{
             }
         }
     }
-    func listenEarnedPayments(Firestore db:Firestore, completion: @escaping ([Earned]) -> Void){
-        db.collection(winnerCollectionString).order(by: paymentDateKey, descending: true).addSnapshotListener{ (querySnap, error) in
+    func listenEarnedPayments(completion: @escaping ([Earned]) -> Void){
+        winnerRef.order(by: paymentDateKey, descending: true).addSnapshotListener{ (querySnap, error) in
             if error != nil{
                 print(error as Any)
             }else{
@@ -256,26 +343,28 @@ class Fire{
         }
     }
     
-    func addGuessesTodb(Firestore db:Firestore,Guesses guesses:[guess],HiddenNumber hNumber: Int,Won wonGame: Bool){
-        getPlayerDocID(Firestore: db) { (docId) in
-            let newData = db.collection(self.collectionString).document(docId).collection(self.userGameSubCollection).document()
-            var guessedArray = [Int]()
-            for guess in guesses{
-                guessedArray.append(guess.guess)
-            }
-            newData.setData([self.gameGuessKey: guessedArray, self.gameWonKey: wonGame, self.gameHiddenNumberKey: hNumber,self.gameDateKey: Timestamp(date: Date())])
-
+    func addGuessesTodb(Guesses guesses:[guess],HiddenNumber hNumber: Int,Won wonGame: Bool){
+        let currentUserUid = Auth.auth().currentUser!.uid
+        let newData = gameRef.document()
+        var guessedArray = [Int]()
+        for guess in guesses{
+            guessedArray.append(guess.guess)
         }
+        newData.setData([self.userUIDKey: currentUserUid, self.gameGuessKey: guessedArray, self.gameWonKey: wonGame, self.gameHiddenNumberKey: hNumber,self.gameDateKey: Timestamp(date: Date())])
+
+        
     }
-    func addPaidPlayerTodb(Firestore db:Firestore,SenderBatchID batchID: Int,WinnerFullName fllName:String, WinnerDisplayName wdName:String, WinnerEmail email:String,WinnerUID winnerUID:String,EarnedMoney wonAmount: Int){
-        let newData = db.collection(self.winnerCollectionString).document()
+    func addPaidPlayerTodb(SenderBatchID batchID: Int,WinnerFullName fllName:String, WinnerDisplayName wdName:String, WinnerEmail email:String,WinnerUID winnerUID:String,EarnedMoney wonAmount: Int){
+        let newData = winnerRef.document()
         
         newData.setData([self.winnerFullNameKey:fllName,self.winnerDisplayName:wdName, self.winnerMoneyKey:wonAmount, self.winnerUidKey: winnerUID, self.winnerBatchIDKey: batchID, self.winnerEmailKey: email, self.paymentDateKey: Timestamp(date: Date())])
     }
     
 
     
-
+    deinit {
+        Auth.auth().removeStateDidChangeListener(handle!)
+    }
 
 
 }

@@ -14,7 +14,7 @@ import FirebaseFirestore
 class SignUpViewController: UIViewController {
     // email and password
     var db: Firestore!
-    let firy = Fire()
+    var firy: Fire!
     @IBOutlet weak var fnameTextfield: UITextField!
     @IBOutlet weak var lnameTextfield: UITextField!
     @IBOutlet weak var emailTextfield: UITextField!
@@ -26,6 +26,7 @@ class SignUpViewController: UIViewController {
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
         db = Firestore.firestore()
+        firy = Fire()
     }
     
     @IBAction func didTapSignUp(_ sender: Any) {
@@ -39,10 +40,14 @@ class SignUpViewController: UIViewController {
         
         if saveBool == true{
             // sign user Up
-            firy.signUp(Firestore: db, First: fnameTextfield.text!, Last: lnameTextfield.text!, DisplayName: "King", Email: emailTextfield.text!, Password: passwordTextfield.text!)
+            firy.signUp(First: fnameTextfield.text!, Last: lnameTextfield.text!, DisplayName: "King", Email: emailTextfield.text!, Password: passwordTextfield.text!, ViewController: self) { (creationState) in
+                if creationState{
+                    UserDefaults.standard.set(true, forKey: "isUser")
+                    self.performSegue(withIdentifier: "SignedUpSegue", sender: self)
+                }
+            }
         }
-        UserDefaults.standard.set(true, forKey: "isUser")
-        self.performSegue(withIdentifier: "SignedUpSegue", sender: self)
+        
         
     }
     

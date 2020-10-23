@@ -16,7 +16,7 @@ import GoogleMobileAds
 class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     var ad = MobAds()
     var db: Firestore!
-    let fire = Fire()
+    var firy: Fire!
     var earnedMoney = [Earned]()
     var carAnimationView: AnimationView?
     @IBOutlet weak var simpleBannerAd: GADBannerView!
@@ -34,7 +34,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
         db = Firestore.firestore()
-        
+        firy = Fire()
         //carAnimation = .init(name: "1204-car")
         //carAnimation.loopMode = .loop
         
@@ -46,7 +46,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
     }
     override func viewDidAppear(_ animated: Bool) {
         playCarAnimation()
-        fire.listenEarnedPayments(Firestore: db) { (earned) in
+        firy.listenEarnedPayments() { (earned) in
             self.earnedMoney = earned
             self.moneyTableView.reloadData()
             if self.earnedMoney.isEmpty == true || self.earnedMoney.count == 0{
@@ -85,7 +85,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
     }
     
     func playerDataFromdb(){
-        fire.listenPlayerInfo(Firestore: db) { (playerInfo) in
+        firy.listenPlayerInfo() { (playerInfo) in
             self.setDataToLabel(FName: playerInfo.fname, LName: playerInfo.lname, email: playerInfo.email, Points: playerInfo.points, GameCount: playerInfo.game_count, TimeTaken: playerInfo.min_time_taken)
         }
     }

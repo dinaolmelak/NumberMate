@@ -21,13 +21,15 @@ class PlayViewController: UIViewController, GADRewardedAdDelegate {
     var rewardedAd: GADRewardedAd?
     var ad = MobAds()
     var show = Function()
-    var fire = Fire()
+    var firy: Fire!
     var db: Firestore!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
         db = Firestore.firestore()
+        firy = Fire()
         // Do any additional setup after loading the view.
         playButton.layer.cornerRadius = 20
         getPointsButton.layer.cornerRadius = 5
@@ -69,7 +71,7 @@ class PlayViewController: UIViewController, GADRewardedAdDelegate {
     func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
         print("Reward received with currency: \(reward.type), amount \(reward.amount).")
         print("___\(reward.amount.doubleValue)")
-        fire.increamentPoints(Firebase: db, by: reward.amount.intValue) { (error) in
+        firy.increamentPoints(by: reward.amount.intValue) { (error) in
             if let error = error{
                 print(error as Any)
             }else{

@@ -16,7 +16,7 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
     var db: Firestore!
-    let fire = Fire()
+    var firy: Fire!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,7 +24,7 @@ class SignInViewController: UIViewController {
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
         db = Firestore.firestore()
-        
+        firy = Fire()
     }
     override func viewWillAppear(_ animated: Bool) {
         
@@ -33,7 +33,7 @@ class SignInViewController: UIViewController {
         
         let userEmail = emailTextfield.text!
         let userPass = passwordTextfield.text!
-        fire.signIn(Email: userEmail, Password: userPass) { (authData, error) in
+        firy.signIn(Email: userEmail, Password: userPass) { (authData, error) in
             if (error != nil){
                 print(error as Any)
             }else{

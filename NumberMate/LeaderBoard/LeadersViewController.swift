@@ -16,7 +16,7 @@ class LeadersViewController: UIViewController, UITableViewDelegate, UITableViewD
     var myName: String?
     var players = [playersInfo]()//array of players docID
     let ads = MobAds()
-    let fire = Fire()
+    var firy: Fire!
     var db : Firestore!
     @IBOutlet weak var simplePlayerBanner: GADBannerView!
     @IBOutlet weak var tableView: UITableView!
@@ -26,11 +26,11 @@ class LeadersViewController: UIViewController, UITableViewDelegate, UITableViewD
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
         db = Firestore.firestore()
-        
+        firy = Fire()
         ads.bannerDisplay(simplePlayerBanner,self)
         tableView.delegate = self
         tableView.dataSource = self
-        fire.getPlayersInfo(Firestore: db){ (playerslist) in
+        firy.getPlayersInfo(){ (playerslist) in
             self.players = playerslist
             print(self.players)
             self.tableView.reloadData()

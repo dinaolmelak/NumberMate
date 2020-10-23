@@ -12,8 +12,9 @@ import FirebaseFirestore
 
 class SettingsViewController: UIViewController {
 
-    let firy = Fire()
+    var firy: Fire!
     var db: Firestore!
+    
     @IBOutlet weak var displayNameLabel: UITextField!
     @IBOutlet weak var emailLabel: UITextField!
     override func viewDidLoad() {
@@ -21,7 +22,7 @@ class SettingsViewController: UIViewController {
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
         db = Firestore.firestore()
-        
+        firy = Fire()
         // Do any additional setup after loading the view.
     }
     
@@ -31,7 +32,7 @@ class SettingsViewController: UIViewController {
     @IBAction func onDone(_ sender: Any) {
         // update account
         if(displayNameLabel.text != nil && displayNameLabel.text != ""){
-            firy.changeDisplayName(Firebase: db, by: displayNameLabel.text!) { (error) in
+            firy.changeDisplayName(To: displayNameLabel.text!) { (error) in
                 if (error != nil){
                     print(error as Any)
                 }
@@ -41,24 +42,17 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func onTapSignOut(_ sender: Any) {
-        UserDefaults.standard.set(false, forKey: "isUser")
+        do { try Auth.auth().signOut() }
+        catch { print("already logged out") }
+        //UserDefaults.standard.set(false, forKey: "isUser")
+//        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "SignInViewController") as SignInViewController
+//        vc.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func onTapDelete(_ sender: Any) {
         // delete account
-        let user = Auth.auth().currentUser
-        firy.deleteCurrentUserData(Firestore: db)
-        user?.delete { error in
-            if error != nil {
-            // An error happened.
-            print(error as Any)
-              } else {
-                // Account deleted.
-                print("Account Deleted")
-                
-              }
-        }
-        UserDefaults.standard.set(false, forKey: "isUser")
+        //firy.deleteCurrentUser(Firestore: db)
+        //UserDefaults.standard.set(false, forKey: "isUser")
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "SignUpViewController") as SignUpViewController
         vc.dismiss(animated: true, completion: nil)
     }
