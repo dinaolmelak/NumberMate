@@ -91,6 +91,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
     }
     override func viewDidDisappear(_ animated: Bool) {
         stopPlayingAnimation()
+        firy.detachListener()
     }
     func stopPlayingAnimation(){
         carAnimationView?.stop()

@@ -20,9 +20,9 @@ class Fire{
     let dbFunc = Function()
     var myDB: Firestore!
     var handle: AuthStateDidChangeListenerHandle?
-    var currentPlayer: User!
+    var currentPlayer: User?
     // Collection Strings
-    let collectionString = "Players"
+    let playerCollectionString = "Players"
     var userCollectionRef: CollectionReference!
     let winnerCollectionString = "Winners"
     var winnerRef: CollectionReference!
@@ -61,7 +61,7 @@ class Fire{
         Firestore.firestore().settings = settings
         myDB = Firestore.firestore()
         
-        userCollectionRef = myDB.collection(collectionString)
+        userCollectionRef = myDB.collection(playerCollectionString)
         winnerRef = myDB.collection(winnerCollectionString)
         gameRef = myDB.collection(gameCollectionString)
         handle = Auth.auth().addStateDidChangeListener { (authListened, user) in
@@ -69,61 +69,65 @@ class Fire{
                 self.currentPlayer = playingPlayer
             }else{
                 print("NO User")
+                self.currentPlayer = nil
                 print(authListened as Any)
             }
         }
         
     }
     func getPlayerDocID(FromCollection col:Collections,completion: @escaping (String) -> Void) {
-        switch col {
-        case .Players:
-            userCollectionRef.whereField(self.userUIDKey, isEqualTo: currentPlayer.uid).getDocuments { (querySnap, error) in
-                
-                if error != nil{
-                    print(error as Any)
+        if let currentUser = currentPlayer{
+            switch col {
+            case .Players:
+                userCollectionRef.whereField(self.userUIDKey, isEqualTo: currentUser.uid).getDocuments { (querySnap, error) in
                     
-                }else{
-                    let snapshot = querySnap!.documents
-                    let id = snapshot[0].documentID
-                    completion(id)
+                    if error != nil{
+                        print(error as Any)
+                        
+                    }else{
+                        let snapshot = querySnap!.documents
+                        let id = snapshot[0].documentID
+                        completion(id)
+                    }
+                    
+                }
+            case .Winners:
+                winnerRef.whereField(self.winnerUidKey, isEqualTo: currentUser.uid).getDocuments { (querySnap, error) in
+                    if error != nil{
+                        print(error as Any)
+                    }else{
+                        let snapshot = querySnap!.documents
+                        let id = snapshot[0].documentID
+                        completion(id)
+                    }
                 }
                 
-            }
-        case .Winners:
-            winnerRef.whereField(self.winnerUidKey, isEqualTo: currentPlayer.uid).getDocuments { (querySnap, error) in
-                if error != nil{
-                    print(error as Any)
-                }else{
-                    let snapshot = querySnap!.documents
-                    let id = snapshot[0].documentID
-                    completion(id)
+            case .Games:
+                gameRef.whereField(self.userUIDKey, isEqualTo: currentUser.uid).getDocuments { (querySnap, error) in
+                    if error != nil{
+                        print(error as Any)
+                    }else{
+                        let snapshot = querySnap!.documents
+                        let id = snapshot[0].documentID
+                        completion(id)
+                    }
                 }
             }
-                
-        case .Games:
-            gameRef.whereField(self.userUIDKey, isEqualTo: currentPlayer.uid).getDocuments { (querySnap, error) in
-                if error != nil{
-                    print(error as Any)
-                }else{
-                    let snapshot = querySnap!.documents
-                    let id = snapshot[0].documentID
-                    completion(id)
-                }
-            }
-                
+        } else {
+            print("No USEr getting DocID")
+            
         }
         
     }
     
-    func deleteCurrentUser(){
+    func deleteCurrentUser(completion: @escaping(Error?)->Void){
         // Delete from the Players collection
+        currentPlayer?.delete(completion: { (error) in
+            completion(error)
+        })
         getPlayerDocID(FromCollection: .Players) { (playerDocID) in
             self.userCollectionRef.document(playerDocID).delete { (error1) in
-                if error1 != nil{
-                    print("Deleted Player")
-                }else{
-                    print(error1 as Any)
-                }
+                completion(error1)
             }
         }
 //        getPlayerDocID(Firestore: db, FromCollection: .Winners) { (winnerDocID) in
@@ -168,6 +172,8 @@ class Fire{
             }
         })
         
+        Auth.auth().removeStateDidChangeListener(handle!)
+        
     }
     func increamentPoints(by npoint: Int, completion: @escaping(Error?)->Void){
         getPlayerInfo() { (playerInfo) in
@@ -190,7 +196,24 @@ class Fire{
         
         
     }
-    
+    func changePassword(NewPassword pass: String,ViewController vc:UIViewController, completion: @escaping(Error?)->Void){
+        if let currUser = currentPlayer{
+            currUser.updateEmail(to: pass) { (error) in
+                if let err = error{
+                    let output = err.localizedDescription
+                    self.dbFunc.showAlert(Title: "Error", Message: output, ViewController: vc)
+                }else{
+                    self.dbFunc.showAlert(Title: "Success", Message: "You Password was changed!!!", ViewController: vc)
+                }
+            }
+            
+            
+        } else {
+            //not signed in
+            self.dbFunc.showAlert(Title: "Error", Message: "You are not currently signed in", ViewController: vc)
+        }
+        
+    }
     func increamentGameCount(completion: @escaping(Error?)->Void){
         getPlayerInfo() { (playerInfo) in
             let playerGames = playerInfo.game_count!
@@ -219,12 +242,13 @@ class Fire{
         }
     }
     
-    func signUp(First fName:String,Last lName:String,DisplayName dName:String, Email email:String,Password pass: String,ViewController vc:UIViewController, completion:@escaping(Bool)->Void){
+    func signUp(First fName:String,Last lName:String,DisplayName dName:String, Email email:String,Password pass: String, completion:@escaping(Error?)->Void){
         Auth.auth().createUser(withEmail: email, password: pass) { (authDataResult, error) in
-            if let err = error{
-                self.dbFunc.showAlert(Title: "Error", Message: "\(err.self)", ViewController: vc)
-                print("SigningUP ERROR \(err as Any)")
-                completion(false)
+            if error != nil{
+//                let smt = err.localizedDescription
+//                self.dbFunc.showAlert(Title: "Error", Message: "\(smt)", ViewController: vc)
+//                print("SigningUP ERROR \(err as Any)")
+                completion(error)
             }else{
                 self.userCollectionRef.addDocument(data: [
                     self.userFirstNameKey: fName,
@@ -236,14 +260,13 @@ class Fire{
                     self.userGameMinTimeKey: 0.0,
                     self.userUIDKey: authDataResult!.user.uid
                  ]) { error in
-                     if let error = error {
-                         print("Error adding document: \(error)")
-                        completion(false)
+                     if error != nil{
+                        completion(error)
                      } else {
                         print(authDataResult!.user.email as Any)
                          //self.myDocId = ref!.documentID
-                         //self.performSegue(withIdentifier: "playersSegue", sender: self)
-                        completion(true)
+                         
+                        
                      }
                  }
             }
@@ -252,7 +275,7 @@ class Fire{
     
     func listenPlayerInfo(completion: @escaping (playersInfo) -> Void){
         getPlayerDocID(FromCollection: .Players) { (docID) in
-            self.userCollectionRef.document(docID).addSnapshotListener{ (documentSnap, error) in
+            self.userCollectionRef.document(docID).getDocument{ (documentSnap, error) in
                 if error != nil{
                     print(error as Any)
                 }else{
@@ -317,7 +340,7 @@ class Fire{
         }
     }
     func listenEarnedPayments(completion: @escaping ([Earned]) -> Void){
-        winnerRef.order(by: paymentDateKey, descending: true).addSnapshotListener{ (querySnap, error) in
+        winnerRef.order(by: paymentDateKey, descending: true).getDocuments{ (querySnap, error) in
             if error != nil{
                 print(error as Any)
             }else{
@@ -364,7 +387,19 @@ class Fire{
     
     deinit {
         Auth.auth().removeStateDidChangeListener(handle!)
+        detachListener()
     }
+    func detachListener() {
+        // [START detach_listener]
+        let listener = myDB.collection(playerCollectionString).addSnapshotListener { querySnapshot, error in
+            // [START_EXCLUDE]
+            // [END_EXCLUDE]
+        }
 
+        // ...
+        // Stop listening to changes
+        listener.remove()
+        // [END detach_listener]
+    }
 
 }

@@ -14,7 +14,7 @@ class SettingsViewController: UIViewController {
 
     var firy: Fire!
     var db: Firestore!
-    
+    var settingFunc: Function!
     @IBOutlet weak var displayNameLabel: UITextField!
     @IBOutlet weak var emailLabel: UITextField!
     override func viewDidLoad() {
@@ -42,21 +42,45 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func onTapSignOut(_ sender: Any) {
+        UserDefaults.standard.set(false, forKey: "isUser")
+        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "IntroPageViewController") as IntroPageViewController
+        present(vc, animated: true) {
+
         do { try Auth.auth().signOut() }
         catch { print("already logged out") }
-        //UserDefaults.standard.set(false, forKey: "isUser")
-//        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "SignInViewController") as SignInViewController
-//        vc.dismiss(animated: true, completion: nil)
+        }
     }
     
+    @IBAction func onChangePassword(_ sender: Any) {
+        //firy.changePassword(NewPassword: <#T##String#>, ViewController: <#T##UIViewController#>, completion: <#T##(Error?) -> Void#>)
+        print("onChangePassword")
+    }
     @IBAction func onTapDelete(_ sender: Any) {
         // delete account
         //firy.deleteCurrentUser(Firestore: db)
-        //UserDefaults.standard.set(false, forKey: "isUser")
-        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "SignUpViewController") as SignUpViewController
-        vc.dismiss(animated: true, completion: nil)
+        UserDefaults.standard.set(false, forKey: "isUser")
+        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "IntroPageViewController") as IntroPageViewController
+        self.present(vc, animated: true) {
+            
+            print("delete->Presented VC")
+            self.firy.deleteCurrentUser { (error) in
+                if let err = error{
+                    print(err)
+                    //let message = err.localizedDescription
+                    
+                    //self.settingFunc.showAlert(Title: "Error", Message: message, ViewController: self)
+                }else{
+                    print("Deleted")
+                    //self.settingFunc.showAlert(Title: "Success", Message: "Your account was successfully Deleted!", ViewController: self)
+                }
+            }
+            do { try Auth.auth().signOut() }
+            catch { print("already logged out") }
+        }
     }
-    
+    override func viewDidDisappear(_ animated: Bool) {
+        self.firy.detachListener()
+    }
     /*
     // MARK: - Navigation
 

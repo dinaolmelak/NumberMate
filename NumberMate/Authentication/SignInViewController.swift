@@ -17,6 +17,7 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var passwordTextfield: UITextField!
     var db: Firestore!
     var firy: Fire!
+    var signerFuncs = Function()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,10 +35,12 @@ class SignInViewController: UIViewController {
         let userEmail = emailTextfield.text!
         let userPass = passwordTextfield.text!
         firy.signIn(Email: userEmail, Password: userPass) { (authData, error) in
-            if (error != nil){
-                print(error as Any)
-            }else{
+            if let err = error{
+                let message = err.localizedDescription
+                self.signerFuncs.showAlert(Title: "Error", Message: message, ViewController: self)
+            } else{
                 UserDefaults.standard.set(true, forKey: "isUser")
+                
                 self.performSegue(withIdentifier: "signinhomeSegue", sender: self)
             }
         }

@@ -62,6 +62,9 @@ class LeadersViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.playerStatusLabel.text = String(playerDoc.points)
         return cell
     }
+    override func viewDidDisappear(_ animated: Bool) {
+        firy.detachListener()
+    }
     
     // MARK: - Navigation
 

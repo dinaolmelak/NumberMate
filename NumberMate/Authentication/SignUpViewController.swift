@@ -15,6 +15,7 @@ class SignUpViewController: UIViewController {
     // email and password
     var db: Firestore!
     var firy: Fire!
+    var signInFunc = Function()
     @IBOutlet weak var fnameTextfield: UITextField!
     @IBOutlet weak var lnameTextfield: UITextField!
     @IBOutlet weak var emailTextfield: UITextField!
@@ -40,10 +41,13 @@ class SignUpViewController: UIViewController {
         
         if saveBool == true{
             // sign user Up
-            firy.signUp(First: fnameTextfield.text!, Last: lnameTextfield.text!, DisplayName: "King", Email: emailTextfield.text!, Password: passwordTextfield.text!, ViewController: self) { (creationState) in
-                if creationState{
-                    UserDefaults.standard.set(true, forKey: "isUser")
+            firy.signUp(First: fnameTextfield.text!, Last: lnameTextfield.text!, DisplayName: "FixMe", Email: emailTextfield.text!, Password: passwordTextfield.text!) { (error) in
+                if let err = error{
+                    let message = err.localizedDescription
+                    self.signInFunc.showAlert(Title: "Error", Message: message, ViewController: self)
+                }else{
                     self.performSegue(withIdentifier: "SignedUpSegue", sender: self)
+                    print("Success")
                 }
             }
         }

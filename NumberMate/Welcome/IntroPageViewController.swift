@@ -24,13 +24,11 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
         }
     }
     override func viewDidAppear(_ animated: Bool) {
-        if UserDefaults.standard.bool(forKey: "isUser") == false{
-            print("yes")
+        if UserDefaults.standard.bool(forKey: "isUser") == false || Auth.auth().currentUser == nil{
+            print("signed out, deleted, or first time")
         } else{
-            if Auth.auth().currentUser != nil{
                 performSegue(withIdentifier: "SkipIntroSegue", sender: self)
                 print("not First time")
-            }
             
         }
     }
