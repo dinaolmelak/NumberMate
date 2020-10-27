@@ -36,6 +36,7 @@
 		C0718E5A251AA5D80055B342 /* WinIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0718E59251AA5D80055B342 /* WinIntroViewController.swift */; };
 		C0AB1E1724C0EBF3008DEF05 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AB1E1624C0EBF3008DEF05 /* SignInViewController.swift */; };
 		C0AB1E1924C0EC64008DEF05 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AB1E1824C0EC64008DEF05 /* SignUpViewController.swift */; };
+		C0EEF3E92545562300A90FC6 /* GamesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EEF3E82545562200A90FC6 /* GamesCell.swift */; };
 		C0F1076D251144FA000F719F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F1076C251144FA000F719F /* ProfileViewController.swift */; };
 		C0F28D942537AE6700C44FA3 /* 26182-happy-star.json in Resources */ = {isa = PBXBuildFile; fileRef = C0F28D932537AE6700C44FA3 /* 26182-happy-star.json */; };
 		C0F28D972537E2F100C44FA3 /* AddFriendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F28D962537E2F000C44FA3 /* AddFriendVC.swift */; };
@@ -76,6 +77,7 @@
 		C0718E59251AA5D80055B342 /* WinIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinIntroViewController.swift; sourceTree = "<group>"; };
 		C0AB1E1624C0EBF3008DEF05 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		C0AB1E1824C0EC64008DEF05 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		C0EEF3E82545562200A90FC6 /* GamesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesCell.swift; sourceTree = "<group>"; };
 		C0F1076C251144FA000F719F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C0F28D932537AE6700C44FA3 /* 26182-happy-star.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "26182-happy-star.json"; sourceTree = "<group>"; };
 		C0F28D962537E2F000C44FA3 /* AddFriendVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendVC.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				C036649C251CA3A70096AE3C /* MonthViewController.swift */,
+				C0EEF3E82545562200A90FC6 /* GamesCell.swift */,
 			);
 			path = CalendarView;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				C0F1076D251144FA000F719F /* ProfileViewController.swift in Sources */,
 				C05AE6AF2529038300FE5604 /* Paypal.swift in Sources */,
 				C0718E56251AA5930055B342 /* PlayIntroViewController.swift in Sources */,
+				C0EEF3E92545562300A90FC6 /* GamesCell.swift in Sources */,
 				C0718E58251AA5BE0055B342 /* PointsIntroViewController.swift in Sources */,
 				C009770624B0031D005C68B0 /* LeadersViewController.swift in Sources */,
 				C0366497251C5F780096AE3C /* Players.swift in Sources */,

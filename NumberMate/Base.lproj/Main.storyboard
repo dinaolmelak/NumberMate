@@ -61,24 +61,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ya-Kp-Tae">
-                                <rect key="frame" x="171.5" y="323" width="32" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Play" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wmb-7H-GRC">
+                                <rect key="frame" x="171" y="510" width="32" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="3Ya-Kp-Tae" firstAttribute="centerX" secondItem="q3y-RN-0RM" secondAttribute="centerX" id="eLr-bh-1Yb"/>
-                            <constraint firstItem="3Ya-Kp-Tae" firstAttribute="centerY" secondItem="q3y-RN-0RM" secondAttribute="centerY" id="wG9-Sw-7Nd"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="JUa-1W-9ey"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FPe-pu-zuX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3561" y="1738"/>
+            <point key="canvasLocation" x="-3562.4000000000001" y="1737.481259370315"/>
         </scene>
         <!--Points Intro View Controller-->
         <scene sceneID="2l3-uW-2ba">
@@ -266,7 +263,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xk2-dg-kC4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3226" y="3583"/>
+            <point key="canvasLocation" x="-4282" y="3502"/>
         </scene>
         <!--Month View Controller-->
         <scene sceneID="2fE-ez-oli">
@@ -291,12 +288,12 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LLe-X1-G8f" customClass="FSCalendar">
-                                <rect key="frame" x="16" y="55" width="343" height="181"/>
+                                <rect key="frame" x="16" y="54" width="343" height="228"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="181" id="UkP-cx-dbF"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsSelection" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsSelection" value="YES"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="allowsMultipleSelection" value="NO"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="rowHeight">
                                         <real key="value" value="0.0"/>
@@ -306,27 +303,48 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h47-1T-Kw8">
+                                <rect key="frame" x="0.0" y="290" width="375" height="377"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="377" id="9P6-cl-rIy"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="56" id="jkJ-TY-aKI">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="56"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jkJ-TY-aKI" id="0aQ-Kk-pmr">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="feV-A0-bvH" firstAttribute="bottom" secondItem="LLe-X1-G8f" secondAttribute="bottom" constant="431" id="9pF-3r-Gt2"/>
+                            <constraint firstItem="LLe-X1-G8f" firstAttribute="top" secondItem="itZ-Ba-wHJ" secondAttribute="bottom" constant="8" id="0Wn-21-d6h"/>
+                            <constraint firstItem="feV-A0-bvH" firstAttribute="bottom" secondItem="h47-1T-Kw8" secondAttribute="bottom" id="LxR-o4-oI9"/>
                             <constraint firstItem="LLe-X1-G8f" firstAttribute="leading" secondItem="feV-A0-bvH" secondAttribute="leading" constant="16" id="MqE-r4-mTL"/>
+                            <constraint firstItem="feV-A0-bvH" firstAttribute="trailing" secondItem="h47-1T-Kw8" secondAttribute="trailing" id="R2x-op-I38"/>
                             <constraint firstItem="feV-A0-bvH" firstAttribute="trailing" secondItem="Hcm-kt-Eev" secondAttribute="trailing" constant="16" id="Xbs-EU-e5v"/>
+                            <constraint firstItem="h47-1T-Kw8" firstAttribute="leading" secondItem="feV-A0-bvH" secondAttribute="leading" id="aSy-O1-WNk"/>
                             <constraint firstItem="itZ-Ba-wHJ" firstAttribute="leading" secondItem="feV-A0-bvH" secondAttribute="leading" constant="16" id="dzI-2F-o8v"/>
-                            <constraint firstItem="LLe-X1-G8f" firstAttribute="top" secondItem="feV-A0-bvH" secondAttribute="top" constant="55" id="jNx-uK-EON"/>
                             <constraint firstItem="feV-A0-bvH" firstAttribute="trailing" secondItem="LLe-X1-G8f" secondAttribute="trailing" constant="16" id="jbH-h3-IxX"/>
                             <constraint firstItem="itZ-Ba-wHJ" firstAttribute="top" secondItem="feV-A0-bvH" secondAttribute="top" constant="16" id="p6q-hV-ZB7"/>
+                            <constraint firstItem="h47-1T-Kw8" firstAttribute="top" secondItem="LLe-X1-G8f" secondAttribute="bottom" constant="8" id="vUm-qj-Ss6"/>
                             <constraint firstItem="Hcm-kt-Eev" firstAttribute="top" secondItem="feV-A0-bvH" secondAttribute="top" constant="16" id="yhn-aU-nhB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="feV-A0-bvH"/>
                     </view>
                     <connections>
                         <outlet property="calendar" destination="LLe-X1-G8f" id="bZT-hi-sDw"/>
+                        <outlet property="gamesTableView" destination="h47-1T-Kw8" id="Ez2-xH-nV5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jv3-vb-oz0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5209" y="5300"/>
+            <point key="canvasLocation" x="-4282" y="5300"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="oF0-Zv-J8g">
@@ -392,7 +410,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kBn-pr-g3m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3226" y="2516"/>
+            <point key="canvasLocation" x="-790" y="3501"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="Dcf-HC-Soh">
@@ -493,7 +511,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-2236" y="2516"/>
+            <point key="canvasLocation" x="-2162" y="3501"/>
         </scene>
         <!--LeaderBoard-->
         <scene sceneID="4qS-zP-KR2">
@@ -812,7 +830,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ioZ-xn-xD3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3226" y="5300"/>
+            <point key="canvasLocation" x="-3226" y="6072"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="aTw-d3-MrF">
@@ -1155,12 +1173,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rY1-hE-ccI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4282" y="5300"/>
+            <point key="canvasLocation" x="-4282" y="6072"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="4cO-T1-psi"/>
-        <segue reference="avS-wi-lpm"/>
+        <segue reference="TCe-Ej-bst"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>

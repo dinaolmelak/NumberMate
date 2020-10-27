@@ -91,21 +91,6 @@ class Function {
         return value
     }
     
-    func showQuestion(Title title:String, Message message:  String,ViewController vc:UIViewController,completion:@escaping(Bool)->Void){
-        var answer = false
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let noAction = UIAlertAction(title: "NO", style: .default) { (uialeraction) in
-            answer = false
-        }
-        let yesAction = UIAlertAction(title: "YES", style: .default){
-            (action) in
-            answer = true
-        }
-        alert.addAction(noAction)
-        alert.addAction(yesAction)
-        vc.present(alert, animated: true)
-        completion(answer)
-    }
     func showAlert(Title title:String, Message message:  String,ViewController vc:UIViewController){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let noAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)

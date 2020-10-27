@@ -11,11 +11,14 @@ import FSCalendar
 import FirebaseAuth
 import FirebaseFirestore
 
-class MonthViewController: UIViewController{
+class MonthViewController: UIViewController, UITableViewDelegate,UITableViewDataSource{
+    
+    
    
     var paying = Payment()
     var db: Firestore!
     var fire: Fire!
+    @IBOutlet weak var gamesTableView: UITableView!
     @IBOutlet weak var calendar: FSCalendar!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +49,14 @@ class MonthViewController: UIViewController{
         
     }
     
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
     /*
     // MARK: - Navigation
 

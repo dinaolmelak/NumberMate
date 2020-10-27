@@ -265,8 +265,6 @@ class Fire{
                      } else {
                         print(authDataResult!.user.email as Any)
                          //self.myDocId = ref!.documentID
-                         
-                        
                      }
                  }
             }

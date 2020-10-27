@@ -43,13 +43,14 @@ class SignUpViewController: UIViewController {
             // sign user Up
             firy.signUp(First: fnameTextfield.text!, Last: lnameTextfield.text!, DisplayName: "FixMe", Email: emailTextfield.text!, Password: passwordTextfield.text!) { (error) in
                 if let err = error{
+                    print(err)
                     let message = err.localizedDescription
                     self.signInFunc.showAlert(Title: "Error", Message: message, ViewController: self)
-                }else{
-                    self.performSegue(withIdentifier: "SignedUpSegue", sender: self)
-                    print("Success")
+                    return
                 }
             }
+            self.performSegue(withIdentifier: "SignedUpSegue", sender: self)
+            print("Success Signed Up")
         }
         
         
