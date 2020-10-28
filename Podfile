@@ -9,6 +9,9 @@ target 'NumberMate' do
 	pod 'Google-Mobile-Ads-SDK'
 	pod 'Firebase/Auth'
 	pod 'Firebase/Firestore'
+	pod 'Firebase/Analytics'
+	pod 'Firebase/DynamicLinks'
 	pod 'lottie-ios'
 	pod 'FSCalendar'
+
 end

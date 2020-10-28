@@ -23,6 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+//    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+//        if let incomingUrl = userActivity.webpageURL{
+//            print("incomingURL \(incomingUrl)")
+//            //let handledLink = DynamicLink.dynamicLinks().handleUniversalLink(
+//        }
+//    }
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

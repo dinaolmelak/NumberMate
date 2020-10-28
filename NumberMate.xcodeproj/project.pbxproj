@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		54BEB16CD722C1C069FD9D55 /* Pods_NumberMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74CE86055F5AA01BA95CDB7D /* Pods_NumberMate.framework */; };
+		8C91EC71963C6DFE1F75D015 /* Pods_NumberMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 680A2B016EC8FD8BEBE900C3 /* Pods_NumberMate.framework */; };
 		C003BAB12539F2AA009237E5 /* MoneyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003BAB02539F2AA009237E5 /* MoneyCell.swift */; };
 		C003BAB5253A3FD4009237E5 /* Payments.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003BAB4253A3FD4009237E5 /* Payments.swift */; };
 		C00976EE24AFBF15005C68B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00976ED24AFBF15005C68B0 /* AppDelegate.swift */; };
@@ -44,9 +44,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3048ADBE6C93D840EEA45F97 /* Pods-NumberMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumberMate.debug.xcconfig"; path = "Target Support Files/Pods-NumberMate/Pods-NumberMate.debug.xcconfig"; sourceTree = "<group>"; };
-		643DCDDF8A26C0E84BAF917F /* Pods-NumberMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumberMate.release.xcconfig"; path = "Target Support Files/Pods-NumberMate/Pods-NumberMate.release.xcconfig"; sourceTree = "<group>"; };
-		74CE86055F5AA01BA95CDB7D /* Pods_NumberMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NumberMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		680A2B016EC8FD8BEBE900C3 /* Pods_NumberMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NumberMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CE3F1B60D6C3461D820DEA8 /* Pods-NumberMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumberMate.release.xcconfig"; path = "Target Support Files/Pods-NumberMate/Pods-NumberMate.release.xcconfig"; sourceTree = "<group>"; };
 		C003BAB02539F2AA009237E5 /* MoneyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyCell.swift; sourceTree = "<group>"; };
 		C003BAB4253A3FD4009237E5 /* Payments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payments.swift; sourceTree = "<group>"; };
 		C00976EA24AFBF15005C68B0 /* NumberMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NumberMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +69,7 @@
 		C0366498251C74460096AE3C /* Guess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guess.swift; sourceTree = "<group>"; };
 		C036649A251C9F950096AE3C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C036649C251CA3A70096AE3C /* MonthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthViewController.swift; sourceTree = "<group>"; };
+		C043D43B25491D560037D806 /* NumberMateDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NumberMateDebug.entitlements; sourceTree = "<group>"; };
 		C05AE6AE2529038300FE5604 /* Paypal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paypal.swift; sourceTree = "<group>"; };
 		C0718E53251AA34C0055B342 /* IntroPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPageViewController.swift; sourceTree = "<group>"; };
 		C0718E55251AA5930055B342 /* PlayIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayIntroViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +82,7 @@
 		C0F28D932537AE6700C44FA3 /* 26182-happy-star.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "26182-happy-star.json"; sourceTree = "<group>"; };
 		C0F28D962537E2F000C44FA3 /* AddFriendVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendVC.swift; sourceTree = "<group>"; };
 		C0F28D982537E92600C44FA3 /* 1204-car.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "1204-car.json"; sourceTree = "<group>"; };
+		D3ED034C2620CF3887D2723C /* Pods-NumberMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumberMate.debug.xcconfig"; path = "Target Support Files/Pods-NumberMate/Pods-NumberMate.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54BEB16CD722C1C069FD9D55 /* Pods_NumberMate.framework in Frameworks */,
+				8C91EC71963C6DFE1F75D015 /* Pods_NumberMate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,16 +100,16 @@
 		3AF833078189DD94F496007A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3048ADBE6C93D840EEA45F97 /* Pods-NumberMate.debug.xcconfig */,
-				643DCDDF8A26C0E84BAF917F /* Pods-NumberMate.release.xcconfig */,
+				D3ED034C2620CF3887D2723C /* Pods-NumberMate.debug.xcconfig */,
+				8CE3F1B60D6C3461D820DEA8 /* Pods-NumberMate.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		3E926BEBBA3E0D7673D47EF9 /* Frameworks */ = {
+		49606008815D38409A3E6525 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				74CE86055F5AA01BA95CDB7D /* Pods_NumberMate.framework */,
+				680A2B016EC8FD8BEBE900C3 /* Pods_NumberMate.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -119,7 +120,7 @@
 				C00976EC24AFBF15005C68B0 /* NumberMate */,
 				C00976EB24AFBF15005C68B0 /* Products */,
 				3AF833078189DD94F496007A /* Pods */,
-				3E926BEBBA3E0D7673D47EF9 /* Frameworks */,
+				49606008815D38409A3E6525 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -134,6 +135,7 @@
 		C00976EC24AFBF15005C68B0 /* NumberMate */ = {
 			isa = PBXGroup;
 			children = (
+				C043D43B25491D560037D806 /* NumberMateDebug.entitlements */,
 				C00976ED24AFBF15005C68B0 /* AppDelegate.swift */,
 				C00976EF24AFBF15005C68B0 /* SceneDelegate.swift */,
 				C00976F324AFBF15005C68B0 /* Main.storyboard */,
@@ -259,11 +261,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C00976FE24AFBF20005C68B0 /* Build configuration list for PBXNativeTarget "NumberMate" */;
 			buildPhases = (
-				F38F68E24D65F66136E2BE6E /* [CP] Check Pods Manifest.lock */,
+				D086EDE646AC8B2ED4E52C7E /* [CP] Check Pods Manifest.lock */,
 				C00976E624AFBF14005C68B0 /* Sources */,
 				C00976E724AFBF14005C68B0 /* Frameworks */,
 				C00976E824AFBF14005C68B0 /* Resources */,
-				CC8DF9AB83627AD7CDF6A031 /* [CP] Embed Pods Frameworks */,
+				BB8737D988F24BD956C7871C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -324,7 +326,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		CC8DF9AB83627AD7CDF6A031 /* [CP] Embed Pods Frameworks */ = {
+		BB8737D988F24BD956C7871C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -341,7 +343,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NumberMate/Pods-NumberMate-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F38F68E24D65F66136E2BE6E /* [CP] Check Pods Manifest.lock */ = {
+		D086EDE646AC8B2ED4E52C7E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -538,11 +540,12 @@
 		};
 		C00976FF24AFBF20005C68B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3048ADBE6C93D840EEA45F97 /* Pods-NumberMate.debug.xcconfig */;
+			baseConfigurationReference = D3ED034C2620CF3887D2723C /* Pods-NumberMate.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8ANT6T3S86;
+				CODE_SIGN_ENTITLEMENTS = NumberMate/NumberMateDebug.entitlements;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = NumberMate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -550,6 +553,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dinaolmelak.NumberMate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -557,7 +561,7 @@
 		};
 		C009770024AFBF20005C68B0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 643DCDDF8A26C0E84BAF917F /* Pods-NumberMate.release.xcconfig */;
+			baseConfigurationReference = 8CE3F1B60D6C3461D820DEA8 /* Pods-NumberMate.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
