@@ -44,10 +44,10 @@ The following **Future** functionalities were not implemented due to shortage of
 
 
 ## Video Walkthrough 
-Here is the Old Version of the App:
+Old Version:
 <img src='http://g.recordit.co/iLTC83xT6v.gif' title='Video Walkthrough' />
 
-Here is the Current Status of the App
+Current Version:
 <img src='http://g.recordit.co/x4maukhZdB.gif' title='Video Walkthrough' />
 <img src='http://g.recordit.co/6YBOjGhlX9.gif' title='Video Walkthrough' />
 
