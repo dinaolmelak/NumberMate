@@ -53,7 +53,7 @@
                         <viewLayoutGuide key="safeArea" id="JUa-1W-9ey"/>
                     </view>
                     <connections>
-                        <outlet property="pictureGif" destination="iDS-dr-YQI" id="eU4-WK-iA2"/>
+                        <outlet property="pictureGif" destination="iDS-dr-YQI" id="cKd-88-l8r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FPe-pu-zuX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -108,6 +108,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Mth-wJ-SDn"/>
                     </view>
+                    <connections>
+                        <outlet property="gifPicture" destination="Ohi-vU-WrZ" id="T1g-Iw-DqI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p8a-HR-Ics" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -137,7 +140,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6kN-0q-9xl" customClass="AnimationView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6kN-0q-9xl" customClass="UIImageView">
                                         <rect key="frame" x="0.0" y="110" width="300" height="310"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
@@ -168,6 +171,7 @@
                         <viewLayoutGuide key="safeArea" id="5G5-bn-QsI"/>
                     </view>
                     <connections>
+                        <outlet property="gifPicture" destination="6kN-0q-9xl" id="Anf-YX-a8X"/>
                         <segue destination="hKZ-8Q-TMz" kind="presentation" identifier="StartSegue" modalPresentationStyle="fullScreen" id="WLv-Sb-Qe2"/>
                     </connections>
                 </viewController>

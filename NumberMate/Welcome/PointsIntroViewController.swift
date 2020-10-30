@@ -10,10 +10,12 @@ import UIKit
 
 class PointsIntroViewController: UIViewController {
 
+    @IBOutlet weak var gifPicture: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        gifPicture.loadGif(name: "18880-watch-videos")
     }
     
 

@@ -42,6 +42,8 @@
 		C0F28D942537AE6700C44FA3 /* 26182-happy-star.json in Resources */ = {isa = PBXBuildFile; fileRef = C0F28D932537AE6700C44FA3 /* 26182-happy-star.json */; };
 		C0F28D972537E2F100C44FA3 /* AddFriendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F28D962537E2F000C44FA3 /* AddFriendVC.swift */; };
 		C0F28D992537E92700C44FA3 /* 1204-car.json in Resources */ = {isa = PBXBuildFile; fileRef = C0F28D982537E92600C44FA3 /* 1204-car.json */; };
+		C0FBC2D9254BF32B0092AC8C /* 4768-trophy.gif in Resources */ = {isa = PBXBuildFile; fileRef = C0FBC2D8254BF32B0092AC8C /* 4768-trophy.gif */; };
+		C0FBC2DB254BF3380092AC8C /* 18880-watch-videos.gif in Resources */ = {isa = PBXBuildFile; fileRef = C0FBC2DA254BF3380092AC8C /* 18880-watch-videos.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +86,8 @@
 		C0F28D932537AE6700C44FA3 /* 26182-happy-star.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "26182-happy-star.json"; sourceTree = "<group>"; };
 		C0F28D962537E2F000C44FA3 /* AddFriendVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendVC.swift; sourceTree = "<group>"; };
 		C0F28D982537E92600C44FA3 /* 1204-car.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "1204-car.json"; sourceTree = "<group>"; };
+		C0FBC2D8254BF32B0092AC8C /* 4768-trophy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "4768-trophy.gif"; sourceTree = "<group>"; };
+		C0FBC2DA254BF3380092AC8C /* 18880-watch-videos.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "18880-watch-videos.gif"; sourceTree = "<group>"; };
 		D3ED034C2620CF3887D2723C /* Pods-NumberMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumberMate.debug.xcconfig"; path = "Target Support Files/Pods-NumberMate/Pods-NumberMate.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -241,7 +245,9 @@
 		C0F28D922537AE2400C44FA3 /* AnimationFiles */ = {
 			isa = PBXGroup;
 			children = (
+				C0FBC2DA254BF3380092AC8C /* 18880-watch-videos.gif */,
 				C0E9414C254BC69C00E2F7ED /* 6552-search.gif */,
+				C0FBC2D8254BF32B0092AC8C /* 4768-trophy.gif */,
 				C0E9414A254BC54900E2F7ED /* Swift+gif.swift */,
 				C0F28D982537E92600C44FA3 /* 1204-car.json */,
 				C0F28D932537AE6700C44FA3 /* 26182-happy-star.json */,
@@ -318,12 +324,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C00976FA24AFBF20005C68B0 /* LaunchScreen.storyboard in Resources */,
+				C0FBC2DB254BF3380092AC8C /* 18880-watch-videos.gif in Resources */,
 				C009770224AFE8D5005C68B0 /* GoogleService-Info.plist in Resources */,
 				C00976F724AFBF20005C68B0 /* Assets.xcassets in Resources */,
 				C0F28D992537E92700C44FA3 /* 1204-car.json in Resources */,
 				C0F28D942537AE6700C44FA3 /* 26182-happy-star.json in Resources */,
 				C0E9414D254BC69C00E2F7ED /* 6552-search.gif in Resources */,
 				C00976F524AFBF15005C68B0 /* Main.storyboard in Resources */,
+				C0FBC2D9254BF32B0092AC8C /* 4768-trophy.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

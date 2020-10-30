@@ -11,10 +11,12 @@ import UIKit
 
 class WinIntroViewController: UIViewController {
 
+    @IBOutlet weak var gifPicture: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        gifPicture.loadGif(name: "4768-trophy")
     }
     
 
