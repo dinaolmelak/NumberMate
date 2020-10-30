@@ -27,8 +27,8 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
         if UserDefaults.standard.bool(forKey: "isUser") == false || Auth.auth().currentUser == nil{
             print("signed out, deleted, or first time")
         } else{
-                performSegue(withIdentifier: "SkipIntroSegue", sender: self)
-                print("not First time")
+            performSegue(withIdentifier: "SkipIntroSegue", sender: self)
+            print("not First time")
             
         }
     }
@@ -50,11 +50,9 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
         return myControllers[after]
     }
     func addingViewControllers(){
-        let welcomeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GettingStartedViewController")
         let playVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PlayIntroViewController") as UIViewController
         let pointsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PointsIntroViewController") as UIViewController
         let winVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WinIntroViewController") as UIViewController
-        myControllers.append(welcomeVC)
         myControllers.append(playVC)
         myControllers.append(pointsVC)
         myControllers.append(winVC)

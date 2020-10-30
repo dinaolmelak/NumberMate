@@ -66,9 +66,8 @@ class SettingsViewController: UIViewController {
             self.firy.deleteCurrentUser { (error) in
                 if let err = error{
                     print(err)
-                    //let message = err.localizedDescription
-                    
-                    //self.settingFunc.showAlert(Title: "Error", Message: message, ViewController: self)
+                    let message = err.localizedDescription
+                    self.settingFunc.showAlert(Title: "Error", Message: message, ViewController: self.self)
                 }else{
                     print("Deleted")
                     //self.settingFunc.showAlert(Title: "Success", Message: "Your account was successfully Deleted!", ViewController: self)

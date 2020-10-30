@@ -7,12 +7,22 @@
 //
 
 import UIKit
+import Lottie
 
 class PlayIntroViewController: UIViewController {
-
+    
+    @IBOutlet weak var pictureGif: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        pictureGif.loadGif(name: "6552-search")
+    }
+    override func viewDidAppear(_ animated: Bool){
+       
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        
     }
     
 

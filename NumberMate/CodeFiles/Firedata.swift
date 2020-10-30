@@ -122,14 +122,26 @@ class Fire{
     
     func deleteCurrentUser(completion: @escaping(Error?)->Void){
         // Delete from the Players collection
-        currentPlayer?.delete(completion: { (error) in
-            completion(error)
-        })
         getPlayerDocID(FromCollection: .Players) { (playerDocID) in
             self.userCollectionRef.document(playerDocID).delete { (error1) in
                 completion(error1)
             }
         }
+        getPlayerDocID(FromCollection: .Winners) { (winnerDocID) in
+            self.winnerRef.document(winnerDocID).delete { (error3) in
+                completion(error3)
+            }
+        }
+        getPlayerDocID(FromCollection: .Games) { (playerGamesDocID) in
+            self.gameRef.document(playerGamesDocID).delete { (error2) in
+                completion(error2)
+            }
+        }
+        currentPlayer?.delete(completion: { (error) in
+            completion(error)
+        })
+        
+        
 //        getPlayerDocID(Firestore: db, FromCollection: .Winners) { (winnerDocID) in
 //            db.collection(self.winnerCollectionString).document(winnerDocID).delete { (error2) in
 //                if error2 != nil{

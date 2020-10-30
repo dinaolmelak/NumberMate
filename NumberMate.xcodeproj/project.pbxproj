@@ -18,7 +18,6 @@
 		C009770224AFE8D5005C68B0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C009770124AFE8D5005C68B0 /* GoogleService-Info.plist */; };
 		C009770624B0031D005C68B0 /* LeadersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009770524B0031D005C68B0 /* LeadersViewController.swift */; };
 		C009770824B0033C005C68B0 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009770724B0033C005C68B0 /* GameViewController.swift */; };
-		C009770C24B063D7005C68B0 /* GettingStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009770B24B063D7005C68B0 /* GettingStartedViewController.swift */; };
 		C009771224B1B51A005C68B0 /* LeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009771124B1B51A005C68B0 /* LeaderCell.swift */; };
 		C009771424B1D384005C68B0 /* GuessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009771324B1D384005C68B0 /* GuessCell.swift */; };
 		C021B5F025233EF6002AA9EC /* Firedata.swift in Sources */ = {isa = PBXBuildFile; fileRef = C021B5EF25233EF6002AA9EC /* Firedata.swift */; };
@@ -36,6 +35,8 @@
 		C0718E5A251AA5D80055B342 /* WinIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0718E59251AA5D80055B342 /* WinIntroViewController.swift */; };
 		C0AB1E1724C0EBF3008DEF05 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AB1E1624C0EBF3008DEF05 /* SignInViewController.swift */; };
 		C0AB1E1924C0EC64008DEF05 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AB1E1824C0EC64008DEF05 /* SignUpViewController.swift */; };
+		C0E9414B254BC54900E2F7ED /* Swift+gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E9414A254BC54900E2F7ED /* Swift+gif.swift */; };
+		C0E9414D254BC69C00E2F7ED /* 6552-search.gif in Resources */ = {isa = PBXBuildFile; fileRef = C0E9414C254BC69C00E2F7ED /* 6552-search.gif */; };
 		C0EEF3E92545562300A90FC6 /* GamesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EEF3E82545562200A90FC6 /* GamesCell.swift */; };
 		C0F1076D251144FA000F719F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F1076C251144FA000F719F /* ProfileViewController.swift */; };
 		C0F28D942537AE6700C44FA3 /* 26182-happy-star.json in Resources */ = {isa = PBXBuildFile; fileRef = C0F28D932537AE6700C44FA3 /* 26182-happy-star.json */; };
@@ -58,7 +59,6 @@
 		C009770124AFE8D5005C68B0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C009770524B0031D005C68B0 /* LeadersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadersViewController.swift; sourceTree = "<group>"; };
 		C009770724B0033C005C68B0 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		C009770B24B063D7005C68B0 /* GettingStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartedViewController.swift; sourceTree = "<group>"; };
 		C009771124B1B51A005C68B0 /* LeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderCell.swift; sourceTree = "<group>"; };
 		C009771324B1D384005C68B0 /* GuessCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessCell.swift; sourceTree = "<group>"; };
 		C021B5EF25233EF6002AA9EC /* Firedata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firedata.swift; sourceTree = "<group>"; };
@@ -77,6 +77,8 @@
 		C0718E59251AA5D80055B342 /* WinIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinIntroViewController.swift; sourceTree = "<group>"; };
 		C0AB1E1624C0EBF3008DEF05 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		C0AB1E1824C0EC64008DEF05 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		C0E9414A254BC54900E2F7ED /* Swift+gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift+gif.swift"; sourceTree = "<group>"; };
+		C0E9414C254BC69C00E2F7ED /* 6552-search.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "6552-search.gif"; sourceTree = "<group>"; };
 		C0EEF3E82545562200A90FC6 /* GamesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesCell.swift; sourceTree = "<group>"; };
 		C0F1076C251144FA000F719F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C0F28D932537AE6700C44FA3 /* 26182-happy-star.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "26182-happy-star.json"; sourceTree = "<group>"; };
@@ -192,7 +194,6 @@
 		C0AB1E1B24C0EC96008DEF05 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
-				C009770B24B063D7005C68B0 /* GettingStartedViewController.swift */,
 				C0718E53251AA34C0055B342 /* IntroPageViewController.swift */,
 				C0718E55251AA5930055B342 /* PlayIntroViewController.swift */,
 				C0718E57251AA5BE0055B342 /* PointsIntroViewController.swift */,
@@ -240,6 +241,8 @@
 		C0F28D922537AE2400C44FA3 /* AnimationFiles */ = {
 			isa = PBXGroup;
 			children = (
+				C0E9414C254BC69C00E2F7ED /* 6552-search.gif */,
+				C0E9414A254BC54900E2F7ED /* Swift+gif.swift */,
 				C0F28D982537E92600C44FA3 /* 1204-car.json */,
 				C0F28D932537AE6700C44FA3 /* 26182-happy-star.json */,
 			);
@@ -319,6 +322,7 @@
 				C00976F724AFBF20005C68B0 /* Assets.xcassets in Resources */,
 				C0F28D992537E92700C44FA3 /* 1204-car.json in Resources */,
 				C0F28D942537AE6700C44FA3 /* 26182-happy-star.json in Resources */,
+				C0E9414D254BC69C00E2F7ED /* 6552-search.gif in Resources */,
 				C00976F524AFBF15005C68B0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,9 +396,9 @@
 				C0718E58251AA5BE0055B342 /* PointsIntroViewController.swift in Sources */,
 				C009770624B0031D005C68B0 /* LeadersViewController.swift in Sources */,
 				C0366497251C5F780096AE3C /* Players.swift in Sources */,
-				C009770C24B063D7005C68B0 /* GettingStartedViewController.swift in Sources */,
 				C003BAB12539F2AA009237E5 /* MoneyCell.swift in Sources */,
 				C009770824B0033C005C68B0 /* GameViewController.swift in Sources */,
+				C0E9414B254BC54900E2F7ED /* Swift+gif.swift in Sources */,
 				C0244864251E784600F8996B /* Advertisements.swift in Sources */,
 				C0AB1E1724C0EBF3008DEF05 /* SignInViewController.swift in Sources */,
 				C00976F024AFBF15005C68B0 /* SceneDelegate.swift in Sources */,
