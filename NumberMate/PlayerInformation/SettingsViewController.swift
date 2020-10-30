@@ -16,7 +16,6 @@ class SettingsViewController: UIViewController {
     var db: Firestore!
     var settingFunc: Function!
     @IBOutlet weak var displayNameLabel: UITextField!
-    @IBOutlet weak var emailLabel: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         let settings = FirestoreSettings()
@@ -52,7 +51,7 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func onChangePassword(_ sender: Any) {
-        //firy.changePassword(NewPassword: <#T##String#>, ViewController: <#T##UIViewController#>, completion: <#T##(Error?) -> Void#>)
+        firy.changePassword(ViewController: self)
         print("onChangePassword")
     }
     @IBAction func onTapDelete(_ sender: Any) {

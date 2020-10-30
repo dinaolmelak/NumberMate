@@ -208,18 +208,17 @@ class Fire{
         
         
     }
-    func changePassword(NewPassword pass: String,ViewController vc:UIViewController, completion: @escaping(Error?)->Void){
+    func changePassword(ViewController vc:UIViewController){
         if let currUser = currentPlayer{
-            currUser.updateEmail(to: pass) { (error) in
+            Auth.auth().sendPasswordReset(withEmail: currUser.email!) { error in
+              // ...
                 if let err = error{
-                    let output = err.localizedDescription
-                    self.dbFunc.showAlert(Title: "Error", Message: output, ViewController: vc)
+                    let message = err.localizedDescription
+                    self.dbFunc.showAlert(Title: "Error", Message: message, ViewController: vc)
                 }else{
-                    self.dbFunc.showAlert(Title: "Success", Message: "You Password was changed!!!", ViewController: vc)
+                    self.dbFunc.showAlert(Title: "Check your email", Message: "Password reset link has been sent to your email.", ViewController: vc)
                 }
             }
-            
-            
         } else {
             //not signed in
             self.dbFunc.showAlert(Title: "Error", Message: "You are not currently signed in", ViewController: vc)
