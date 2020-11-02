@@ -17,12 +17,15 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     let gameRewardPoints = 70 //points rewarded for winning a game
     var won = false
     var gameTimer:Timer?
+    var minTimer: Timer?
+    var minTime = 0
     var timeLeft = 60
     var started = false
     let funcs = Function()
     var firy: Fire!
+    let ads = MobAds()
     var documentID: String?
-    var hiddenNumber:  Int?
+    var hiddenNumber:  String?
     var guesses = [guess]()
     var db: Firestore!
     var animationView: AnimationView?
@@ -40,6 +43,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         hiddenNumber = funcs.playingNumberGenerator()
         print("DINAOL \(String(describing: hiddenNumber))")
         // Do any additional setup after loading the view.
+        ads.bannerDisplay(bannerAd, self)
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -60,16 +64,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     @IBAction func onTapBack(_ sender: Any) {
-        if (won == true){
-            AddGuessesTodb(Won: true)
-            firy.increamentPoints(by: gameRewardPoints) { (error) in
-                if let error = error{
-                    print(error)
-                }
-            }
-        }else{
-            AddGuessesTodb(Won: false)
-        }
+        AddGuessesTodb(Won: true)
+        
         dismiss(animated: true, completion: nil)
     }
     @IBAction func didTapAddGuess(_ sender: Any) {
@@ -89,16 +85,17 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.funcs.showAlert(Title: "ERROR", Message: "Enter a number that is distinct",ViewController: self)
                 return
             }
-            let newNum = Int(textField!.text!)!
-            let newNumGroup = self.funcs.checkGroup(guessNum: String(newNum), hiddenNum: String(hiddenNum))
-            let newNumOrder = self.funcs.checkOrder(guessNum: String(newNum), hiddenNum: String(hiddenNum))
+            let newNum = textField!.text!
+            let newNumGroup = self.funcs.checkGroup(guessNum: newNum, hiddenNum: String(hiddenNum))
+            let newNumOrder = self.funcs.checkOrder(guessNum: newNum, hiddenNum: String(hiddenNum))
             
             let newGuess = guess(guess: newNum, group: newNumGroup, order: newNumOrder)
-            self.guesses.append(newGuess)
+            self.guesses.insert(newGuess, at: 0)
+            //self.guesses.append(newGuess)
             if self.started != true{
                 self.started = true
                 self.gameTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.onTimerFires), userInfo: nil, repeats: true)
-                
+                self.minTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.onMinTimerFires), userInfo: nil, repeats: true)
             }
             self.tableView.reloadData()
             if newNumGroup == 4 && newNumOrder == 4{
@@ -108,6 +105,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.addGuessButton.isEnabled = false
                 self.won = true
                 self.gameTimer?.invalidate()
+                self.minTimer?.invalidate()
             }
         })
         alert.addAction(actionCancel)
@@ -130,6 +128,11 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             gameTimer?.invalidate()
             gameTimer = nil
         }
+    }
+    
+    @objc func onMinTimerFires()
+    {
+        minTime += 1
     }
     
     func AddGuessesTodb(Won winning: Bool){

@@ -33,6 +33,7 @@
 		C0718E56251AA5930055B342 /* PlayIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0718E55251AA5930055B342 /* PlayIntroViewController.swift */; };
 		C0718E58251AA5BE0055B342 /* PointsIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0718E57251AA5BE0055B342 /* PointsIntroViewController.swift */; };
 		C0718E5A251AA5D80055B342 /* WinIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0718E59251AA5D80055B342 /* WinIntroViewController.swift */; };
+		C09D9794254CFA150090828C /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09D9793254CFA150090828C /* WelcomeViewController.swift */; };
 		C0AB1E1724C0EBF3008DEF05 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AB1E1624C0EBF3008DEF05 /* SignInViewController.swift */; };
 		C0AB1E1924C0EC64008DEF05 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AB1E1824C0EC64008DEF05 /* SignUpViewController.swift */; };
 		C0E9414B254BC54900E2F7ED /* Swift+gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E9414A254BC54900E2F7ED /* Swift+gif.swift */; };
@@ -78,6 +79,7 @@
 		C0718E55251AA5930055B342 /* PlayIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayIntroViewController.swift; sourceTree = "<group>"; };
 		C0718E57251AA5BE0055B342 /* PointsIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsIntroViewController.swift; sourceTree = "<group>"; };
 		C0718E59251AA5D80055B342 /* WinIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinIntroViewController.swift; sourceTree = "<group>"; };
+		C09D9793254CFA150090828C /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		C0AB1E1624C0EBF3008DEF05 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		C0AB1E1824C0EC64008DEF05 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C0E9414A254BC54900E2F7ED /* Swift+gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift+gif.swift"; sourceTree = "<group>"; };
@@ -191,9 +193,9 @@
 		C0AB1E1A24C0EC71008DEF05 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				C09D9793254CFA150090828C /* WelcomeViewController.swift */,
 				C0AB1E1624C0EBF3008DEF05 /* SignInViewController.swift */,
 				C0AB1E1824C0EC64008DEF05 /* SignUpViewController.swift */,
-				C0FBC2DC254BFE1C0092AC8C /* AuthenticateViewController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -240,6 +242,7 @@
 			children = (
 				C0F1076C251144FA000F719F /* ProfileViewController.swift */,
 				C036649A251C9F950096AE3C /* SettingsViewController.swift */,
+				C0FBC2DC254BFE1C0092AC8C /* AuthenticateViewController.swift */,
 				C003BAB02539F2AA009237E5 /* MoneyCell.swift */,
 			);
 			path = PlayerInformation;
@@ -400,6 +403,7 @@
 				C0FBC2DD254BFE1C0092AC8C /* AuthenticateViewController.swift in Sources */,
 				C0244862251E5EA100F8996B /* PlayViewController.swift in Sources */,
 				C009771424B1D384005C68B0 /* GuessCell.swift in Sources */,
+				C09D9794254CFA150090828C /* WelcomeViewController.swift in Sources */,
 				C021B5F025233EF6002AA9EC /* Firedata.swift in Sources */,
 				C0F1076D251144FA000F719F /* ProfileViewController.swift in Sources */,
 				C05AE6AF2529038300FE5604 /* Paypal.swift in Sources */,

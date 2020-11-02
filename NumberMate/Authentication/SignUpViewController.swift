@@ -49,6 +49,7 @@ class SignUpViewController: UIViewController {
                     return
                 }
             }
+            UserDefaults.standard.set(true, forKey: "isUser")
             self.performSegue(withIdentifier: "SignedUpSegue", sender: self)
             print("Success Signed Up")
         }

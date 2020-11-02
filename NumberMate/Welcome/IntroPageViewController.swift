@@ -25,8 +25,12 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
     }
     override func viewDidAppear(_ animated: Bool) {
         if UserDefaults.standard.bool(forKey: "isUser") == false || Auth.auth().currentUser == nil{
+            //introduce game
             print("signed out, deleted, or first time")
         } else{
+//            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "IntroPageViewController") as IntroPageViewController
+//            present(vc, animated: true,completion: nil)
+            //got to App
             performSegue(withIdentifier: "SkipIntroSegue", sender: self)
             print("not First time")
             

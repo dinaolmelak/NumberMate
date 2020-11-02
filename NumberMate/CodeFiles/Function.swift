@@ -57,22 +57,21 @@ class Function {
         return counter
     }
     
-    func playingNumberGenerator()->Int{
-        let digits = 0...9
+    func playingNumberGenerator()->String{
+        let digits = ["0","1","2","3","4","5","6","7","8","9"]
         // Shuffle them
         let shuffledDigits = digits.shuffled()
 
          // Take the number of digits you would like
         let fourDigits = shuffledDigits.prefix(4)
-
+        var randomNum = ""
+        for digit in fourDigits{
+            randomNum.append(digit)
+        }
          // Add them up with place values
-        var value = fourDigits.reduce(0) {
-             $0*10 + $1
-        }
-        if (value < 1000){
-            value = playingNumberGenerator()
-        }
-        return value
+        
+        
+        return randomNum
     }
     
     func batchIDGenerator()->Int{

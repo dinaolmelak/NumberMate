@@ -27,7 +27,6 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
     @IBOutlet weak var npointsLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var fullNameLabel: UILabel!
-    @IBOutlet weak var totalEarning: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -42,30 +41,15 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
         moneyTableView.delegate = self
         moneyTableView.dataSource = self
         
-        
+       
     }
     override func viewDidAppear(_ animated: Bool) {
         playCarAnimation()
+        playerDataFromdb()
         firy.listenEarnedPayments() { (earned) in
             self.earnedMoney = earned
             self.moneyTableView.reloadData()
-            if self.earnedMoney.isEmpty == true || self.earnedMoney.count == 0{
-                let emptyLabel = UILabel()
-                var myView = UIView()
-                let pic = UIImage(named: "iTunesArtwork")!
-                emptyLabel.text = "Sorry, No Money Earned"
-                emptyLabel.textAlignment = .center
-                let picture = UIImageView(image: pic)
-                //myView = picture
-                myView = emptyLabel
-                self.moneyTableView.backgroundView = myView
-                self.moneyTableView.reloadData()
-                //moneyTableView.backgroundView!.addSubview(emptyLabel)
-            }
-            
         }
-        
-        playerDataFromdb()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -86,6 +70,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
     
     func playerDataFromdb(){
         firy.listenPlayerInfo() { (playerInfo) in
+            print("playerInfo___\(playerInfo)")
             self.setDataToLabel(FName: playerInfo.fname, LName: playerInfo.lname, email: playerInfo.email, Points: playerInfo.points, GameCount: playerInfo.game_count, TimeTaken: playerInfo.min_time_taken)
         }
     }

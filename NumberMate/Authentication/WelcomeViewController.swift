@@ -1,5 +1,5 @@
 //
-//  AuthenticateViewController.swift
+//  WelcomeViewController.swift
 //  NumberMate
 //
 //  Created by Dinaol Melak on 10/30/20.
@@ -7,32 +7,18 @@
 //
 
 import UIKit
-import FirebaseFirestore
-import FirebaseAuth
 
-class AuthenticateViewController: UIViewController {
-
-    
-    
+class WelcomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-//        let user = Auth.auth().currentUser
-//        var credential: AuthCredential
-//
-//        user?.reauthenticate(with: credential, completion: { (<#AuthDataResult?#>, <#Error?#>) in
-//            <#code#>
-//        })
-
     }
     
-    
-    
-
-    // Prompt the user to re-provide their sign-in credentials
-
+    @IBAction func onTapBack(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     /*
     // MARK: - Navigation

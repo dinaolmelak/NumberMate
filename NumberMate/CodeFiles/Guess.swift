@@ -8,10 +8,10 @@
 
 import Foundation
 struct guess{
-    var guess: Int
+    var guess: String
     var group: Int
     var order: Int
-    mutating func guess(_ inGuess: Int,_ inGroup: Int,_ inOrder: Int){
+    mutating func guess(_ inGuess: String,_ inGroup: Int,_ inOrder: Int){
         guess = inGuess
         group = inGroup
         order = inOrder
@@ -19,7 +19,7 @@ struct guess{
 //    func setGuess(_ num: Int){
 //        guess = num
 //    }
-    func getGuess() -> Int{
+    func getGuess() -> String{
         return guess
     }
 //    func setGroup(_ groupNum: Int){

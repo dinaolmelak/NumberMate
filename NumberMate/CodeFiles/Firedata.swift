@@ -137,10 +137,6 @@ class Fire{
                 completion(error2)
             }
         }
-        currentPlayer?.delete(completion: { (error) in
-            completion(error)
-        })
-        
         
 //        getPlayerDocID(Firestore: db, FromCollection: .Winners) { (winnerDocID) in
 //            db.collection(self.winnerCollectionString).document(winnerDocID).delete { (error2) in
@@ -240,8 +236,10 @@ class Fire{
         getPlayerInfo() { (playerInfo) in
             let playerTime = playerInfo.min_time_taken!
             self.getPlayerDocID(FromCollection: .Players) { (docID) in
-                self.userCollectionRef.document(docID).setData([self.userGameMinTimeKey : gTime + playerTime], merge: true) { (error) in
-                    completion(error)
+                if gTime < playerTime{
+                    self.userCollectionRef.document(docID).setData([self.userGameMinTimeKey : gTime + playerTime], merge: true) { (error) in
+                        completion(error)
+                    }
                 }
             }
         }
@@ -375,16 +373,16 @@ class Fire{
         }
     }
     
-    func addGuessesTodb(Guesses guesses:[guess],HiddenNumber hNumber: Int,Won wonGame: Bool){
-        let currentUserUid = Auth.auth().currentUser!.uid
-        let newData = gameRef.document()
-        var guessedArray = [Int]()
-        for guess in guesses{
-            guessedArray.append(guess.guess)
+    func addGuessesTodb(Guesses guesses:[guess],HiddenNumber hNumber: String,Won wonGame: Bool){
+        if wonGame{
+            let currentUserUid = Auth.auth().currentUser!.uid
+            let newData = gameRef.document()
+            var guessedArray = [String]()
+            for guess in guesses{
+                guessedArray.append(guess.guess)
+            }
+            newData.setData([self.userUIDKey: currentUserUid, self.gameGuessKey: guessedArray, self.gameWonKey: wonGame, self.gameHiddenNumberKey: hNumber,self.gameDateKey: Timestamp(date: Date())])
         }
-        newData.setData([self.userUIDKey: currentUserUid, self.gameGuessKey: guessedArray, self.gameWonKey: wonGame, self.gameHiddenNumberKey: hNumber,self.gameDateKey: Timestamp(date: Date())])
-
-        
     }
     func addPaidPlayerTodb(SenderBatchID batchID: Int,WinnerFullName fllName:String, WinnerDisplayName wdName:String, WinnerEmail email:String,WinnerUID winnerUID:String,EarnedMoney wonAmount: Int){
         let newData = winnerRef.document()
