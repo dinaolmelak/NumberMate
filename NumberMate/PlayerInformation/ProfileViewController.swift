@@ -21,8 +21,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
     var carAnimationView: AnimationView?
     @IBOutlet weak var simpleBannerAd: GADBannerView!
     @IBOutlet weak var moneyTableView: UITableView!
-    @IBOutlet weak var rankLabel: UILabel!
-    @IBOutlet weak var minimumTimeLabel: UILabel!
+    
     @IBOutlet weak var gameCount: UILabel!
     @IBOutlet weak var npointsLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
@@ -100,7 +99,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
         fullNameLabel.text = fName + " " + lName
         emailLabel.text = inEmail
         npointsLabel.text = String(inPoint)
-        minimumTimeLabel.text = String(timeTaken)
+        
         gameCount.text = String(inGame)
     }
     /*
