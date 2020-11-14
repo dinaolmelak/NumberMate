@@ -23,12 +23,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-//    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-//        if let incomingUrl = userActivity.webpageURL{
-//            print("incomingURL \(incomingUrl)")
-//            //let handledLink = DynamicLink.dynamicLinks().handleUniversalLink(
-//        }
-//    }
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        let handled = DynamicLinks.dynamicLinks().handleUniversalLink(userActivity.webpageURL!) { (dynamiclink, error) in
+            if let err = error{
+                print(err)
+            }else{
+                print(dynamiclink!.url!)
+            }
+        }
+
+        return handled
+    }
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

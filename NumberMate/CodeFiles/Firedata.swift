@@ -35,6 +35,7 @@ class Fire{
     let userDisplayNameKey = "dname"
     let userUIDKey = "userUID"
     let userGameCounterKey = "game_count"
+    let userWonGameCountKey = "won_game_count"
     let userGamePointsKey = "points"
     let userGameMinTimeKey = "min_time_taken"
     
@@ -75,6 +76,47 @@ class Fire{
         }
         
     }
+    func checkDocID(InCollection col:Collections)->Bool {
+        var outputBool = false
+        switch col {
+            case .Players:
+                userCollectionRef.whereField(self.userUIDKey, isEqualTo: currentPlayer!.uid).getDocuments { (querySnap, error) in
+                    if error != nil{
+                        print(error as Any)
+                    }else{
+                        let snapshot = querySnap!.documents
+                        if snapshot.isEmpty != true{
+                            outputBool = true
+                        }
+                    }
+                }
+            case .Winners:
+                winnerRef.whereField(self.winnerUidKey, isEqualTo: currentPlayer!.uid).getDocuments { (querySnap, error) in
+                    if error != nil{
+                        print(error as Any)
+                    }else{
+                        let snapshot = querySnap!.documents
+                        if snapshot.isEmpty != true{
+                            outputBool = true
+                        }
+                    }
+                }
+                
+            case .Games:
+                gameRef.whereField(self.userUIDKey, isEqualTo: currentPlayer!.uid).getDocuments { (querySnap, error) in
+                    if error != nil{
+                        print(error as Any)
+                    }else{
+                        let snapshot = querySnap!.documents
+                        if snapshot.isEmpty != true{
+                            outputBool = true
+                        }
+                    }
+                }
+        }
+        
+        return outputBool
+    }
     func getPlayerDocID(FromCollection col:Collections,completion: @escaping (String) -> Void) {
         if let currentUser = currentPlayer{
             switch col {
@@ -83,7 +125,6 @@ class Fire{
                     
                     if error != nil{
                         print(error as Any)
-                        
                     }else{
                         let snapshot = querySnap!.documents
                         let id = snapshot[0].documentID
@@ -114,7 +155,7 @@ class Fire{
                 }
             }
         } else {
-            print("No USEr getting DocID")
+            print("Trying to get DocID while there is No USEr getting DocID")
             
         }
         
@@ -122,22 +163,30 @@ class Fire{
     
     func deleteCurrentUser(completion: @escaping(Error?)->Void){
         // Delete from the Players collection
-        getPlayerDocID(FromCollection: .Players) { (playerDocID) in
-            self.userCollectionRef.document(playerDocID).delete { (error1) in
-                completion(error1)
-            }
+        if checkDocID(InCollection: .Players){
+//            getPlayerDocID(FromCollection: .Players) { (playerDocID) in
+//                self.userCollectionRef.document(playerDocID).delete { (error1) in
+//                    completion(error1)
+//                }
+//            }
+            print("CeckedDocID player")
         }
-        getPlayerDocID(FromCollection: .Winners) { (winnerDocID) in
-            self.winnerRef.document(winnerDocID).delete { (error3) in
-                completion(error3)
-            }
+        if checkDocID(InCollection: .Winners){
+//            getPlayerDocID(FromCollection: .Winners) { (winnerDocID) in
+//                self.winnerRef.document(winnerDocID).delete { (error3) in
+//                    completion(error3)
+//                }
+//            }
+            print("CeckedDocID winner")
         }
-        getPlayerDocID(FromCollection: .Games) { (playerGamesDocID) in
-            self.gameRef.document(playerGamesDocID).delete { (error2) in
-                completion(error2)
-            }
+        if checkDocID(InCollection: .Games){
+//            getPlayerDocID(FromCollection: .Games) { (playerGamesDocID) in
+//                self.gameRef.document(playerGamesDocID).delete { (error2) in
+//                    completion(error2)
+//                }
+//            }
+            print("CeckedDocID games")
         }
-        
 //        getPlayerDocID(Firestore: db, FromCollection: .Winners) { (winnerDocID) in
 //            db.collection(self.winnerCollectionString).document(winnerDocID).delete { (error2) in
 //                if error2 != nil{
@@ -169,15 +218,15 @@ class Fire{
 //        }
         handle = Auth.auth().addStateDidChangeListener({ (authentication, UserOpt) in
             
-            if UserOpt != nil {
-                authentication.currentUser!.delete { (error) in
-                    if let err = error{
-                        print(err)
-                    }else{
-                        print("Deleted")
-                    }
-                }
-            }
+//            if UserOpt != nil {
+//                authentication.currentUser!.delete { (error) in
+//                    if let err = error{
+//                        print(err)
+//                    }else{
+//                        print("Deleted user account")
+//                    }
+//                }
+//            }
         })
         
         Auth.auth().removeStateDidChangeListener(handle!)
@@ -230,8 +279,18 @@ class Fire{
                 }
             }
         }
-        
     }
+    func increamentWinCount(completion: @escaping(Error?)->Void){
+        getPlayerInfo() { (playerInfo) in
+            let playerGames = playerInfo.won_game_count!
+            self.getPlayerDocID(FromCollection: .Players) { (docID) in
+                self.userCollectionRef.document(docID).setData([self.userWonGameCountKey : 1 + playerGames], merge: true) { (error) in
+                    completion(error)
+                }
+            }
+        }
+    }
+    
     func setMinTime(To gTime:Int, completion: @escaping(Error?)->Void){
         getPlayerInfo() { (playerInfo) in
             let playerTime = playerInfo.min_time_taken!
@@ -265,6 +324,7 @@ class Fire{
                     self.userDisplayNameKey: dName,
                     self.userEmailKey: email,
                     self.userGameCounterKey: 0,
+                    self.userWonGameCountKey: 0,
                     self.userGamePointsKey: 0,
                     self.userGameMinTimeKey: 0.0,
                     self.userUIDKey: authDataResult!.user.uid
@@ -293,9 +353,10 @@ class Fire{
                     let email = document![self.userEmailKey] as! String
                     let points = document![self.userGamePointsKey] as! Int
                     let gameCounter = document![self.userGameCounterKey] as! Int
+                    let wonGameCounter = document![self.userWonGameCountKey] as! Int
                     let timeTaken = document![self.userGameMinTimeKey] as! Int
                     
-                    let player = playersInfo.init(_fname: fname, _lname: lname, _dName: dname, _email: email, _minTime: timeTaken, _points: points, _gameCount: gameCounter)
+                    let player = playersInfo.init(_fname: fname, _lname: lname, _dName: dname, _email: email, _minTime: timeTaken, _points: points, _gameCount: gameCounter, _WonGame: wonGameCounter)
                     completion(player)
                 }
             }
@@ -314,9 +375,10 @@ class Fire{
                     let email = document![self.userEmailKey] as! String
                     let points = document![self.userGamePointsKey] as! Int
                     let gameCounter = document![self.userGameCounterKey] as! Int
+                    let wonGameCounter = document![self.userWonGameCountKey] as! Int
                     let timeTaken = document![self.userGameMinTimeKey] as! Int
                     
-                    let player = playersInfo.init(_fname: fname, _lname: lname, _dName: dname, _email: email, _minTime: timeTaken, _points: points, _gameCount: gameCounter)
+                    let player = playersInfo.init(_fname: fname, _lname: lname, _dName: dname, _email: email, _minTime: timeTaken, _points: points, _gameCount: gameCounter, _WonGame: wonGameCounter)
                     completion(player)
                 }
             }
@@ -336,9 +398,10 @@ class Fire{
                     let email = playerArray[self.userEmailKey] as! String
                     let points = playerArray[self.userGamePointsKey] as! Int
                     let gameCounterKey = playerArray[self.userGameCounterKey] as! Int
+                    let wonGameCounter = playerArray[self.userWonGameCountKey] as! Int
                     let timeTaken = playerArray[self.userGameMinTimeKey] as! Int
                     
-                    let playerInfo = playersInfo(_fname: fname, _lname: lname, _dName: dname, _email: email, _minTime: timeTaken, _points: points, _gameCount: gameCounterKey)
+                    let playerInfo = playersInfo(_fname: fname, _lname: lname, _dName: dname, _email: email, _minTime: timeTaken, _points: points, _gameCount: gameCounterKey, _WonGame: wonGameCounter)
                             players.append(playerInfo)
                     
                 }
@@ -373,16 +436,15 @@ class Fire{
         }
     }
     
-    func addGuessesTodb(Guesses guesses:[guess],HiddenNumber hNumber: String,Won wonGame: Bool){
-        if wonGame{
+    func addGameTodb(Guesses guesses:[guess],HiddenNumber hNumber: String,Won wonGame: Bool){
             let currentUserUid = Auth.auth().currentUser!.uid
             let newData = gameRef.document()
             var guessedArray = [String]()
             for guess in guesses{
                 guessedArray.append(guess.guess)
             }
-            newData.setData([self.userUIDKey: currentUserUid, self.gameGuessKey: guessedArray, self.gameWonKey: wonGame, self.gameHiddenNumberKey: hNumber,self.gameDateKey: Timestamp(date: Date())])
-        }
+            newData.setData([self.userUIDKey: currentUserUid, self.gameGuessKey: guessedArray, self.gameWonKey: wonGame, self.gameHiddenNumberKey: hNumber,self.gameDateKey: Date()])
+        
     }
     func addPaidPlayerTodb(SenderBatchID batchID: Int,WinnerFullName fllName:String, WinnerDisplayName wdName:String, WinnerEmail email:String,WinnerUID winnerUID:String,EarnedMoney wonAmount: Int){
         let newData = winnerRef.document()

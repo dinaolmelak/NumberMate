@@ -23,7 +23,7 @@ class PlayViewController: UIViewController, GADRewardedAdDelegate {
     var show = Function()
     var firy: Fire!
     var db: Firestore!
-    
+    var rewardPoints = NumberPoints()
     override func viewDidLoad() {
         super.viewDidLoad()
         let settings = FirestoreSettings()
@@ -47,7 +47,7 @@ class PlayViewController: UIViewController, GADRewardedAdDelegate {
         guard self.rewardedAd?.isReady == true else{
             return
         }
-        let alert = UIAlertController(title: "More Points!", message: "Watch a short Ad to get 20 points?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "More Points!", message: "Watch a short Ad to get \(rewardPoints.adVidRewardPoint) points?", preferredStyle: .alert)
         let noAction = UIAlertAction(title: "NO", style: .cancel, handler: nil)
         let yesAction = UIAlertAction(title: "YES", style: .default) { (UIAlertAction) in
             if self.rewardedAd?.isReady == true{

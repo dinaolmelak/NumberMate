@@ -18,10 +18,10 @@ class playersInfo{
     var min_time_taken: Int!
     var points: Int!
     var game_count: Int!
+    var won_game_count: Int!
     
     
-    
-    init(_fname first: String,_lname second:String,_dName dname:String,  _email inEmail: String,_minTime minTime: Int,_points inPoints: Int,_gameCount gameCount: Int){
+    init(_fname first: String,_lname second:String,_dName dname:String,  _email inEmail: String,_minTime minTime: Int,_points inPoints: Int,_gameCount gameCount: Int,_WonGame winCount: Int){
         fname = first
         lname = second
         displayName = dname
@@ -29,5 +29,6 @@ class playersInfo{
         min_time_taken = minTime
         points = inPoints
         game_count = gameCount
+        won_game_count = winCount
     }
 }

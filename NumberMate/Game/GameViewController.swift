@@ -14,7 +14,7 @@ import GoogleMobileAds
 
 
 class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    let gameRewardPoints = 70 //points rewarded for winning a game
+    
     var won = false
     var gameTimer:Timer?
     var minTimer: Timer?
@@ -29,7 +29,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     var guesses = [guess]()
     var db: Firestore!
     var animationView: AnimationView?
-    
+    var pointReward = NumberPoints()
     @IBOutlet weak var timer: UILabel!
     @IBOutlet weak var bannerAd: GADBannerView!
     @IBOutlet weak var addGuessButton: UIButton!
@@ -64,8 +64,16 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     @IBAction func onTapBack(_ sender: Any) {
-        AddGuessesTodb(Won: true)
-        
+        AddGuessesTodb(Won: won)
+        if won{
+            firy.increamentPoints(by: pointReward.gameWonPoint){ (error) in
+                if let error = error{
+                    print(error as Any)
+                }else{
+                    print("game Points increamented")
+                }
+            }
+        }
         dismiss(animated: true, completion: nil)
     }
     @IBAction func didTapAddGuess(_ sender: Any) {
@@ -82,7 +90,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 return
             }
             if self.funcs.isRepeated(textField!.text!){
-                self.funcs.showAlert(Title: "ERROR", Message: "Enter a number that is distinct",ViewController: self)
+                self.funcs.showAlert(Title: "ERROR", Message: "Enter a 4 digit number that is distinct",ViewController: self)
                 return
             }
             let newNum = textField!.text!
@@ -137,7 +145,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func AddGuessesTodb(Won winning: Bool){
         if (guesses.count != 0){
-            firy.addGuessesTodb(Guesses: guesses, HiddenNumber: hiddenNumber!, Won: winning)
+            firy.addGameTodb(Guesses: guesses, HiddenNumber: hiddenNumber!, Won: winning)
             firy.increamentGameCount() { (error) in
                 if let error = error{
                     print(error as Any)
@@ -146,7 +154,15 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
             }
         }
-
+        if(winning == true){
+            firy.increamentWinCount { (error) in
+                if let err = error{
+                    print(err as Any)
+                }else{
+                    print("WON Game Saved")
+                }
+            }
+        }
     }
     override func viewDidDisappear(_ animated: Bool) {
         stopAnimation()

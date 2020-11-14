@@ -28,6 +28,7 @@
 		C0366499251C74460096AE3C /* Guess.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0366498251C74460096AE3C /* Guess.swift */; };
 		C036649B251C9F950096AE3C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C036649A251C9F950096AE3C /* SettingsViewController.swift */; };
 		C036649D251CA3A80096AE3C /* MonthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C036649C251CA3A70096AE3C /* MonthViewController.swift */; };
+		C053D820255337DF00CD0893 /* NumberPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C053D81F255337DF00CD0893 /* NumberPoints.swift */; };
 		C05AE6AF2529038300FE5604 /* Paypal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05AE6AE2529038300FE5604 /* Paypal.swift */; };
 		C0718E54251AA34C0055B342 /* IntroPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0718E53251AA34C0055B342 /* IntroPageViewController.swift */; };
 		C0718E56251AA5930055B342 /* PlayIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0718E55251AA5930055B342 /* PlayIntroViewController.swift */; };
@@ -74,6 +75,7 @@
 		C036649A251C9F950096AE3C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C036649C251CA3A70096AE3C /* MonthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthViewController.swift; sourceTree = "<group>"; };
 		C043D43B25491D560037D806 /* NumberMateDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NumberMateDebug.entitlements; sourceTree = "<group>"; };
+		C053D81F255337DF00CD0893 /* NumberPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NumberPoints.swift; path = "../New Group/NumberPoints.swift"; sourceTree = "<group>"; };
 		C05AE6AE2529038300FE5604 /* Paypal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paypal.swift; sourceTree = "<group>"; };
 		C0718E53251AA34C0055B342 /* IntroPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPageViewController.swift; sourceTree = "<group>"; };
 		C0718E55251AA5930055B342 /* PlayIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayIntroViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				C009770124AFE8D5005C68B0 /* GoogleService-Info.plist */,
 				C021B5EE25233EA7002AA9EC /* CodeFiles */,
 				C0F28D922537AE2400C44FA3 /* AnimationFiles */,
+				C053D821255337ED00CD0893 /* RewardSystem */,
 			);
 			path = NumberMate;
 			sourceTree = "<group>";
@@ -179,6 +182,14 @@
 				C003BAB4253A3FD4009237E5 /* Payments.swift */,
 			);
 			path = CodeFiles;
+			sourceTree = "<group>";
+		};
+		C053D821255337ED00CD0893 /* RewardSystem */ = {
+			isa = PBXGroup;
+			children = (
+				C053D81F255337DF00CD0893 /* NumberPoints.swift */,
+			);
+			path = RewardSystem;
 			sourceTree = "<group>";
 		};
 		C09C6946252FB1A900647CF7 /* CalendarView */ = {
@@ -391,6 +402,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C036649D251CA3A80096AE3C /* MonthViewController.swift in Sources */,
+				C053D820255337DF00CD0893 /* NumberPoints.swift in Sources */,
 				C0718E5A251AA5D80055B342 /* WinIntroViewController.swift in Sources */,
 				C0AB1E1924C0EC64008DEF05 /* SignUpViewController.swift in Sources */,
 				C0F28D972537E2F100C44FA3 /* AddFriendVC.swift in Sources */,

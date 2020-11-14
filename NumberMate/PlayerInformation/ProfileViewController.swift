@@ -21,7 +21,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
     var carAnimationView: AnimationView?
     @IBOutlet weak var simpleBannerAd: GADBannerView!
     @IBOutlet weak var moneyTableView: UITableView!
-    
+    @IBOutlet weak var winCount: UILabel!
     @IBOutlet weak var gameCount: UILabel!
     @IBOutlet weak var npointsLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
@@ -70,7 +70,8 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
     func playerDataFromdb(){
         firy.listenPlayerInfo() { (playerInfo) in
             print("playerInfo___\(playerInfo)")
-            self.setDataToLabel(FName: playerInfo.fname, LName: playerInfo.lname, email: playerInfo.email, Points: playerInfo.points, GameCount: playerInfo.game_count, TimeTaken: playerInfo.min_time_taken)
+            self.setDataToLabel(FName: playerInfo.fname, LName: playerInfo.lname, email: playerInfo.email, Points: playerInfo.points, GameCount: playerInfo.game_count,WinCount: playerInfo.won_game_count,
+                                TimeTaken: playerInfo.min_time_taken)
         }
     }
     override func viewDidDisappear(_ animated: Bool) {
@@ -95,11 +96,11 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
         carAnimationView!.play()
     }
     
-    func setDataToLabel(FName fName: String, LName lName: String, email inEmail: String,Points inPoint: Int, GameCount inGame: Int, TimeTaken timeTaken: Int){
+    func setDataToLabel(FName fName: String, LName lName: String, email inEmail: String,Points inPoint: Int, GameCount inGame: Int,WinCount winnings:Int, TimeTaken timeTaken: Int){
         fullNameLabel.text = fName + " " + lName
         emailLabel.text = inEmail
         npointsLabel.text = String(inPoint)
-        
+        winCount.text = String(winnings)
         gameCount.text = String(inGame)
     }
     /*
