@@ -20,6 +20,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var lnameTextfield: UITextField!
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
+    @IBOutlet weak var displayTextfield: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,16 +33,22 @@ class SignUpViewController: UIViewController {
     
     @IBAction func didTapSignUp(_ sender: Any) {
         var saveBool = true
-        if promptTextfield(fnameTextfield, "First Name Required!", "please fill in your first Name") == false{
+        if checkTextfield(fnameTextfield) == false{
+            signInFunc.showAlert(Title: "Name Missing", Message: "Please Enter your first Name", ViewController: self)
             saveBool = false
         }
-        if promptTextfield(lnameTextfield, "Last Name Required!", "please fill in your first Name") == false{
+        if checkTextfield(lnameTextfield) == false{
+            signInFunc.showAlert(Title: "Name Missing", Message: "Please Enter your Last Name", ViewController: self)
+            saveBool = false
+        }
+        if checkTextfield(emailTextfield) == false{
+            signInFunc.showAlert(Title: "Email Missing", Message: "Please Enter your email to receive the reward", ViewController: self)
             saveBool = false
         }
         
         if saveBool == true{
             // sign user Up
-            firy.signUp(First: fnameTextfield.text!, Last: lnameTextfield.text!, DisplayName: "FixMe", Email: emailTextfield.text!, Password: passwordTextfield.text!) { (error) in
+            firy.signUp(First: fnameTextfield.text!, Last: lnameTextfield.text!, DisplayName: displayTextfield.text ?? "🤖", Email: emailTextfield.text!, Password: passwordTextfield.text!) { (error) in
                 if let err = error{
                     print(err)
                     let message = err.localizedDescription
@@ -65,13 +72,9 @@ class SignUpViewController: UIViewController {
     @IBAction func didTapGesture(_ sender: Any) {
         view.endEditing(true)
     }
-    func promptTextfield(_ inField: UITextField,_ title: String,_ message: String)->Bool{
-        //check textfield and prompt for value
+    func checkTextfield(_ inField: UITextField)->Bool{
+        //check textfield is empty or not
         if(inField.text == nil || inField.text == ""){
-            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
-            alert.addAction(okAction)
-            present(alert, animated: true)
             return false
         }
         return true

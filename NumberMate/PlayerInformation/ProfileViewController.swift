@@ -43,7 +43,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
        
     }
     override func viewDidAppear(_ animated: Bool) {
-        playCarAnimation()
+//        playCarAnimation()
         playerDataFromdb()
         firy.listenEarnedPayments() { (earned) in
             self.earnedMoney = earned
@@ -59,7 +59,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
         let cell = moneyTableView.dequeueReusableCell(withIdentifier: "MoneyCell", for: indexPath) as! MoneyCell
         let element = earnedMoney[indexPath.row]
         
-        cell.dateLabel.text = String(element.batchid)
+        cell.dateLabel.text = String(element.points)
         cell.amountLabel.text = String(element.amountEarned)
         return cell
     }
@@ -75,8 +75,8 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
         }
     }
     override func viewDidDisappear(_ animated: Bool) {
-        stopPlayingAnimation()
-        firy.detachListener()
+//        stopPlayingAnimation()
+//        firy.detachListener()
     }
     func stopPlayingAnimation(){
         carAnimationView?.stop()

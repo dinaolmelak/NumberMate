@@ -54,8 +54,9 @@ class Fire{
     let winnerBatchIDKey = "winnerBatchID"
     let winnerUidKey = "winner_uid"
     let winnerMoneyKey = "amountWon"
+    let winnerPointsKey = "winnerPoints"
     let winnerFullNameKey = "winnerFullName"
-    let winnerDisplayName = "winnerDisplayName"
+    let winnerDisplayNameKey = "winnerDisplayName"
     
     init() {
         let settings = FirestoreSettings()
@@ -410,7 +411,7 @@ class Fire{
         }
     }
     func listenEarnedPayments(completion: @escaping ([Earned]) -> Void){
-        winnerRef.order(by: paymentDateKey, descending: true).getDocuments{ (querySnap, error) in
+        winnerRef.order(by: paymentDateKey, descending: true).limit(to: 100).getDocuments{ (querySnap, error) in
             if error != nil{
                 print(error as Any)
             }else{
@@ -423,10 +424,11 @@ class Fire{
                         //Only collecting the earnings of the current User
                         let email = paymentArray[self.winnerEmailKey] as! String
                         let batchID = paymentArray[self.winnerBatchIDKey] as! Int
-                        let paymentDate = paymentArray[self.paymentDateKey] as! Timestamp
+                        //let paymentDate = paymentArray[self.paymentDateKey] as! Timestamp
                         let paymentAmount = paymentArray[self.winnerMoneyKey] as! Int
-                        print("paymentDate\(paymentDate)")
-                        let payment = Earned(_email: email, _uid: userUID, _batchid: batchID,_amount: paymentAmount)
+                        let pointsWon = paymentArray[self.winnerPointsKey] as! Int
+                        //print("paymentDate\(paymentDate)")
+                        let payment = Earned(_email: email, _uid: userUID, _batchid: batchID,_amount: paymentAmount, _points: pointsWon)
                         earnedPayments.append(payment)
                     }
                     
@@ -446,10 +448,10 @@ class Fire{
             newData.setData([self.userUIDKey: currentUserUid, self.gameGuessKey: guessedArray, self.gameWonKey: wonGame, self.gameHiddenNumberKey: hNumber,self.gameDateKey: Date()])
         
     }
-    func addPaidPlayerTodb(SenderBatchID batchID: Int,WinnerFullName fllName:String, WinnerDisplayName wdName:String, WinnerEmail email:String,WinnerUID winnerUID:String,EarnedMoney wonAmount: Int){
+    func addPaidPlayerTodb(SenderBatchID batchID: Int,WinnerFullName fllName:String, WinnerDisplayName wdName:String, WinnerEmail email:String,WinnerUID winnerUID:String,EarnedMoney wonAmount: Int,PointsWon wonPoints: Int){
         let newData = winnerRef.document()
         
-        newData.setData([self.winnerFullNameKey:fllName,self.winnerDisplayName:wdName, self.winnerMoneyKey:wonAmount, self.winnerUidKey: winnerUID, self.winnerBatchIDKey: batchID, self.winnerEmailKey: email, self.paymentDateKey: Timestamp(date: Date())])
+        newData.setData([self.winnerFullNameKey:fllName,self.winnerDisplayNameKey:wdName, self.winnerMoneyKey:wonAmount, self.winnerUidKey: winnerUID, self.winnerBatchIDKey: batchID,self.winnerPointsKey:wonPoints, self.winnerEmailKey: email, self.paymentDateKey: Timestamp(date: Date())])
     }
     
 

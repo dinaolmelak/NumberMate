@@ -30,6 +30,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     var db: Firestore!
     var animationView: AnimationView?
     var pointReward = NumberPoints()
+    var initGuess = "Input Your Guess"
     @IBOutlet weak var timer: UILabel!
     @IBOutlet weak var bannerAd: GADBannerView!
     @IBOutlet weak var addGuessButton: UIButton!
@@ -50,18 +51,26 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return guesses.count
+        return guesses.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "GuessCell", for: indexPath) as! GuessCell
-        let guess = guesses[indexPath.row]
-        cell.guess.text = String(guess.getGuess())
-        cell.group.text = String(guess.getGroup())
-        cell.order.text = String(guess.getOrder())
-        
-        
-        return cell
+        if(indexPath.row == 0){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "GuessCell", for: indexPath) as! GuessCell
+            cell.inputGuess.text = initGuess
+            return cell
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "GuessCell", for: indexPath) as! GuessCell
+            let guess = guesses[indexPath.row - 1]
+            cell.group.alpha = 1
+            cell.order.alpha = 1
+            cell.guess.alpha = 1
+            cell.inputGuess.alpha = 0.0
+            cell.guess.text = String(guess.getGuess())
+            cell.group.text = String(guess.getGroup())
+            cell.order.text = String(guess.getOrder())
+            return cell
+        }
     }
     @IBAction func onTapBack(_ sender: Any) {
         AddGuessesTodb(Won: won)
@@ -76,8 +85,54 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         dismiss(animated: true, completion: nil)
     }
+    @IBAction func didTapNumbers(_ sender: Any){
+        if initGuess.count > 4{
+            initGuess = ""
+        }
+        let button = sender as! UIButton
+        initGuess = initGuess + String(button.tag)
+        tableView.reloadData()
+    }
+    @IBAction func onTapBackspace(_ sender: Any){
+        if(initGuess == "Input Your Guess"){
+            return
+        }else if(initGuess.count > 0 && initGuess != "Input Your Guess"){
+            initGuess.removeLast()
+        }else if(initGuess.count == 0){
+            initGuess = "Input Your Guess"
+        }
+        tableView.reloadData()
+    }
+    @IBAction func onTapGuessed(_ sender: Any){
+        guard(initGuess.count == 4 && !funcs.isRepeated(initGuess)) else{
+            self.funcs.showAlert(Title: "4 digits", Message: "Please enter any 4 digit number that is distinct", ViewController: self)
+            return
+        }
+        let hiddenNum = hiddenNumber!
+        let newNumGroup = self.funcs.checkGroup(guessNum: initGuess, hiddenNum: String(hiddenNum))
+        let newNumOrder = self.funcs.checkOrder(guessNum: initGuess, hiddenNum: String(hiddenNum))
+        let newGuess = guess(guess: initGuess, group: newNumGroup, order: newNumOrder)
+        self.guesses.insert(newGuess, at: 0)
+        if self.started != true{
+            self.started = true
+            self.gameTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.onTimerFires), userInfo: nil, repeats: true)
+            self.minTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.onMinTimerFires), userInfo: nil, repeats: true)
+        }
+        tableView.reloadData()
+        initGuess = "Input Your Guess"
+        if newNumGroup == 4 && newNumOrder == 4{
+            //self.funcs.showAlert(Title: "Congratulations!", Message: "You Won!!!",ViewController: self)
+            //self.AddGuessesTodb()
+            self.playWinAnimation()
+            self.addGuessButton.isEnabled = false
+            self.won = true
+            self.gameTimer?.invalidate()
+            self.minTimer?.invalidate()
+        }
+    }
+    
     @IBAction func didTapAddGuess(_ sender: Any) {
-        
+        //
         let hiddenNum = hiddenNumber!
         let alert = UIAlertController(title: "New Guess", message: "Enter your guess NUMBER!", preferredStyle: .alert)
         alert.addTextField { (textField)  in

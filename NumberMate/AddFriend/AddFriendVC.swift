@@ -63,10 +63,7 @@ class AddFriendVC: UIViewController {
                     print("FDL warning \(warning)")
                 }
             }
-            
-            guard let url = shortUrl else{
-                return
-            }
+            guard let url = shortUrl else{return}
             print("Here is Short url \(url)")
             self.inviteSheet(url: url)
         }
