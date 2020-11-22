@@ -73,7 +73,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     @IBAction func onTapBack(_ sender: Any) {
-        AddGuessesTodb(Won: won)
+        //AddGuessesTodb(Won: won)//adds the game to database
         if won{
             firy.increamentPoints(by: pointReward.gameWonPoint){ (error) in
                 if let error = error{
@@ -82,7 +82,18 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                     print("game Points increamented")
                 }
             }
+            firy.increamentWinCount { (error) in
+                if let error = error{
+                    self.funcs.showAlert(Title: "Error", Message: error.localizedDescription, ViewController: self)
+                }
+            }
         }
+            firy.increamentGameCount { (error) in
+                if let error = error{
+                    self.funcs.showAlert(Title: "Error", Message: error.localizedDescription, ViewController: self)
+                }
+            }
+        
         dismiss(animated: true, completion: nil)
     }
     @IBAction func didTapNumbers(_ sender: Any){
@@ -118,7 +129,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.gameTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.onTimerFires), userInfo: nil, repeats: true)
             self.minTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.onMinTimerFires), userInfo: nil, repeats: true)
         }
-        tableView.reloadData()
         initGuess = "Input Your Guess"
         if newNumGroup == 4 && newNumOrder == 4{
             //self.funcs.showAlert(Title: "Congratulations!", Message: "You Won!!!",ViewController: self)
@@ -129,6 +139,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.gameTimer?.invalidate()
             self.minTimer?.invalidate()
         }
+        tableView.reloadData()
     }
     
     @IBAction func didTapAddGuess(_ sender: Any) {

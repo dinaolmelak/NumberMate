@@ -26,6 +26,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
     @IBOutlet weak var npointsLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var fullNameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -52,16 +53,24 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return earnedMoney.count;
+        return earnedMoney.count ;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = moneyTableView.dequeueReusableCell(withIdentifier: "MoneyCell", for: indexPath) as! MoneyCell
-        let element = earnedMoney[indexPath.row]
-        
-        cell.dateLabel.text = String(element.points)
-        cell.amountLabel.text = String(element.amountEarned)
-        return cell
+        if earnedMoney.count == 0{
+            let cell = moneyTableView.dequeueReusableCell(withIdentifier: "MoneyCell", for: indexPath) as! MoneyCell
+            cell.amountLabel.alpha = 0
+            cell.dateLabel.alpha = 0
+            cell.displayLabel.text = "Rewards will appear here"
+            return cell
+        }else{
+            let cell = moneyTableView.dequeueReusableCell(withIdentifier: "MoneyCell", for: indexPath) as! MoneyCell
+            let element = earnedMoney[indexPath.row ]
+            cell.displayLabel.alpha = 0.0
+            cell.dateLabel.text = String(element.points)
+            cell.amountLabel.text = String(element.amountEarned)
+            return cell
+        }
     }
     @IBAction func didTapSetting(_ sender: Any) {
         performSegue(withIdentifier: "SettingsSegue", sender: self)

@@ -61,7 +61,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FPe-pu-zuX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3562.4000000000001" y="1737.481259370315"/>
+            <point key="canvasLocation" x="-2623.1999999999998" y="1737.481259370315"/>
         </scene>
         <!--Points Intro View Controller-->
         <scene sceneID="2l3-uW-2ba">
@@ -117,7 +117,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p8a-HR-Ics" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2873" y="1737"/>
+            <point key="canvasLocation" x="-1935.2" y="1736.5817091454273"/>
         </scene>
         <!--Win Intro View Controller-->
         <scene sceneID="Aka-R9-RBI">
@@ -175,12 +175,12 @@
                     </view>
                     <connections>
                         <outlet property="gifPicture" destination="6kN-0q-9xl" id="Anf-YX-a8X"/>
-                        <segue destination="hKZ-8Q-TMz" kind="presentation" identifier="StartSegue" modalPresentationStyle="fullScreen" id="WLv-Sb-Qe2"/>
+                        <segue destination="hKZ-8Q-TMz" kind="presentation" identifier="StartSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="WLv-Sb-Qe2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3aK-DA-XXd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2161" y="1737"/>
+            <point key="canvasLocation" x="-1223.2" y="1736.5817091454273"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="efq-7g-TCc">
@@ -264,13 +264,14 @@
         <scene sceneID="x57-uO-gGx">
             <objects>
                 <pageViewController storyboardIdentifier="IntroPageViewController" autoresizesArchivedViewToFullSize="NO" modalPresentationStyle="fullScreen" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="9Qr-hP-Yll" customClass="IntroPageViewController" customModule="NumberMate" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="aFM-zM-faQ"/>
                     <connections>
                         <segue destination="utE-LB-Ose" kind="presentation" identifier="SkipIntroSegue" animates="NO" modalPresentationStyle="fullScreen" id="T7G-ty-1O5"/>
                     </connections>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UpS-No-BbT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4282" y="1737"/>
+            <point key="canvasLocation" x="-3343.1999999999998" y="1736.5817091454273"/>
         </scene>
         <!--Points-->
         <scene sceneID="hiK-5Q-qbJ">
@@ -775,13 +776,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mBz-2k-lQV">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="568"/>
+                                <rect key="frame" x="0.0" y="16" width="375" height="552"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Sb6-Oh-18F" userLabel="Settings">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="22"/>
+                                        <rect key="frame" x="16" y="0.0" width="343" height="22"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWA-ZL-qFe">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="22"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="22" id="406-Rc-wNG"/>
                                                 </constraints>
@@ -871,7 +872,7 @@
                                         </subviews>
                                     </stackView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bfO-3N-hzH">
-                                        <rect key="frame" x="0.0" y="138" width="375" height="430"/>
+                                        <rect key="frame" x="0.0" y="138" width="375" height="414"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MoneyCell" rowHeight="74" id="ujf-Wa-VLf" customClass="MoneyCell" customModule="NumberMate" customModuleProvider="target">
@@ -881,6 +882,12 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CWc-d7-VZP">
+                                                            <rect key="frame" x="32" y="27" width="311" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" systemColor="systemYellowColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Tl5-pi-b9U">
                                                             <rect key="frame" x="32" y="27" width="311" height="20"/>
                                                             <subviews>
@@ -903,15 +910,19 @@
                                                         </stackView>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstItem="CWc-d7-VZP" firstAttribute="leading" secondItem="VGY-8S-MMw" secondAttribute="leadingMargin" constant="16" id="16S-og-TLF"/>
                                                         <constraint firstItem="Tl5-pi-b9U" firstAttribute="top" secondItem="VGY-8S-MMw" secondAttribute="topMargin" constant="16" id="2zn-kY-3Ox"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="CWc-d7-VZP" secondAttribute="trailing" constant="16" id="EuK-uc-ust"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="Tl5-pi-b9U" secondAttribute="bottom" constant="16" id="GdR-ge-tYn"/>
                                                         <constraint firstItem="Tl5-pi-b9U" firstAttribute="leading" secondItem="VGY-8S-MMw" secondAttribute="leadingMargin" constant="16" id="ecU-8l-Mfj"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="Tl5-pi-b9U" secondAttribute="trailing" constant="16" id="oXq-gx-hIX"/>
+                                                        <constraint firstItem="CWc-d7-VZP" firstAttribute="centerY" secondItem="VGY-8S-MMw" secondAttribute="centerY" id="pqh-Re-oqA"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="amountLabel" destination="0aN-kH-prQ" id="vnD-iU-wBO"/>
                                                     <outlet property="dateLabel" destination="tBc-O7-hNY" id="x7w-gk-3QC"/>
+                                                    <outlet property="displayLabel" destination="CWc-d7-VZP" id="7as-eD-cMB"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -922,8 +933,8 @@
                                     <constraint firstItem="bfO-3N-hzH" firstAttribute="leading" secondItem="mBz-2k-lQV" secondAttribute="leading" id="57g-Wk-rTv"/>
                                     <constraint firstAttribute="trailing" secondItem="kBI-te-AYa" secondAttribute="trailing" id="89T-Dh-wD5"/>
                                     <constraint firstItem="kBI-te-AYa" firstAttribute="leading" secondItem="mBz-2k-lQV" secondAttribute="leading" id="JJH-Ui-lVq"/>
+                                    <constraint firstAttribute="trailing" secondItem="Sb6-Oh-18F" secondAttribute="trailing" constant="16" id="OhO-am-45V"/>
                                     <constraint firstAttribute="trailing" secondItem="bfO-3N-hzH" secondAttribute="trailing" id="Pa9-Yj-4tR"/>
-                                    <constraint firstAttribute="trailing" secondItem="Sb6-Oh-18F" secondAttribute="trailing" id="bCV-Ub-wXj"/>
                                     <constraint firstAttribute="trailing" secondItem="XTE-Kp-AL7" secondAttribute="trailing" constant="16" id="cNt-fr-ccY"/>
                                     <constraint firstAttribute="trailing" secondItem="WF7-3G-4zI" secondAttribute="trailing" id="fGs-Bi-fV5"/>
                                     <constraint firstAttribute="bottom" secondItem="bfO-3N-hzH" secondAttribute="bottom" id="vM6-sH-Pth"/>
@@ -942,10 +953,10 @@
                         <viewLayoutGuide key="safeArea" id="RjF-Hz-zua"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="mBz-2k-lQV" firstAttribute="top" secondItem="RjF-Hz-zua" secondAttribute="top" id="1sh-Nc-y6k"/>
                             <constraint firstItem="gRC-h6-tkz" firstAttribute="top" secondItem="mBz-2k-lQV" secondAttribute="bottom" id="GR8-3J-VKO"/>
                             <constraint firstItem="gRC-h6-tkz" firstAttribute="bottom" secondItem="RjF-Hz-zua" secondAttribute="bottom" id="RdQ-XP-IMG"/>
                             <constraint firstItem="gRC-h6-tkz" firstAttribute="centerX" secondItem="5C0-4P-rjR" secondAttribute="centerX" id="cYg-a3-VE9"/>
+                            <constraint firstItem="mBz-2k-lQV" firstAttribute="top" secondItem="RjF-Hz-zua" secondAttribute="top" constant="16" id="otc-bH-pxA"/>
                             <constraint firstItem="mBz-2k-lQV" firstAttribute="leading" secondItem="RjF-Hz-zua" secondAttribute="leading" id="vTz-Yx-7C6"/>
                             <constraint firstItem="mBz-2k-lQV" firstAttribute="trailing" secondItem="RjF-Hz-zua" secondAttribute="trailing" id="wH6-Td-cVW"/>
                         </constraints>
@@ -961,7 +972,7 @@
                         <outlet property="npointsLabel" destination="JjM-sd-oGl" id="bOJ-mH-z00"/>
                         <outlet property="simpleBannerAd" destination="gRC-h6-tkz" id="bPg-M3-vbr"/>
                         <outlet property="winCount" destination="Hgy-DW-VXh" id="aSd-xX-59s"/>
-                        <segue destination="AJE-NT-4kJ" kind="modal" identifier="SettingsSegue" id="I7w-fU-EX6"/>
+                        <segue destination="AJE-NT-4kJ" kind="modal" identifier="SettingsSegue" modalPresentationStyle="fullScreen" id="I7w-fU-EX6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ew-Kq-mbF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1150,7 +1161,7 @@
             <objects>
                 <viewController storyboardIdentifier="SettingsViewController" id="AJE-NT-4kJ" customClass="SettingsViewController" customModule="NumberMate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sXq-Z4-6mR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="fTH-dj-3GT">
@@ -1698,7 +1709,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="avS-wi-lpm"/>
+        <segue reference="T7G-ty-1O5"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="98"/>

@@ -164,13 +164,10 @@ class Fire{
     
     func deleteCurrentUser(completion: @escaping(Error?)->Void){
         // Delete from the Players collection
-        if checkDocID(InCollection: .Players){
-//            getPlayerDocID(FromCollection: .Players) { (playerDocID) in
-//                self.userCollectionRef.document(playerDocID).delete { (error1) in
-//                    completion(error1)
-//                }
-//            }
-            print("CeckedDocID player")
+        getPlayerDocID(FromCollection: .Players) { (playerDocID) in
+            self.userCollectionRef.document(playerDocID).delete { (error1) in
+                completion(error1)
+            }
         }
         if checkDocID(InCollection: .Winners){
 //            getPlayerDocID(FromCollection: .Winners) { (winnerDocID) in
@@ -219,15 +216,15 @@ class Fire{
 //        }
         handle = Auth.auth().addStateDidChangeListener({ (authentication, UserOpt) in
             
-//            if UserOpt != nil {
-//                authentication.currentUser!.delete { (error) in
-//                    if let err = error{
-//                        print(err)
-//                    }else{
-//                        print("Deleted user account")
-//                    }
-//                }
-//            }
+        if UserOpt != nil {
+                authentication.currentUser!.delete { (error) in
+                    if let err = error{
+                        print(err)
+                    }else{
+                        print("Deleted user account")
+                    }
+                }
+            }
         })
         
         Auth.auth().removeStateDidChangeListener(handle!)

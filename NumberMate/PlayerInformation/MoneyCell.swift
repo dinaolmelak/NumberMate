@@ -12,6 +12,7 @@ class MoneyCell: UITableViewCell {
 
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var displayLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

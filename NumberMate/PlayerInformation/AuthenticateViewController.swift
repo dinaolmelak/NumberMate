@@ -55,14 +55,16 @@ class AuthenticateViewController: UIViewController {
                         let message = err.localizedDescription
                         print(message)
                     }else{
-  UserDefaults.standard.set(false, forKey: "isUser")
-                        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "WelcomeViewController") as WelcomeViewController
-
-                        vc.modalPresentationStyle = .fullScreen
-                        self.navigationController?.popToRootViewController(animated: true)
-                        self.present(vc, animated: true, completion: nil)
+  
+                        
                     }
                 }
+                UserDefaults.standard.set(false, forKey: "isUser")
+                
+                let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "WelcomeViewController") as WelcomeViewController
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true, completion: nil)
+                //vc.dismiss(animated: true, completion: nil)
                 print("userAuthenticated")
             }
         }
