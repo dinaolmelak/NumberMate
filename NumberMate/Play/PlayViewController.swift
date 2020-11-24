@@ -11,19 +11,18 @@ import FirebaseFirestore
 import FirebaseAuth
 import GoogleMobileAds
 
-class PlayViewController: UIViewController, GADRewardedAdDelegate {
+class PlayViewController: UIViewController,UITableViewDelegate,UITableViewDataSource, GADRewardedAdDelegate {
     
-    
-    @IBOutlet weak var inviteFriendButton: UIButton!
-    @IBOutlet weak var getPointsButton: UIButton!
     @IBOutlet weak var simpleBannerAd: GADBannerView!
-    @IBOutlet weak var playButton: UIButton!
+    
+    @IBOutlet weak var playTableView: UITableView!
     var rewardedAd: GADRewardedAd?
     var ad = MobAds()
     var show = Function()
     var firy: Fire!
     var db: Firestore!
     var rewardPoints = NumberPoints()
+    var indicator = UIActivityIndicatorView()
     override func viewDidLoad() {
         super.viewDidLoad()
         let settings = FirestoreSettings()
@@ -31,16 +30,41 @@ class PlayViewController: UIViewController, GADRewardedAdDelegate {
         db = Firestore.firestore()
         firy = Fire()
         // Do any additional setup after loading the view.
-        playButton.layer.cornerRadius = 20
-        getPointsButton.layer.cornerRadius = 5
-        inviteFriendButton.layer.cornerRadius = 5
         ad.bannerDisplay(simpleBannerAd, self)
         self.rewardedAd = ad.createAndLoadRewardedAd()
+        playTableView.dataSource = self
+        playTableView.delegate = self
+        playTableView.reloadData()
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         
     }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if (indexPath.row == 0){
+            let cell = playTableView.dequeueReusableCell(withIdentifier: "PlayTitleCell") as! PlayTitleCell
+            
+            return cell
+        }
+        else if(indexPath.row == 1){
+            let cell = playTableView.dequeueReusableCell(withIdentifier: "PlayCell") as! PlayCell
+            return cell
+        }else if(indexPath.row == 2){
+            let cell = playTableView.dequeueReusableCell(withIdentifier: "GetPointCell") as! GetPointCell
+            cell.getPointsButton.addTarget(self, action: #selector(onWatchAd), for: .touchUpInside)
+            return cell
+        }else {
+            let cell = playTableView.dequeueReusableCell(withIdentifier: "InviteFriendCell") as! InviteFriendCell
+            return cell
+        }
+    }
     func animateUp(Button botton: UIButton){
         UIView.animate(withDuration: 1) {
             botton.center.y -= CGFloat(50.0)
@@ -54,12 +78,9 @@ class PlayViewController: UIViewController, GADRewardedAdDelegate {
 
     }
     
-    @IBAction func onPlay(_ sender: Any) {
-        performSegue(withIdentifier: "GameSegue", sender: self)
-    }
     
-    @IBAction func onWatchAd(_ sender: Any) {
-        //show.showQuestion(Title: , Message: ,ViewController: self)
+    
+    @objc func onWatchAd() {
         guard self.rewardedAd?.isReady == true else{
             return
         }
@@ -73,15 +94,10 @@ class PlayViewController: UIViewController, GADRewardedAdDelegate {
         }
         alert.addAction(noAction)
         alert.addAction(yesAction)
-        present(alert, animated: true)
+                present(alert, animated: true)
 
     }
     
-    @IBAction func onAddFriend(_ sender: Any) {
-        print("clicked Add Friend")
-        performSegue(withIdentifier: "InviteSegue", sender: self)
-        
-    }
     
     
     func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {

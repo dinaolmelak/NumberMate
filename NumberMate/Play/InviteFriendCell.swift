@@ -1,20 +1,20 @@
 //
-//  ProfileTitleCell.swift
+//  InviteFriendCell.swift
 //  NumberMate
 //
-//  Created by Dinaol Melak on 11/22/20.
+//  Created by Dinaol Melak on 11/23/20.
 //  Copyright © 2020 Dinaol Melak. All rights reserved.
 //
 
 import UIKit
 
-class ProfileTitleCell: UITableViewCell {
+class InviteFriendCell: UITableViewCell {
 
-    
-    @IBOutlet weak var profileTitleLabel: UILabel!
+    @IBOutlet weak var inviteFriendButton: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        inviteFriendButton.layer.cornerRadius = 20
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

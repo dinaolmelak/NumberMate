@@ -1,20 +1,20 @@
 //
-//  ProfileTitleCell.swift
+//  GetPointCell.swift
 //  NumberMate
 //
-//  Created by Dinaol Melak on 11/22/20.
+//  Created by Dinaol Melak on 11/23/20.
 //  Copyright © 2020 Dinaol Melak. All rights reserved.
 //
 
 import UIKit
 
-class ProfileTitleCell: UITableViewCell {
+class GetPointCell: UITableViewCell {
 
-    
-    @IBOutlet weak var profileTitleLabel: UILabel!
+    @IBOutlet weak var getPointsButton: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        getPointsButton.layer.cornerRadius = 20
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

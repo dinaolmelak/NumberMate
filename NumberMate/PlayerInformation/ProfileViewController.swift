@@ -59,7 +59,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
         if(indexPath.row == 0){
             let cell = moneyTableView.dequeueReusableCell(withIdentifier: "ProfileTitleCell", for: indexPath) as! ProfileTitleCell
             
-            
+            cell.profileTitleLabel.text = "Account"
             return cell
         }else if(indexPath.row == 1){
             
@@ -87,9 +87,11 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
             }else{
                 let cell = moneyTableView.dequeueReusableCell(withIdentifier: "MoneyCell", for: indexPath) as! MoneyCell
                 let element = earnedMoney[indexPath.row - 2]
+                
+                
                 cell.displayLabel.alpha = 0.0
-                cell.dateLabel.text = String(element.points)
-                cell.amountLabel.text = String(element.amountEarned)
+                cell.dateLabel.text = String(element.points) + "NP"
+                cell.amountLabel.text = String(element.amountEarned) + "$"
                 return cell
             }
         }

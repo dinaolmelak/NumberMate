@@ -14,6 +14,7 @@ class AuthenticateViewController: UIViewController {
 
     var displayAlerts = Function()
     var firy = Fire()
+    @IBOutlet weak var sadImageView: UIImageView!
     @IBOutlet weak var passTextField: UITextField!
     @IBOutlet weak var emailLabel: UILabel!
     
@@ -28,6 +29,11 @@ class AuthenticateViewController: UIViewController {
 //        user?.reauthenticate(with: credential, completion: { (<#AuthDataResult?#>, <#Error?#>) in
 //            <#code#>
 //        })
+        if self.traitCollection.userInterfaceStyle == .dark{
+            sadImageView.loadGif(name: "animation_500_khvs2thz")
+        }else{
+            sadImageView.loadGif(name: "26184-sad-star")
+        }
         if let user = Auth.auth().currentUser{
             emailLabel.text = user.email!
         }

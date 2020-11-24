@@ -89,13 +89,13 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.funcs.showAlert(Title: "Error", Message: error.localizedDescription, ViewController: self)
                 }
             }
-        }
+        }else if(guesses.count != 0){
             firy.increamentGameCount { (error) in
                 if let error = error{
                     self.funcs.showAlert(Title: "Error", Message: error.localizedDescription, ViewController: self)
                 }
             }
-        
+        }
         dismiss(animated: true, completion: nil)
     }
     @IBAction func didTapNumbers(_ sender: Any){

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDynamicLinks
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -17,9 +18,51 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        
         guard let _ = (scene as? UIWindowScene) else { return }
+        if let userActivity = connectionOptions.userActivities.first {
+            if let incomingURL = userActivity.webpageURL {
+                print("incomingURL is \(incomingURL)")
+                let _ = DynamicLinks.dynamicLinks().handleUniversalLink(incomingURL) { (dynamicLink, error) in
+                    guard error == nil else{
+                        let message = error!.localizedDescription
+                        print("found Error \(message)")
+                        return
+                    }
+                    if let dynamiclink = dynamicLink{
+                        self.handleIncomingDynamicLink(dynamiclink)
+                    }
+                }
+                
+            }
+        }
     }
 
+    func handleIncomingDynamicLink(_ dynamicLink: DynamicLink){
+        guard let url = dynamicLink.url else{
+            print("Weird!, My dynamic link object has no url!")
+            return
+        }
+        print("Your incoming parameter is \(url.absoluteString)")
+    }
+    @available(iOS 9.0, *)
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+      return application(app, open: url,
+                         sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+                         annotation: "")
+    }
+
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+      if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
+        // Handle the deep link. For example, show the deep-linked content or
+        // apply a promotional offer to the user's account.
+        // ...
+        print("Here__\(dynamicLink.url?.absoluteString)")
+        return true
+      }
+      return false
+    }
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.

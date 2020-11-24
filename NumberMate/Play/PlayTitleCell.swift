@@ -1,17 +1,15 @@
 //
-//  ProfileTitleCell.swift
+//  PlayTitleCell.swift
 //  NumberMate
 //
-//  Created by Dinaol Melak on 11/22/20.
+//  Created by Dinaol Melak on 11/23/20.
 //  Copyright © 2020 Dinaol Melak. All rights reserved.
 //
 
 import UIKit
 
-class ProfileTitleCell: UITableViewCell {
+class PlayTitleCell: UITableViewCell {
 
-    
-    @IBOutlet weak var profileTitleLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -11,14 +11,19 @@ import FirebaseAuth
 import FirebaseDynamicLinks
 
 class AddFriendVC: UIViewController {
-    let numbermateLink = "https://numbermate.page.link"
-    let numbermateAppStoreID = "1227019728"
-    let nmurlInvitePath = "/invites"
-    let nmurlHost = "www.numbermate.com"
-    let nmurlScheme = "https"
+    let para = FBParameters()
     let notify = Function()
+    let activityIndicator = UIActivityIndicatorView()
+    var userInterface = UIUserInterfaceStyle.self
+    @IBOutlet weak var nmateImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if self.traitCollection.userInterfaceStyle == .dark{
+                    
+        }else{
+            nmateImage.loadGif(name: "14408-join-your-team")
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -28,25 +33,26 @@ class AddFriendVC: UIViewController {
     }
     
     @IBAction func onTapInvite(_ sender: Any) {
+        notify.startActivityIndicator(activityIndicator, ViewController: self)
         guard let user = Auth.auth().currentUser else { return }
         var components = URLComponents()
-        components.scheme = nmurlScheme
-        components.host = nmurlHost
-        components.path = nmurlInvitePath
+        components.scheme = para.nmurlScheme
+        components.host = para.nmurlHost
+        components.path = para.nmurlInvitePath
         let inviteIdQuery = URLQueryItem(name: "invitedby", value: user.uid)
         components.queryItems = [inviteIdQuery]
         
         guard let linkPara = components.url else {
             return
         }//link works
-        guard let sharelink = DynamicLinkComponents.init(link: linkPara, domainURIPrefix: numbermateLink) else{
+        guard let sharelink = DynamicLinkComponents.init(link: linkPara, domainURIPrefix: para.numbermateLink) else{
             print("coundn't create firebase DL component")
             return
         }
         if let myBundleID = Bundle.main.bundleIdentifier{
             sharelink.iOSParameters = DynamicLinkIOSParameters(bundleID: myBundleID)
         }
-        sharelink.iOSParameters?.appStoreID = numbermateAppStoreID
+        sharelink.iOSParameters?.appStoreID = para.numbermateAppStoreID
         sharelink.socialMetaTagParameters = DynamicLinkSocialMetaTagParameters()
         sharelink.socialMetaTagParameters?.title = "Welcome To NumberMate"
         
@@ -70,6 +76,7 @@ class AddFriendVC: UIViewController {
     }
     
     func inviteSheet(url: URL){
+        notify.stopActivityIndicator(activityIndicator, ViewController: self)
         let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
         present(activityVC, animated: true, completion: nil)
     }

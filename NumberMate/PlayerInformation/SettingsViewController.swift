@@ -56,27 +56,7 @@ class SettingsViewController: UIViewController {
         print("onChangePassword")
     }
     @IBAction func onTapDelete(_ sender: Any) {
-        // delete account
-        //firy.deleteCurrentUser(Firestore: db)
         performSegue(withIdentifier: "DeleteSegue", sender: self)
-//        UserDefaults.standard.set(false, forKey: "isUser")
-//        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "IntroPageViewController") as IntroPageViewController
-//        self.present(vc, animated: true) {
-//
-//            print("delete->Presented VC")
-//            self.firy.deleteCurrentUser { (error) in
-//                if let err = error{
-//                    print(err)
-//                    //let message = err.localizedDescription
-//                    //self.settingFunc.showAlert(Title: "Error", Message: message, ViewController: self.self)
-//                }else{
-//                    print("Deleted")
-//                    //self.settingFunc.showAlert(Title: "Success", Message: "Your account was successfully Deleted!", ViewController: self)
-//                }
-//            }
-//            do { try Auth.auth().signOut() }
-//            catch { print("already logged out") }
-//        }
     }
     override func viewDidDisappear(_ animated: Bool) {
         self.firy.detachListener()
