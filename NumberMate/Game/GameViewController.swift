@@ -119,8 +119,10 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func onTapGuessed(_ sender: Any){
         guard(initGuess.count == 4 && !funcs.isRepeated(initGuess)) else{
             instructionsLabel.text = "Please enter any 4 digit number that is distinct"
+            instructionsLabel.textColor = UIColor.red
             return
         }
+        instructionsLabel.text = "Guess the number before bomb to get more points"
         let hiddenNum = hiddenNumber!
         let newNumGroup = self.funcs.checkGroup(guessNum: initGuess, hiddenNum: String(hiddenNum))
         let newNumOrder = self.funcs.checkOrder(guessNum: initGuess, hiddenNum: String(hiddenNum))
