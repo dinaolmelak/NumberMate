@@ -28,12 +28,18 @@
 		C0366499251C74460096AE3C /* Guess.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0366498251C74460096AE3C /* Guess.swift */; };
 		C036649B251C9F950096AE3C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C036649A251C9F950096AE3C /* SettingsViewController.swift */; };
 		C036649D251CA3A80096AE3C /* MonthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C036649C251CA3A70096AE3C /* MonthViewController.swift */; };
+		C052522C256A1E0A008A0C60 /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C052522B256A1E0A008A0C60 /* ResetPasswordVC.swift */; };
+		C052522F256A53D6008A0C60 /* DisplayTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C052522E256A53D6008A0C60 /* DisplayTextCell.swift */; };
+		C0525232256A5A21008A0C60 /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0525231256A5A21008A0C60 /* TitleCell.swift */; };
 		C053D820255337DF00CD0893 /* NumberPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C053D81F255337DF00CD0893 /* NumberPoints.swift */; };
 		C05AE6AF2529038300FE5604 /* Paypal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05AE6AE2529038300FE5604 /* Paypal.swift */; };
 		C0718E54251AA34C0055B342 /* IntroPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0718E53251AA34C0055B342 /* IntroPageViewController.swift */; };
 		C0718E56251AA5930055B342 /* PlayIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0718E55251AA5930055B342 /* PlayIntroViewController.swift */; };
 		C0718E58251AA5BE0055B342 /* PointsIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0718E57251AA5BE0055B342 /* PointsIntroViewController.swift */; };
 		C0718E5A251AA5D80055B342 /* WinIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0718E59251AA5D80055B342 /* WinIntroViewController.swift */; };
+		C08722EE256A6424003D3319 /* PlayerInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08722ED256A6424003D3319 /* PlayerInfoCell.swift */; };
+		C08722F1256A6446003D3319 /* ProfileTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08722F0256A6446003D3319 /* ProfileTitleCell.swift */; };
+		C08722F4256B148E003D3319 /* 30308-car.gif in Resources */ = {isa = PBXBuildFile; fileRef = C08722F3256B148E003D3319 /* 30308-car.gif */; };
 		C09D9794254CFA150090828C /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09D9793254CFA150090828C /* WelcomeViewController.swift */; };
 		C0AB1E1724C0EBF3008DEF05 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AB1E1624C0EBF3008DEF05 /* SignInViewController.swift */; };
 		C0AB1E1924C0EC64008DEF05 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AB1E1824C0EC64008DEF05 /* SignUpViewController.swift */; };
@@ -75,12 +81,18 @@
 		C036649A251C9F950096AE3C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C036649C251CA3A70096AE3C /* MonthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthViewController.swift; sourceTree = "<group>"; };
 		C043D43B25491D560037D806 /* NumberMateDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NumberMateDebug.entitlements; sourceTree = "<group>"; };
+		C052522B256A1E0A008A0C60 /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
+		C052522E256A53D6008A0C60 /* DisplayTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayTextCell.swift; sourceTree = "<group>"; };
+		C0525231256A5A21008A0C60 /* TitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
 		C053D81F255337DF00CD0893 /* NumberPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NumberPoints.swift; path = "../New Group/NumberPoints.swift"; sourceTree = "<group>"; };
 		C05AE6AE2529038300FE5604 /* Paypal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paypal.swift; sourceTree = "<group>"; };
 		C0718E53251AA34C0055B342 /* IntroPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPageViewController.swift; sourceTree = "<group>"; };
 		C0718E55251AA5930055B342 /* PlayIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayIntroViewController.swift; sourceTree = "<group>"; };
 		C0718E57251AA5BE0055B342 /* PointsIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsIntroViewController.swift; sourceTree = "<group>"; };
 		C0718E59251AA5D80055B342 /* WinIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinIntroViewController.swift; sourceTree = "<group>"; };
+		C08722ED256A6424003D3319 /* PlayerInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoCell.swift; sourceTree = "<group>"; };
+		C08722F0256A6446003D3319 /* ProfileTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTitleCell.swift; sourceTree = "<group>"; };
+		C08722F3256B148E003D3319 /* 30308-car.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "30308-car.gif"; sourceTree = "<group>"; };
 		C09D9793254CFA150090828C /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		C0AB1E1624C0EBF3008DEF05 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		C0AB1E1824C0EC64008DEF05 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +219,7 @@
 				C09D9793254CFA150090828C /* WelcomeViewController.swift */,
 				C0AB1E1624C0EBF3008DEF05 /* SignInViewController.swift */,
 				C0AB1E1824C0EC64008DEF05 /* SignUpViewController.swift */,
+				C052522B256A1E0A008A0C60 /* ResetPasswordVC.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -226,6 +239,8 @@
 			isa = PBXGroup;
 			children = (
 				C009770524B0031D005C68B0 /* LeadersViewController.swift */,
+				C0525231256A5A21008A0C60 /* TitleCell.swift */,
+				C052522E256A53D6008A0C60 /* DisplayTextCell.swift */,
 				C009771124B1B51A005C68B0 /* LeaderCell.swift */,
 			);
 			path = LeaderBoard;
@@ -255,6 +270,8 @@
 				C036649A251C9F950096AE3C /* SettingsViewController.swift */,
 				C0FBC2DC254BFE1C0092AC8C /* AuthenticateViewController.swift */,
 				C003BAB02539F2AA009237E5 /* MoneyCell.swift */,
+				C08722ED256A6424003D3319 /* PlayerInfoCell.swift */,
+				C08722F0256A6446003D3319 /* ProfileTitleCell.swift */,
 			);
 			path = PlayerInformation;
 			sourceTree = "<group>";
@@ -262,6 +279,7 @@
 		C0F28D922537AE2400C44FA3 /* AnimationFiles */ = {
 			isa = PBXGroup;
 			children = (
+				C08722F3256B148E003D3319 /* 30308-car.gif */,
 				C0FBC2DA254BF3380092AC8C /* 18880-watch-videos.gif */,
 				C0E9414C254BC69C00E2F7ED /* 6552-search.gif */,
 				C0FBC2D8254BF32B0092AC8C /* 4768-trophy.gif */,
@@ -342,6 +360,7 @@
 			files = (
 				C00976FA24AFBF20005C68B0 /* LaunchScreen.storyboard in Resources */,
 				C0FBC2DB254BF3380092AC8C /* 18880-watch-videos.gif in Resources */,
+				C08722F4256B148E003D3319 /* 30308-car.gif in Resources */,
 				C009770224AFE8D5005C68B0 /* GoogleService-Info.plist in Resources */,
 				C00976F724AFBF20005C68B0 /* Assets.xcassets in Resources */,
 				C0F28D992537E92700C44FA3 /* 1204-car.json in Resources */,
@@ -406,11 +425,15 @@
 				C0718E5A251AA5D80055B342 /* WinIntroViewController.swift in Sources */,
 				C0AB1E1924C0EC64008DEF05 /* SignUpViewController.swift in Sources */,
 				C0F28D972537E2F100C44FA3 /* AddFriendVC.swift in Sources */,
+				C052522C256A1E0A008A0C60 /* ResetPasswordVC.swift in Sources */,
 				C009771224B1B51A005C68B0 /* LeaderCell.swift in Sources */,
 				C00976EE24AFBF15005C68B0 /* AppDelegate.swift in Sources */,
 				C003BAB5253A3FD4009237E5 /* Payments.swift in Sources */,
 				C0718E54251AA34C0055B342 /* IntroPageViewController.swift in Sources */,
 				C036649B251C9F950096AE3C /* SettingsViewController.swift in Sources */,
+				C052522F256A53D6008A0C60 /* DisplayTextCell.swift in Sources */,
+				C0525232256A5A21008A0C60 /* TitleCell.swift in Sources */,
+				C08722F1256A6446003D3319 /* ProfileTitleCell.swift in Sources */,
 				C0366499251C74460096AE3C /* Guess.swift in Sources */,
 				C0FBC2DD254BFE1C0092AC8C /* AuthenticateViewController.swift in Sources */,
 				C0244862251E5EA100F8996B /* PlayViewController.swift in Sources */,
@@ -424,6 +447,7 @@
 				C0718E58251AA5BE0055B342 /* PointsIntroViewController.swift in Sources */,
 				C009770624B0031D005C68B0 /* LeadersViewController.swift in Sources */,
 				C0366497251C5F780096AE3C /* Players.swift in Sources */,
+				C08722EE256A6424003D3319 /* PlayerInfoCell.swift in Sources */,
 				C003BAB12539F2AA009237E5 /* MoneyCell.swift in Sources */,
 				C009770824B0033C005C68B0 /* GameViewController.swift in Sources */,
 				C0E9414B254BC54900E2F7ED /* Swift+gif.swift in Sources */,
@@ -576,8 +600,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NumberMate/NumberMateDebug.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 8ANT6T3S86;
 				INFOPLIST_FILE = NumberMate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -586,7 +610,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dinaolmelak.NumberMate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "NMate Profile";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

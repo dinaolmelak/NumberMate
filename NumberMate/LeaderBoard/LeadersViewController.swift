@@ -18,6 +18,8 @@ class LeadersViewController: UIViewController, UITableViewDelegate, UITableViewD
     let ads = MobAds()
     var firy: Fire!
     var db : Firestore!
+    var funcs = Function()
+    var activityIndicator = UIActivityIndicatorView()
     @IBOutlet weak var simplePlayerBanner: GADBannerView!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -30,19 +32,18 @@ class LeadersViewController: UIViewController, UITableViewDelegate, UITableViewD
         ads.bannerDisplay(simplePlayerBanner,self)
         tableView.delegate = self
         tableView.dataSource = self
-        firy.getPlayersInfo(){ (playerslist) in
-            self.players = playerslist
-            print(self.players)
-            self.tableView.reloadData()
-        }
     }
     override func viewDidAppear(_ animated: Bool) {
         //onTimer()
         // MARK: - loading players----
-        
-        
+        funcs.startActivityIndicator(activityIndicator, ViewController: self)
+        firy.getPlayersInfo(){ (playerslist) in
+                    self.players = playerslist
+                    print(self.players)
+                    self.tableView.reloadData()
+                }
+        funcs.stopActivityIndicator(activityIndicator, ViewController: self)
         // listener.remove()
-        
         // when vc appears
         // - setup a listener to Players collection
         // - get the documents and add it to players array
@@ -52,15 +53,26 @@ class LeadersViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return players.count
+        return players.count + 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LeaderCell", for: indexPath) as! LeaderCell
-        let playerDoc = players[indexPath.row]
-        cell.playerNameLabel.text = playerDoc.displayName
-        cell.playerStatusLabel.text = String(playerDoc.points)
-        return cell
+        
+        if (indexPath.row == 0){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TitleCell", for: indexPath) as! TitleCell
+            return cell
+        }else if(indexPath.row == 1){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DisplayTextCell", for: indexPath) as! DisplayTextCell
+            cell.headerLabel.text = "The First Place Winner Get $25 Reward on Due Date!"
+            return cell
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LeaderCell", for: indexPath) as! LeaderCell
+                    let playerDoc = players[indexPath.row - 2]
+                    cell.playerNameLabel.text = playerDoc.displayName
+                    cell.playerStatusLabel.text = String(playerDoc.points)
+            return cell
+        }
+        
     }
     override func viewDidDisappear(_ animated: Bool) {
         firy.detachListener()

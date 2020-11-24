@@ -1,24 +1,24 @@
 //
-//  MoneyCell.swift
+//  PlayerInfoCell.swift
 //  NumberMate
 //
-//  Created by Dinaol Melak on 10/16/20.
+//  Created by Dinaol Melak on 11/22/20.
 //  Copyright © 2020 Dinaol Melak. All rights reserved.
 //
 
 import UIKit
 
-class MoneyCell: UITableViewCell {
+class PlayerInfoCell: UITableViewCell {
 
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var amountLabel: UILabel!
-    @IBOutlet weak var displayLabel: UILabel!
+    @IBOutlet weak var winCount: UILabel!
+    @IBOutlet weak var gameCount: UILabel!
+    @IBOutlet weak var npointsLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var fullNameLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        displayLabel.alpha = 0.0
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

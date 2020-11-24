@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class Function {
+    
     func isRepeated(_ inString: String)->Bool{
         var num = 0
         for i in inString {
@@ -97,5 +98,19 @@ class Function {
         alert.addAction(noAction)
         
         vc.present(alert, animated: true)
+    }
+    
+    func startActivityIndicator(_ indicator:UIActivityIndicatorView,ViewController vc:UIViewController){
+        indicator.center = vc.view.center
+        indicator.hidesWhenStopped = true
+        indicator.style = .large
+        vc.view.addSubview(indicator)
+        vc.view.isUserInteractionEnabled = false
+        indicator.startAnimating()
+    }
+    func stopActivityIndicator(_ indicator:UIActivityIndicatorView, ViewController vc:UIViewController){
+        
+        vc.view.isUserInteractionEnabled = true
+        indicator.stopAnimating()
     }
 }

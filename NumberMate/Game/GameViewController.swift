@@ -28,6 +28,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     var hiddenNumber:  String?
     var guesses = [guess]()
     var db: Firestore!
+    @IBOutlet weak var instructionsLabel: UILabel!
+
     var animationView: AnimationView?
     var pointReward = NumberPoints()
     var initGuess = "Input Your Guess"
@@ -97,7 +99,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         dismiss(animated: true, completion: nil)
     }
     @IBAction func didTapNumbers(_ sender: Any){
-        if initGuess.count > 4{
+        if initGuess.count >= 4{
             initGuess = ""
         }
         let button = sender as! UIButton
@@ -116,7 +118,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     @IBAction func onTapGuessed(_ sender: Any){
         guard(initGuess.count == 4 && !funcs.isRepeated(initGuess)) else{
-            self.funcs.showAlert(Title: "4 digits", Message: "Please enter any 4 digit number that is distinct", ViewController: self)
+            instructionsLabel.text = "Please enter any 4 digit number that is distinct"
             return
         }
         let hiddenNum = hiddenNumber!
@@ -142,51 +144,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.reloadData()
     }
     
-    @IBAction func didTapAddGuess(_ sender: Any) {
-        //
-        let hiddenNum = hiddenNumber!
-        let alert = UIAlertController(title: "New Guess", message: "Enter your guess NUMBER!", preferredStyle: .alert)
-        alert.addTextField { (textField)  in
-            textField.text = ""
-        }
-        let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let guessAction = UIAlertAction(title: "Guess", style: .default, handler: { [weak alert] (action) -> Void in
-            let textField = alert?.textFields![0]
-            guard ((textField?.text) != nil) else{
-                return
-            }
-            if self.funcs.isRepeated(textField!.text!){
-                self.funcs.showAlert(Title: "ERROR", Message: "Enter a 4 digit number that is distinct",ViewController: self)
-                return
-            }
-            let newNum = textField!.text!
-            let newNumGroup = self.funcs.checkGroup(guessNum: newNum, hiddenNum: String(hiddenNum))
-            let newNumOrder = self.funcs.checkOrder(guessNum: newNum, hiddenNum: String(hiddenNum))
-            
-            let newGuess = guess(guess: newNum, group: newNumGroup, order: newNumOrder)
-            self.guesses.insert(newGuess, at: 0)
-            //self.guesses.append(newGuess)
-            if self.started != true{
-                self.started = true
-                self.gameTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.onTimerFires), userInfo: nil, repeats: true)
-                self.minTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.onMinTimerFires), userInfo: nil, repeats: true)
-            }
-            self.tableView.reloadData()
-            if newNumGroup == 4 && newNumOrder == 4{
-                //self.funcs.showAlert(Title: "Congratulations!", Message: "You Won!!!",ViewController: self)
-                //self.AddGuessesTodb()
-                self.playWinAnimation()
-                self.addGuessButton.isEnabled = false
-                self.won = true
-                self.gameTimer?.invalidate()
-                self.minTimer?.invalidate()
-            }
-        })
-        alert.addAction(actionCancel)
-        alert.addAction(guessAction)
-        
-        self.present(alert, animated: true, completion: nil)
-        
+    @IBAction func didTapInfo(_ sender: Any) {
+        // More Information
         
         
     }

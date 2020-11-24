@@ -408,7 +408,7 @@ class Fire{
         }
     }
     func listenEarnedPayments(completion: @escaping ([Earned]) -> Void){
-        winnerRef.order(by: paymentDateKey, descending: true).limit(to: 100).getDocuments{ (querySnap, error) in
+        winnerRef.order(by: paymentDateKey, descending: true).addSnapshotListener{ (querySnap, error) in
             if error != nil{
                 print(error as Any)
             }else{

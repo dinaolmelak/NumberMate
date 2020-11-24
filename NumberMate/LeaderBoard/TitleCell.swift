@@ -1,24 +1,18 @@
 //
-//  MoneyCell.swift
+//  TitleCell.swift
 //  NumberMate
 //
-//  Created by Dinaol Melak on 10/16/20.
+//  Created by Dinaol Melak on 11/22/20.
 //  Copyright © 2020 Dinaol Melak. All rights reserved.
 //
 
 import UIKit
 
-class MoneyCell: UITableViewCell {
+class TitleCell: UITableViewCell {
 
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var amountLabel: UILabel!
-    @IBOutlet weak var displayLabel: UILabel!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        displayLabel.alpha = 0.0
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

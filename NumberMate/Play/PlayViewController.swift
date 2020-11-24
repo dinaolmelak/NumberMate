@@ -37,6 +37,22 @@ class PlayViewController: UIViewController, GADRewardedAdDelegate {
         ad.bannerDisplay(simpleBannerAd, self)
         self.rewardedAd = ad.createAndLoadRewardedAd()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        
+    }
+    
+    func animateUp(Button botton: UIButton){
+        UIView.animate(withDuration: 1) {
+            botton.center.y -= CGFloat(50.0)
+        }
+    }
+
+    func animateDown(Button botton:UIButton){
+        UIView.animate(withDuration: 1) {
+            botton.center.y += CGFloat(50.0)
+        }
+
+    }
     
     @IBAction func onPlay(_ sender: Any) {
         performSegue(withIdentifier: "GameSegue", sender: self)
@@ -79,7 +95,7 @@ class PlayViewController: UIViewController, GADRewardedAdDelegate {
             }
         }
         if rewardedAd.responseInfo != nil{
-          show.showAlert(Title: "Earned", Message: "You have earned \(reward.amount.intValue * 2)", ViewController: self)
+          show.showAlert(Title: "Earned", Message: "You have earned \(reward.amount.intValue )", ViewController: self)
         }
     }
     func rewardedAdDidDismiss(_ rewardedAd: GADRewardedAd) {

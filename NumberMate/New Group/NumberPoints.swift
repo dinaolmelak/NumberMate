@@ -9,8 +9,9 @@
 import Foundation
 
 class NumberPoints{
-    let gameWonPoint = 100
-    let adVidRewardPoint = 15
-    let wonGameInMin = 200
+    let gameWonPoint = 50
+    let adVidRewardPoint = 10
+    let wonGameInMin = 70
+    let firstTimePlayerReward = 7
 }
 

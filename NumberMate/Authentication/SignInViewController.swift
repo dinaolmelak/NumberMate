@@ -30,6 +30,11 @@ class SignInViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
     }
+    @IBAction func onResetPassword(_ sender: Any) {
+        
+        performSegue(withIdentifier: "ResetPasswordSegue", sender: self)
+    }
+    
     @IBAction func didTapSignIn(_ sender: Any) {
         
         let userEmail = emailTextfield.text!

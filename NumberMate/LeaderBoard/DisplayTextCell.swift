@@ -1,24 +1,20 @@
 //
-//  MoneyCell.swift
+//  DisplayTextCell.swift
 //  NumberMate
 //
-//  Created by Dinaol Melak on 10/16/20.
+//  Created by Dinaol Melak on 11/22/20.
 //  Copyright © 2020 Dinaol Melak. All rights reserved.
 //
 
 import UIKit
 
-class MoneyCell: UITableViewCell {
+class DisplayTextCell: UITableViewCell {
 
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var amountLabel: UILabel!
-    @IBOutlet weak var displayLabel: UILabel!
+    @IBOutlet weak var headerLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        displayLabel.alpha = 0.0
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

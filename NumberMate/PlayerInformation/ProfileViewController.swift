@@ -17,15 +17,13 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
     var ad = MobAds()
     var db: Firestore!
     var firy: Fire!
+    var funcs = Function()
     var earnedMoney = [Earned]()
-    var carAnimationView: AnimationView?
+//    var carAnimationView: AnimationView?
+    var activityIndicator = UIActivityIndicatorView()
     @IBOutlet weak var simpleBannerAd: GADBannerView!
     @IBOutlet weak var moneyTableView: UITableView!
-    @IBOutlet weak var winCount: UILabel!
-    @IBOutlet weak var gameCount: UILabel!
-    @IBOutlet weak var npointsLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var fullNameLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,40 +39,62 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
         moneyTableView.delegate = self
         moneyTableView.dataSource = self
         
-       
     }
     override func viewDidAppear(_ animated: Bool) {
 //        playCarAnimation()
-        playerDataFromdb()
-        firy.listenEarnedPayments() { (earned) in
-            self.earnedMoney = earned
-            self.moneyTableView.reloadData()
-        }
+        funcs.startActivityIndicator(activityIndicator, ViewController: self)
+                playerDataFromdb()
+            firy.listenEarnedPayments() { (earned) in
+                self.earnedMoney = earned
+                self.moneyTableView.reloadData()
+            }
+        funcs.stopActivityIndicator(activityIndicator, ViewController: self)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return earnedMoney.count ;
+        return earnedMoney.count + 3;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if earnedMoney.count == 0{
-            let cell = moneyTableView.dequeueReusableCell(withIdentifier: "MoneyCell", for: indexPath) as! MoneyCell
-            cell.amountLabel.alpha = 0
-            cell.dateLabel.alpha = 0
-            cell.displayLabel.text = "Rewards will appear here"
+        if(indexPath.row == 0){
+            let cell = moneyTableView.dequeueReusableCell(withIdentifier: "ProfileTitleCell", for: indexPath) as! ProfileTitleCell
+            
+            
             return cell
-        }else{
-            let cell = moneyTableView.dequeueReusableCell(withIdentifier: "MoneyCell", for: indexPath) as! MoneyCell
-            let element = earnedMoney[indexPath.row ]
-            cell.displayLabel.alpha = 0.0
-            cell.dateLabel.text = String(element.points)
-            cell.amountLabel.text = String(element.amountEarned)
+        }else if(indexPath.row == 1){
+            
+            let cell = moneyTableView.dequeueReusableCell(withIdentifier: "PlayerInfoCell", for: indexPath) as! PlayerInfoCell
+            
+            self.firy.listenPlayerInfo() { (playerInfo) in
+                cell.fullNameLabel.text =
+                 playerInfo.fname + " " + playerInfo.lname
+                cell.emailLabel.text = playerInfo.email
+                cell.npointsLabel.text = String(playerInfo.points)
+                cell.gameCount.text =  String(playerInfo.game_count)
+                cell.winCount.text =  String(playerInfo.won_game_count)
+            
+                }
             return cell
         }
+        else{
+            if earnedMoney.count == 0{
+                let cell = moneyTableView.dequeueReusableCell(withIdentifier: "MoneyCell", for: indexPath) as! MoneyCell
+                cell.amountLabel.alpha = 0
+                cell.dateLabel.alpha = 0
+                cell.displayLabel.text = "Rewards will appear here"
+                cell.displayLabel.alpha = 1.0
+                return cell
+            }else{
+                let cell = moneyTableView.dequeueReusableCell(withIdentifier: "MoneyCell", for: indexPath) as! MoneyCell
+                let element = earnedMoney[indexPath.row - 2]
+                cell.displayLabel.alpha = 0.0
+                cell.dateLabel.text = String(element.points)
+                cell.amountLabel.text = String(element.amountEarned)
+                return cell
+            }
+        }
     }
-    @IBAction func didTapSetting(_ sender: Any) {
-        performSegue(withIdentifier: "SettingsSegue", sender: self)
-    }
+    
     
     func playerDataFromdb(){
         firy.listenPlayerInfo() { (playerInfo) in
@@ -87,30 +107,26 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
 //        stopPlayingAnimation()
 //        firy.detachListener()
     }
-    func stopPlayingAnimation(){
-        carAnimationView?.stop()
-        view.subviews.last?.removeFromSuperview()
-    }
-    func playCarAnimation(){
-        carAnimationView = .init(name: "1204-car")
-        
-        carAnimationView!.contentMode = .scaleAspectFit
-        /// Converts a rect
-        //carAnimationView!.bounds.width = view.bounds.width
-        //carAnimationView!.bounds.height = view.bounds.height
-        carAnimationView!.frame = CGRect(x: view.frame.width / 4, y: 0, width: 250, height: 200)
-        view.addSubview(carAnimationView!)
-        carAnimationView!.loopMode = .loop
-        carAnimationView!.animationSpeed = 2
-        carAnimationView!.play()
-    }
+//    func stopPlayingAnimation(){
+//        carAnimationView?.stop()
+//        view.subviews.last?.removeFromSuperview()
+//    }
+//    func playCarAnimation(){
+//        carAnimationView = .init(name: "1204-car")
+//
+//        carAnimationView!.contentMode = .scaleAspectFit
+//        /// Converts a rect
+//        //carAnimationView!.bounds.width = view.bounds.width
+//        //carAnimationView!.bounds.height = view.bounds.height
+//        carAnimationView!.frame = CGRect(x: view.frame.width / 4, y: 0, width: 250, height: 200)
+//        view.addSubview(carAnimationView!)
+//        carAnimationView!.loopMode = .loop
+//        carAnimationView!.animationSpeed = 2
+//        carAnimationView!.play()
+//    }
     
     func setDataToLabel(FName fName: String, LName lName: String, email inEmail: String,Points inPoint: Int, GameCount inGame: Int,WinCount winnings:Int, TimeTaken timeTaken: Int){
-        fullNameLabel.text = fName + " " + lName
-        emailLabel.text = inEmail
-        npointsLabel.text = String(inPoint)
-        winCount.text = String(winnings)
-        gameCount.text = String(inGame)
+        
     }
     /*
     // MARK: - Navigation
