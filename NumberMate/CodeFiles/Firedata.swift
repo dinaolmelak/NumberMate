@@ -34,6 +34,7 @@ class Fire{
     let userEmailKey = "email"
     let userDisplayNameKey = "dname"
     let userUIDKey = "userUID"
+    let userReferredbyKey = "invited_by"
     let userGameCounterKey = "game_count"
     let userWonGameCountKey = "won_game_count"
     let userGamePointsKey = "points"
@@ -309,31 +310,50 @@ class Fire{
     }
     
     func signUp(First fName:String,Last lName:String,DisplayName dName:String, Email email:String,Password pass: String, completion:@escaping(Error?)->Void){
-        Auth.auth().createUser(withEmail: email, password: pass) { (authDataResult, error) in
+        var saveData = [String:Any]()
+            saveData = [
+            self.userFirstNameKey: fName,
+            self.userLastNameKey: lName,
+            self.userDisplayNameKey: dName,
+            self.userEmailKey: email,
+            self.userGameCounterKey: 0,
+            self.userWonGameCountKey: 0,
+            self.userGamePointsKey: 0,
+            self.userGameMinTimeKey: 0.0
+         ]
+        if let user = Auth.auth().currentUser {
+            let credential = EmailAuthProvider.credential(withEmail: email, password: pass)
+           user.link(with: credential) { (user, error) in
+            // Complete any post sign-up tasks here.
             if error != nil{
-//                let smt = err.localizedDescription
-//                self.dbFunc.showAlert(Title: "Error", Message: "\(smt)", ViewController: vc)
-//                print("SigningUP ERROR \(err as Any)")
                 completion(error)
             }else{
-                self.userCollectionRef.addDocument(data: [
-                    self.userFirstNameKey: fName,
-                    self.userLastNameKey: lName,
-                    self.userDisplayNameKey: dName,
-                    self.userEmailKey: email,
-                    self.userGameCounterKey: 0,
-                    self.userWonGameCountKey: 0,
-                    self.userGamePointsKey: 0,
-                    self.userGameMinTimeKey: 0.0,
-                    self.userUIDKey: authDataResult!.user.uid
-                 ]) { error in
+                saveData[self.userUIDKey] = user!.user.uid
+                self.userCollectionRef.addDocument(data: saveData) { error in
                      if error != nil{
                         completion(error)
                      } else {
-                        print(authDataResult!.user.email as Any)
+                        print(user!.user.email as Any)
                          //self.myDocId = ref!.documentID
                      }
                  }
+            }
+          }
+        }else{
+            Auth.auth().createUser(withEmail: email, password: pass) { (authDataResult, error) in
+                if error != nil{
+                    completion(error)
+                }else{
+                    saveData[self.userUIDKey] = authDataResult!.user.uid
+                    self.userCollectionRef.addDocument(data: saveData) { error in
+                         if error != nil{
+                            completion(error)
+                         } else {
+                            print(authDataResult!.user.email as Any)
+                             //self.myDocId = ref!.documentID
+                         }
+                     }
+                }
             }
         }
     }
@@ -382,8 +402,8 @@ class Fire{
             }
         }
     }
-    func getPlayersInfo(completion: @escaping ([playersInfo]) -> Void){
-        userCollectionRef.order(by: userGamePointsKey, descending: true).addSnapshotListener{ (querySnap, error) in
+    func getPlayers(completion: @escaping ([playersInfo]) -> Void){
+        userCollectionRef.order(by: userGamePointsKey, descending: true).limit(to: 25).getDocuments{ (querySnap, error) in
             if error != nil{
                 print(error as Any)
             }else{
@@ -433,6 +453,11 @@ class Fire{
                 completion(earnedPayments)
             }
         }
+    }
+    
+    func addNewUserDataTodb(_ invitedby:String,_ newUser:String){
+        let newData = userCollectionRef.document()
+        newData.setData([userUIDKey:invitedby,userReferredbyKey:newUser])
     }
     
     func addGameTodb(Guesses guesses:[guess],HiddenNumber hNumber: String,Won wonGame: Bool){

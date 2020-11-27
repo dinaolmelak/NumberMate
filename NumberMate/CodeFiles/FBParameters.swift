@@ -14,4 +14,5 @@ struct FBParameters {
     let nmurlInvitePath = "/invites"
     let nmurlHost = "www.numbermate.com"
     let nmurlScheme = "https"
+    let nminviter = "invited_by"
 }

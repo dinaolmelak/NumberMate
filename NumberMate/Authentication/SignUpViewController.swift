@@ -16,6 +16,7 @@ class SignUpViewController: UIViewController {
     var db: Firestore!
     var firy: Fire!
     var signInFunc = Function()
+    var inviterUID: String?
     @IBOutlet weak var fnameTextfield: UITextField!
     @IBOutlet weak var lnameTextfield: UITextField!
     @IBOutlet weak var emailTextfield: UITextField!
@@ -48,7 +49,7 @@ class SignUpViewController: UIViewController {
         
         if saveBool == true{
             // sign user Up
-            firy.signUp(First: fnameTextfield.text!, Last: lnameTextfield.text!, DisplayName: displayTextfield.text ?? "🤖", Email: emailTextfield.text!, Password: passwordTextfield.text!) { (error) in
+            firy.signUp(First: fnameTextfield.text!, Last: lnameTextfield.text!, DisplayName: displayTextfield.text != "" && displayTextfield.text != nil ? displayTextfield.text!: fnameTextfield.text!, Email: emailTextfield.text!, Password: passwordTextfield.text!) { (error) in
                 if let err = error{
                     print(err)
                     let message = err.localizedDescription
@@ -64,10 +65,9 @@ class SignUpViewController: UIViewController {
         
     }
     
-    @IBAction func didTapHaveAccount(_ sender: Any) {
-        self.performSegue(withIdentifier: "signInSegue", sender: self)
+    @IBAction func onTapBack(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
-            
     
     @IBAction func didTapGesture(_ sender: Any) {
         view.endEditing(true)

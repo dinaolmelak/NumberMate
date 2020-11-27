@@ -20,6 +20,7 @@ class LeadersViewController: UIViewController, UITableViewDelegate, UITableViewD
     var db : Firestore!
     var funcs = Function()
     var activityIndicator = UIActivityIndicatorView()
+    var refreshControl: UIRefreshControl!
     @IBOutlet weak var simplePlayerBanner: GADBannerView!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -32,17 +33,14 @@ class LeadersViewController: UIViewController, UITableViewDelegate, UITableViewD
         ads.bannerDisplay(simplePlayerBanner,self)
         tableView.delegate = self
         tableView.dataSource = self
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(onRefresh), for: .valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
     }
     override func viewDidAppear(_ animated: Bool) {
         //onTimer()
         // MARK: - loading players----
-        funcs.startActivityIndicator(activityIndicator, ViewController: self)
-        firy.getPlayersInfo(){ (playerslist) in
-                    self.players = playerslist
-                    print(self.players)
-                    self.tableView.reloadData()
-                }
-        funcs.stopActivityIndicator(activityIndicator, ViewController: self)
+        onRefresh()
         // listener.remove()
         // when vc appears
         // - setup a listener to Players collection
@@ -73,6 +71,20 @@ class LeadersViewController: UIViewController, UITableViewDelegate, UITableViewD
             return cell
         }
         
+    }
+    @objc func onRefresh() {
+        // do necessary task here
+        firy.getPlayers(){ (playerslist) in
+            self.players = playerslist
+            print(self.players)
+            self.tableView.reloadData()
+        }
+        refresh()
+    }
+    func refresh(){
+        funcs.run(after: 2) {
+         self.refreshControl.endRefreshing()
+        }
     }
     override func viewDidDisappear(_ animated: Bool) {
         firy.detachListener()

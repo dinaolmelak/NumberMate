@@ -67,10 +67,9 @@ class AuthenticateViewController: UIViewController {
                 }
                 UserDefaults.standard.set(false, forKey: "isUser")
                 
-                let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "WelcomeViewController") as WelcomeViewController
+                let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "IntroPageViewController") as IntroPageViewController
                 vc.modalPresentationStyle = .fullScreen
                 self.present(vc, animated: true, completion: nil)
-                //vc.dismiss(animated: true, completion: nil)
                 print("userAuthenticated")
             }
         }

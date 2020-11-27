@@ -45,6 +45,7 @@ class AddFriendVC: UIViewController {
         guard let linkPara = components.url else {
             return
         }//link works
+        
         guard let sharelink = DynamicLinkComponents.init(link: linkPara, domainURIPrefix: para.numbermateLink) else{
             print("coundn't create firebase DL component")
             return
@@ -56,8 +57,8 @@ class AddFriendVC: UIViewController {
         sharelink.socialMetaTagParameters = DynamicLinkSocialMetaTagParameters()
         sharelink.socialMetaTagParameters?.title = "Welcome To NumberMate"
         
-        sharelink.socialMetaTagParameters?.descriptionText = "Fellow player welcome to NumberMate. You were invited by \(String(describing: user.email!))"
-        sharelink.socialMetaTagParameters?.imageURL = URL(string: "https://d1i1eo6qmdfmdv.cloudfront.net/upload/mansory/3_supercars_los_angeles_racetrack.jpg")
+        sharelink.socialMetaTagParameters?.descriptionText = "Fellow player welcome to NumberMate! You will be redirected shorty. Thank you for playing. Happy Number Games :)"
+        sharelink.socialMetaTagParameters?.imageURL = URL(string: "https://user-images.githubusercontent.com/32272045/100399257-a37a1480-3017-11eb-9b84-35a2f35bdfc3.png")
         
         sharelink.shorten() { (shortUrl, warningsArray, error) in
             if let err = error{
@@ -76,8 +77,8 @@ class AddFriendVC: UIViewController {
     }
     
     func inviteSheet(url: URL){
-        notify.stopActivityIndicator(activityIndicator, ViewController: self)
         let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        notify.stopActivityIndicator(activityIndicator, ViewController: self)
         present(activityVC, animated: true, completion: nil)
     }
     

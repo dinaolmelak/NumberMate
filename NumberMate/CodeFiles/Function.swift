@@ -113,4 +113,8 @@ class Function {
         vc.view.isUserInteractionEnabled = true
         indicator.stopAnimating()
     }
+    func run(after wait: TimeInterval, closure: @escaping () -> Void) {
+        let queue = DispatchQueue.main
+        queue.asyncAfter(deadline: DispatchTime.now() + wait, execute: closure)
+    }
 }

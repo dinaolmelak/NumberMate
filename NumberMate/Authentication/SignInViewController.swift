@@ -35,6 +35,10 @@ class SignInViewController: UIViewController {
         performSegue(withIdentifier: "ResetPasswordSegue", sender: self)
     }
     
+    @IBAction func onTapBack(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func didTapSignIn(_ sender: Any) {
         
         let userEmail = emailTextfield.text!

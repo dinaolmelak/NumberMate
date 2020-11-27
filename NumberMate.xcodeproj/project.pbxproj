@@ -38,10 +38,12 @@
 		C0525232256A5A21008A0C60 /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0525231256A5A21008A0C60 /* TitleCell.swift */; };
 		C053D820255337DF00CD0893 /* NumberPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C053D81F255337DF00CD0893 /* NumberPoints.swift */; };
 		C05AE6AF2529038300FE5604 /* Paypal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05AE6AE2529038300FE5604 /* Paypal.swift */; };
+		C070CDA9256DF50F00781553 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C070CDA8256DF50F00781553 /* HelpViewController.swift */; };
 		C0718E54251AA34C0055B342 /* IntroPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0718E53251AA34C0055B342 /* IntroPageViewController.swift */; };
 		C0718E56251AA5930055B342 /* PlayIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0718E55251AA5930055B342 /* PlayIntroViewController.swift */; };
 		C0718E58251AA5BE0055B342 /* PointsIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0718E57251AA5BE0055B342 /* PointsIntroViewController.swift */; };
 		C0718E5A251AA5D80055B342 /* WinIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0718E59251AA5D80055B342 /* WinIntroViewController.swift */; };
+		C0795636256F877D001D9593 /* 5306-rocket-funk.gif in Resources */ = {isa = PBXBuildFile; fileRef = C0795635256F877D001D9593 /* 5306-rocket-funk.gif */; };
 		C08722EE256A6424003D3319 /* PlayerInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08722ED256A6424003D3319 /* PlayerInfoCell.swift */; };
 		C08722F1256A6446003D3319 /* ProfileTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08722F0256A6446003D3319 /* ProfileTitleCell.swift */; };
 		C08722F4256B148E003D3319 /* 30308-car.gif in Resources */ = {isa = PBXBuildFile; fileRef = C08722F3256B148E003D3319 /* 30308-car.gif */; };
@@ -61,6 +63,7 @@
 		C0FBC2D9254BF32B0092AC8C /* 4768-trophy.gif in Resources */ = {isa = PBXBuildFile; fileRef = C0FBC2D8254BF32B0092AC8C /* 4768-trophy.gif */; };
 		C0FBC2DB254BF3380092AC8C /* 18880-watch-videos.gif in Resources */ = {isa = PBXBuildFile; fileRef = C0FBC2DA254BF3380092AC8C /* 18880-watch-videos.gif */; };
 		C0FBC2DD254BFE1C0092AC8C /* AuthenticateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FBC2DC254BFE1C0092AC8C /* AuthenticateViewController.swift */; };
+		C0FC20922570F7A300F75953 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FC20912570F7A300F75953 /* TermsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,10 +102,12 @@
 		C0525231256A5A21008A0C60 /* TitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
 		C053D81F255337DF00CD0893 /* NumberPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NumberPoints.swift; path = "../New Group/NumberPoints.swift"; sourceTree = "<group>"; };
 		C05AE6AE2529038300FE5604 /* Paypal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paypal.swift; sourceTree = "<group>"; };
+		C070CDA8256DF50F00781553 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		C0718E53251AA34C0055B342 /* IntroPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPageViewController.swift; sourceTree = "<group>"; };
 		C0718E55251AA5930055B342 /* PlayIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayIntroViewController.swift; sourceTree = "<group>"; };
 		C0718E57251AA5BE0055B342 /* PointsIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsIntroViewController.swift; sourceTree = "<group>"; };
 		C0718E59251AA5D80055B342 /* WinIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinIntroViewController.swift; sourceTree = "<group>"; };
+		C0795635256F877D001D9593 /* 5306-rocket-funk.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "5306-rocket-funk.gif"; sourceTree = "<group>"; };
 		C08722ED256A6424003D3319 /* PlayerInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoCell.swift; sourceTree = "<group>"; };
 		C08722F0256A6446003D3319 /* ProfileTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTitleCell.swift; sourceTree = "<group>"; };
 		C08722F3256B148E003D3319 /* 30308-car.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "30308-car.gif"; sourceTree = "<group>"; };
@@ -122,6 +127,7 @@
 		C0FBC2D8254BF32B0092AC8C /* 4768-trophy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "4768-trophy.gif"; sourceTree = "<group>"; };
 		C0FBC2DA254BF3380092AC8C /* 18880-watch-videos.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "18880-watch-videos.gif"; sourceTree = "<group>"; };
 		C0FBC2DC254BFE1C0092AC8C /* AuthenticateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateViewController.swift; sourceTree = "<group>"; };
+		C0FC20912570F7A300F75953 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		D3ED034C2620CF3887D2723C /* Pods-NumberMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumberMate.debug.xcconfig"; path = "Target Support Files/Pods-NumberMate/Pods-NumberMate.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -191,6 +197,7 @@
 				C00976F824AFBF20005C68B0 /* LaunchScreen.storyboard */,
 				C00976FB24AFBF20005C68B0 /* Info.plist */,
 				C009770124AFE8D5005C68B0 /* GoogleService-Info.plist */,
+				C070CDA7256DF4C600781553 /* Help */,
 				C021B5EE25233EA7002AA9EC /* CodeFiles */,
 				C0F28D922537AE2400C44FA3 /* AnimationFiles */,
 				C053D821255337ED00CD0893 /* RewardSystem */,
@@ -221,6 +228,14 @@
 			path = RewardSystem;
 			sourceTree = "<group>";
 		};
+		C070CDA7256DF4C600781553 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				C070CDA8256DF50F00781553 /* HelpViewController.swift */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
 		C09C6946252FB1A900647CF7 /* CalendarView */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +252,7 @@
 				C0AB1E1624C0EBF3008DEF05 /* SignInViewController.swift */,
 				C0AB1E1824C0EC64008DEF05 /* SignUpViewController.swift */,
 				C052522B256A1E0A008A0C60 /* ResetPasswordVC.swift */,
+				C0FC20912570F7A300F75953 /* TermsViewController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -301,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				C03B6B8D256D0A530017EEE7 /* animation_500_khvs2thz.gif */,
+				C0795635256F877D001D9593 /* 5306-rocket-funk.gif */,
 				C03B6B89256D08E90017EEE7 /* 26184-sad-star.gif */,
 				C03B6B86256D017A0017EEE7 /* 14408-join-your-team.gif */,
 				C08722F3256B148E003D3319 /* 30308-car.gif */,
@@ -392,6 +409,7 @@
 				C00976F724AFBF20005C68B0 /* Assets.xcassets in Resources */,
 				C0F28D992537E92700C44FA3 /* 1204-car.json in Resources */,
 				C0F28D942537AE6700C44FA3 /* 26182-happy-star.json in Resources */,
+				C0795636256F877D001D9593 /* 5306-rocket-funk.gif in Resources */,
 				C0E9414D254BC69C00E2F7ED /* 6552-search.gif in Resources */,
 				C00976F524AFBF15005C68B0 /* Main.storyboard in Resources */,
 				C0FBC2D9254BF32B0092AC8C /* 4768-trophy.gif in Resources */,
@@ -465,6 +483,7 @@
 				C08722F1256A6446003D3319 /* ProfileTitleCell.swift in Sources */,
 				C0366499251C74460096AE3C /* Guess.swift in Sources */,
 				C0FBC2DD254BFE1C0092AC8C /* AuthenticateViewController.swift in Sources */,
+				C0FC20922570F7A300F75953 /* TermsViewController.swift in Sources */,
 				C0244862251E5EA100F8996B /* PlayViewController.swift in Sources */,
 				C009771424B1D384005C68B0 /* GuessCell.swift in Sources */,
 				C09D9794254CFA150090828C /* WelcomeViewController.swift in Sources */,
@@ -486,6 +505,7 @@
 				C0244864251E784600F8996B /* Advertisements.swift in Sources */,
 				C0AB1E1724C0EBF3008DEF05 /* SignInViewController.swift in Sources */,
 				C00976F024AFBF15005C68B0 /* SceneDelegate.swift in Sources */,
+				C070CDA9256DF50F00781553 /* HelpViewController.swift in Sources */,
 				C021B5F225234383002AA9EC /* Function.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -634,6 +654,7 @@
 				CODE_SIGN_ENTITLEMENTS = NumberMate/NumberMateDebug.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1.1;
 				DEVELOPMENT_TEAM = 8ANT6T3S86;
 				INFOPLIST_FILE = NumberMate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -654,6 +675,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.1;
 				DEVELOPMENT_TEAM = 8ANT6T3S86;
 				INFOPLIST_FILE = NumberMate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

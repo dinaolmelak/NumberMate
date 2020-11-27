@@ -8,14 +8,16 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 import FirebaseDynamicLinks
 import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    
     var funcs = Function()
+    var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -31,6 +33,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return
         }
         print("Your incoming parameter is \(url.absoluteString)")
+        guard let component = URLComponents(url: url, resolvingAgainstBaseURL: false), let queryItems = component.queryItems else {return}
+        let invitedBy = queryItems.first?.value
+        print("first \(invitedBy)")
+        let user = Auth.auth().currentUser
+        if user == nil && invitedBy != nil{
+            Auth.auth().signInAnonymously() { (user, error) in
+                  if let user = user {
+                    
+                    print("first 1")
+                    print("\(invitedBy)")
+                    Firestore.firestore().settings = FirestoreSettings()
+                    
+                    Firestore.firestore().collection("Players").addDocument(data: ["userUID": user.user.uid,"referred_by":invitedBy])// .reference().child("users").child(user.uid)
+                    print("Second \(invitedBy)")
+                    //userRecord.child("referred_by").setValue(invitedBy)
+                    
+                  }else{
+                    print(error)
+                  }
+                }
+        }
     }
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         if let urlExists = userActivity.webpageURL{
@@ -72,7 +95,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Handle the deep link. For example, show the deep-linked content or
         // apply a promotional offer to the user's account.
         // ...
-        print("App Here__\(dynamicLink.url?.absoluteString)")
+        self.handleIncomingDynamicLink(dynamicLink)
+        print("Received url through customURLScheme \(dynamicLink.url?.absoluteString)")
         return true
       }
       return false

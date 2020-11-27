@@ -32,7 +32,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     var animationView: AnimationView?
     var pointReward = NumberPoints()
-    var initGuess = "Input Your Guess"
+    var initGuess = "Input 4 digit Guess"
     @IBOutlet weak var timer: UILabel!
     @IBOutlet weak var bannerAd: GADBannerView!
     @IBOutlet weak var addGuessButton: UIButton!
@@ -74,6 +74,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             return cell
         }
     }
+    
     @IBAction func onTapBack(_ sender: Any) {
         //AddGuessesTodb(Won: won)//adds the game to database
         if won{

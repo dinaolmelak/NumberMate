@@ -7,24 +7,28 @@
 //
 
 import UIKit
+import Lottie
 
 class PlayIntroViewController: UIViewController {
     
+    @IBOutlet weak var arrowImage: UIImageView!
     @IBOutlet weak var pictureGif: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         pictureGif.loadGif(name: "6552-search")
-    }
-    override func viewDidAppear(_ animated: Bool){
-       
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        
+        Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { (timer) in
+            self.animatingToLeft()
+        }
     }
     
-
+    func animatingToLeft(){
+        UIView.animate(withDuration: 2.5, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.5, options: [], animations: {
+            self.arrowImage.center.x -= 150
+        }, completion: nil)
+        arrowImage.center.x += 150
+    }
+    
     /*
     // MARK: - Navigation
 
