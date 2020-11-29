@@ -40,16 +40,7 @@ class SettingsViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func onTapSignOut(_ sender: Any) {
-        UserDefaults.standard.set(false, forKey: "isUser")
-        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "IntroPageViewController") as IntroPageViewController
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true) {
-
-        do { try Auth.auth().signOut() }
-        catch { print("already logged out") }
-        }
-    }
+    
     
     @IBAction func onChangePassword(_ sender: Any) {
         firy.changePassword(ViewController: self)

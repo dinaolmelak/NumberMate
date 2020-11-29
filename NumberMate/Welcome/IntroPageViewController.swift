@@ -54,10 +54,10 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
         return myControllers[after]
     }
     func addingViewControllers(){
-        let playVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PlayIntroViewController") as UIViewController
+//        let playVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PlayIntroViewController") as UIViewController
         let pointsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PointsIntroViewController") as UIViewController
         let winVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WinIntroViewController") as UIViewController
-        myControllers.append(playVC)
+        //myControllers.append(playVC)
         myControllers.append(pointsVC)
         myControllers.append(winVC)
     }

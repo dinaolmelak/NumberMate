@@ -22,13 +22,6 @@ class AuthenticateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-//        let user = Auth.auth().currentUser
-//        var credential: AuthCredential
-//
-//        user?.reauthenticate(with: credential, completion: { (<#AuthDataResult?#>, <#Error?#>) in
-//            <#code#>
-//        })
         if self.traitCollection.userInterfaceStyle == .dark{
             sadImageView.loadGif(name: "animation_500_khvs2thz")
         }else{
@@ -51,30 +44,37 @@ class AuthenticateViewController: UIViewController {
             return
         }
         let credential = EmailAuthProvider.credential(withEmail: currUser.email!, password: pass)
-        currUser.reauthenticate(with: credential) { (authDataResult, error) in
+            currUser.reauthenticate(with: credential) { (authDataResult, error) in
             if let err = error{
                 let message = err.localizedDescription
+                self.displayAlerts.showAlert(Title: "Error", Message: message, ViewController: self)
                 print(message)
             }else{
                 self.firy.deleteCurrentUser { (error) in
                     if let err = error{
                         let message = err.localizedDescription
                         print(message)
-                    }else{
-  
-                        
+                        return
                     }
                 }
                 UserDefaults.standard.set(false, forKey: "isUser")
                 
-                let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "IntroPageViewController") as IntroPageViewController
-                vc.modalPresentationStyle = .fullScreen
-                self.present(vc, animated: true, completion: nil)
-                print("userAuthenticated")
+//                let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "WelcomeViewController") as WelcomeViewController
+//                vc.modalPresentationStyle = .fullScreen
+//                self.present(vc, animated: true, completion: nil)
+                
+                self.view.window!.rootViewController?.dismiss(animated: true, completion: {
+                    print("userAuthenticated")
+                })
+                //self.view.window!.makeKeyAndVisible()
+                
             }
         }
     }
     
+    @IBAction func onTapBackground(_ sender: Any) {
+        self.view.endEditing(true)
+    }
     
     
 

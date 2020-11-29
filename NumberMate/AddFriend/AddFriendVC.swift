@@ -39,7 +39,7 @@ class AddFriendVC: UIViewController {
         components.scheme = para.nmurlScheme
         components.host = para.nmurlHost
         components.path = para.nmurlInvitePath
-        let inviteIdQuery = URLQueryItem(name: "invitedby", value: user.uid)
+        let inviteIdQuery = URLQueryItem(name: para.nminviter, value: user.uid)
         components.queryItems = [inviteIdQuery]
         
         guard let linkPara = components.url else {
@@ -48,6 +48,7 @@ class AddFriendVC: UIViewController {
         
         guard let sharelink = DynamicLinkComponents.init(link: linkPara, domainURIPrefix: para.numbermateLink) else{
             print("coundn't create firebase DL component")
+            notify.showAlert(Title: "Error", Message: "couldn't create Link", ViewController: self)
             return
         }
         if let myBundleID = Bundle.main.bundleIdentifier{

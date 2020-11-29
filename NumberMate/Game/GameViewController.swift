@@ -12,12 +12,20 @@ import FirebaseFirestore
 import FirebaseAuth
 import GoogleMobileAds
 
+enum BombKeyFrames: CGFloat {
+
+  case start = 16
+  
+  case end = 73
+  
+  case complete = 110
+  
+}
 
 class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var won = false
     var gameTimer:Timer?
-    var minTimer: Timer?
     var minTime = 0
     var timeLeft = 60
     var started = false
@@ -28,8 +36,11 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     var hiddenNumber:  String?
     var guesses = [guess]()
     var db: Firestore!
-    @IBOutlet weak var instructionsLabel: UILabel!
 
+
+    @IBOutlet weak var instructionsLabel: UILabel!
+    @IBOutlet weak var bombAnimationView: AnimationView!
+    
     var animationView: AnimationView?
     var pointReward = NumberPoints()
     var initGuess = "Input 4 digit Guess"
@@ -49,7 +60,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         ads.bannerDisplay(bannerAd, self)
         tableView.delegate = self
         tableView.dataSource = self
-        
+        bombAnimationView.layer.cornerRadius = 5
+        initBomb()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -118,12 +130,14 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.reloadData()
     }
     @IBAction func onTapGuessed(_ sender: Any){
-        guard(initGuess.count == 4 && !funcs.isRepeated(initGuess)) else{
-            instructionsLabel.text = "Please enter any 4 digit number that is distinct"
+        if(initGuess.count == 4 && !funcs.isRepeated(initGuess)){
+        
+            instructionsLabel.text = "Guess the number before bomb to get more points"
+        }else{
+            instructionsLabel.text = "Please enter any 4 digit number that is distinct. Press ? for help"
             instructionsLabel.textColor = UIColor.red
             return
         }
-        instructionsLabel.text = "Guess the number before bomb to get more points"
         let hiddenNum = hiddenNumber!
         let newNumGroup = self.funcs.checkGroup(guessNum: initGuess, hiddenNum: String(hiddenNum))
         let newNumOrder = self.funcs.checkOrder(guessNum: initGuess, hiddenNum: String(hiddenNum))
@@ -131,8 +145,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.guesses.insert(newGuess, at: 0)
         if self.started != true{
             self.started = true
-            self.gameTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.onTimerFires), userInfo: nil, repeats: true)
-            self.minTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.onMinTimerFires), userInfo: nil, repeats: true)
+            self.startBomb()
         }
         initGuess = "Input Your Guess"
         if newNumGroup == 4 && newNumOrder == 4{
@@ -140,9 +153,18 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             //self.AddGuessesTodb()
             self.playWinAnimation()
             self.addGuessButton.isEnabled = false
-            self.won = true
-            self.gameTimer?.invalidate()
-            self.minTimer?.invalidate()
+            if gameTimer?.isValid == true{
+                self.gameTimer?.invalidate()
+                self.won = true
+            }else{
+                self.firy.increamentPoints(by: pointReward.numberFoundPoint){ (error) in
+                    if let error = error{
+                        print(error as Any)
+                    }else{
+                        print("game Points increamented")
+                    }
+                }
+            }
         }
         tableView.reloadData()
     }
@@ -157,18 +179,17 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     {
         timeLeft -= 1
         timer.text = "\(timeLeft) sec"
+        bombTicking(to: CGFloat(1 - Double(self.timeLeft) / 60.0))
+        
         if(timeLeft < 30){
             timer.textColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
         }
         if timeLeft <= 0 {
+            endBomb()
             gameTimer?.invalidate()
+            self.instructionsLabel.text = "The bomb has Exploded! You can still get the number."
             gameTimer = nil
         }
-    }
-    
-    @objc func onMinTimerFires()
-    {
-        minTime += 1
     }
     
     func AddGuessesTodb(Won winning: Bool){
@@ -212,6 +233,45 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             view.subviews.last?.removeFromSuperview()
         }
         
+    }
+    func initBomb(){
+        bombAnimationView.loopMode = .loop
+        bombAnimationView.animationSpeed = 0.5
+    }
+    func startBomb(){
+        self.gameTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.onTimerFires), userInfo: nil, repeats: true)
+        
+//        bombAnimationView.play(fromFrame: 0, toFrame: BombKeyFrames.start.rawValue, loopMode: .none) { (_) in
+//            self.bombTicking()
+//        }
+    }
+    func bombTicking(to progress: CGFloat){
+        
+//        bombAnimationView.play(fromFrame: BombKeyFrames.start.rawValue, toFrame: BombKeyFrames.end.rawValue, loopMode: .none) {(_) in
+//            self.endBomb()
+//        }
+        // 1. We get the range of frames specific for the progress from 0-100%
+          
+          let progressRange = BombKeyFrames.end.rawValue - BombKeyFrames.start.rawValue
+          
+          // 2. Then, we get the exact frame for the current progress
+          
+          let progressFrame = progressRange * progress
+          
+          // 3. Then we add the start frame to the progress frame
+          // Considering the example that we start in 140, and we moved 30 frames in the progress, we should show frame 170 (140+30)
+          
+          let currentFrame = progressFrame + BombKeyFrames.start.rawValue
+          
+          // 4. Manually setting the current animation frame
+          
+          bombAnimationView.currentFrame = currentFrame
+          
+          print("Downloading \((progress))%")
+        
+    }
+    func endBomb(){
+        bombAnimationView.play(fromFrame: BombKeyFrames.end.rawValue, toFrame: BombKeyFrames.complete.rawValue, loopMode: .none)
     }
     /*
     // MARK: - Navigation

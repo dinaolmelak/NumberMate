@@ -16,13 +16,16 @@ class WelcomeViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func onTapBack(_ sender: Any) {
-        //dismiss(animated: true, completion: nil)
-        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "IntroPageViewController") as IntroPageViewController
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
-    }
+//    @IBAction func onTapBack(_ sender: Any) {
+//        //dismiss(animated: true, completion: nil)
+//        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "IntroPageViewController") as IntroPageViewController
+//        vc.modalPresentationStyle = .fullScreen
+//        present(vc, animated: true, completion: nil)
+//    }
     
+    @IBAction func onBack(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 

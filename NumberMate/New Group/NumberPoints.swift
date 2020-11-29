@@ -13,5 +13,6 @@ class NumberPoints{
     let adVidRewardPoint = 10
     let wonGameInMin = 70
     let firstTimePlayerReward = 7
+    let numberFoundPoint = 3
 }
 

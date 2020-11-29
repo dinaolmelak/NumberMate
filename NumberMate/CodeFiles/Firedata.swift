@@ -73,52 +73,12 @@ class Fire{
             }else{
                 print("NO User")
                 self.currentPlayer = nil
-                print(authListened as Any)
+                return
             }
         }
         
     }
-    func checkDocID(InCollection col:Collections)->Bool {
-        var outputBool = false
-        switch col {
-            case .Players:
-                userCollectionRef.whereField(self.userUIDKey, isEqualTo: currentPlayer!.uid).getDocuments { (querySnap, error) in
-                    if error != nil{
-                        print(error as Any)
-                    }else{
-                        let snapshot = querySnap!.documents
-                        if snapshot.isEmpty != true{
-                            outputBool = true
-                        }
-                    }
-                }
-            case .Winners:
-                winnerRef.whereField(self.winnerUidKey, isEqualTo: currentPlayer!.uid).getDocuments { (querySnap, error) in
-                    if error != nil{
-                        print(error as Any)
-                    }else{
-                        let snapshot = querySnap!.documents
-                        if snapshot.isEmpty != true{
-                            outputBool = true
-                        }
-                    }
-                }
-                
-            case .Games:
-                gameRef.whereField(self.userUIDKey, isEqualTo: currentPlayer!.uid).getDocuments { (querySnap, error) in
-                    if error != nil{
-                        print(error as Any)
-                    }else{
-                        let snapshot = querySnap!.documents
-                        if snapshot.isEmpty != true{
-                            outputBool = true
-                        }
-                    }
-                }
-        }
-        
-        return outputBool
-    }
+    
     func getPlayerDocID(FromCollection col:Collections,completion: @escaping (String) -> Void) {
         if let currentUser = currentPlayer{
             switch col {
@@ -170,54 +130,8 @@ class Fire{
                 completion(error1)
             }
         }
-        if checkDocID(InCollection: .Winners){
-//            getPlayerDocID(FromCollection: .Winners) { (winnerDocID) in
-//                self.winnerRef.document(winnerDocID).delete { (error3) in
-//                    completion(error3)
-//                }
-//            }
-            print("CeckedDocID winner")
-        }
-        if checkDocID(InCollection: .Games){
-//            getPlayerDocID(FromCollection: .Games) { (playerGamesDocID) in
-//                self.gameRef.document(playerGamesDocID).delete { (error2) in
-//                    completion(error2)
-//                }
-//            }
-            print("CeckedDocID games")
-        }
-//        getPlayerDocID(Firestore: db, FromCollection: .Winners) { (winnerDocID) in
-//            db.collection(self.winnerCollectionString).document(winnerDocID).delete { (error2) in
-//                if error2 != nil{
-//                    print("Deleted Winner")
-//                }else{
-//                    print(error2 as Any)
-//                }
-//            }
-//        }
-//        getPlayerDocID(Firestore: db, FromCollection: .Games) { (gameDocID) in
-//            db.collection(self.gameCollectionString).document(gameDocID).delete { (error3) in
-//                if error3 != nil{
-//                    print("Deleted Game")
-//                }else{
-//                    print(error3 as Any)
-//                }
-//            }
-//        }
-//        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-//            user?.delete { error in
-//                if error != nil {
-//                    // An error happened.
-//                    print(error as Any)
-//                } else {
-//                    // Account deleted.
-//                    print("Account Deleted")
-//                }
-//            }
-//        }
         handle = Auth.auth().addStateDidChangeListener({ (authentication, UserOpt) in
-            
-        if UserOpt != nil {
+            if UserOpt != nil {
                 authentication.currentUser!.delete { (error) in
                     if let err = error{
                         print(err)
@@ -321,25 +235,7 @@ class Fire{
             self.userGamePointsKey: 0,
             self.userGameMinTimeKey: 0.0
          ]
-        if let user = Auth.auth().currentUser {
-            let credential = EmailAuthProvider.credential(withEmail: email, password: pass)
-           user.link(with: credential) { (user, error) in
-            // Complete any post sign-up tasks here.
-            if error != nil{
-                completion(error)
-            }else{
-                saveData[self.userUIDKey] = user!.user.uid
-                self.userCollectionRef.addDocument(data: saveData) { error in
-                     if error != nil{
-                        completion(error)
-                     } else {
-                        print(user!.user.email as Any)
-                         //self.myDocId = ref!.documentID
-                     }
-                 }
-            }
-          }
-        }else{
+
             Auth.auth().createUser(withEmail: email, password: pass) { (authDataResult, error) in
                 if error != nil{
                     completion(error)
@@ -355,7 +251,7 @@ class Fire{
                      }
                 }
             }
-        }
+        //}
     }
     
     func listenPlayerInfo(completion: @escaping (playersInfo) -> Void){
@@ -364,18 +260,22 @@ class Fire{
                 if error != nil{
                     print(error as Any)
                 }else{
-                    let document = documentSnap!.data()
-                    let fname = document![self.userFirstNameKey] as! String
-                    let lname = document![self.userLastNameKey] as! String
-                    let dname = document![self.userDisplayNameKey] as! String
-                    let email = document![self.userEmailKey] as! String
-                    let points = document![self.userGamePointsKey] as! Int
-                    let gameCounter = document![self.userGameCounterKey] as! Int
-                    let wonGameCounter = document![self.userWonGameCountKey] as! Int
-                    let timeTaken = document![self.userGameMinTimeKey] as! Int
+                    if let document = documentSnap?.data(){
+                        let fname = document[self.userFirstNameKey] as! String
+                        let lname = document[self.userLastNameKey] as! String
+                        let dname = document[self.userDisplayNameKey] as! String
+                        let email = document[self.userEmailKey] as! String
+                        let points = document[self.userGamePointsKey] as! Int
+                        let gameCounter = document[self.userGameCounterKey] as! Int
+                        let wonGameCounter = document[self.userWonGameCountKey] as! Int
+                        let timeTaken = document[self.userGameMinTimeKey] as! Int
+                                            
+                        let player = playersInfo.init(_fname: fname, _lname: lname, _dName: dname, _email: email, _minTime: timeTaken, _points: points, _gameCount: gameCounter, _WonGame: wonGameCounter)
+                        completion(player)
+                    }else{
+                        return
+                    }
                     
-                    let player = playersInfo.init(_fname: fname, _lname: lname, _dName: dname, _email: email, _minTime: timeTaken, _points: points, _gameCount: gameCounter, _WonGame: wonGameCounter)
-                    completion(player)
                 }
             }
         }
@@ -403,13 +303,14 @@ class Fire{
         }
     }
     func getPlayers(completion: @escaping ([playersInfo]) -> Void){
-        userCollectionRef.order(by: userGamePointsKey, descending: true).limit(to: 25).getDocuments{ (querySnap, error) in
+        userCollectionRef.order(by: userGamePointsKey, descending: true).limit(to: 25).addSnapshotListener{ (querySnap, error) in
             if error != nil{
                 print(error as Any)
             }else{
+                guard querySnap?.documents != nil else {return}
                 var players = [playersInfo]()
                 for doc in querySnap!.documents{
-                            let playerArray = doc.data()
+                    let playerArray = doc.data()
                     let fname = playerArray[self.userFirstNameKey] as! String
                     let lname = playerArray[self.userLastNameKey] as! String
                     let dname = playerArray[self.userDisplayNameKey] as! String

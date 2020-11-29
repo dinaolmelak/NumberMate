@@ -12,7 +12,7 @@ struct FBParameters {
     let numbermateLink = "https://numbermate.page.link"
     let numbermateAppStoreID = "1227019728"   //google rewards 
     let nmurlInvitePath = "/invites"
-    let nmurlHost = "www.numbermate.com"
+    let nmurlHost = "www.numbermate.me"
     let nmurlScheme = "https"
     let nminviter = "invited_by"
 }

@@ -11,24 +11,32 @@ import Lottie
 
 class PlayIntroViewController: UIViewController {
     
-    @IBOutlet weak var arrowImage: UIImageView!
     @IBOutlet weak var pictureGif: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         pictureGif.loadGif(name: "6552-search")
-        Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { (timer) in
-            self.animatingToLeft()
+//        Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { (timer) in
+//            self.animatingToLeft()
+//        }
+    }
+    
+//    func animatingToLeft(){
+//        UIView.animate(withDuration: 2.5, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.5, options: [], animations: {
+//            self.arrowImage.center.x -= 150
+//        }, completion: nil)
+//        arrowImage.center.x += 150
+//    }
+    @IBAction func onLearnMore(_ sender: Any) {
+        performSegue(withIdentifier: "HiddenSegue", sender: self)
+    }
+    
+    @IBAction func onSwipe(_ sender: UISwipeGestureRecognizer) {
+        let sending = sender.direction
+        if sending == .left{
+            performSegue(withIdentifier: "HiddenSegue", sender: self)
         }
     }
-    
-    func animatingToLeft(){
-        UIView.animate(withDuration: 2.5, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.5, options: [], animations: {
-            self.arrowImage.center.x -= 150
-        }, completion: nil)
-        arrowImage.center.x += 150
-    }
-    
     /*
     // MARK: - Navigation
 

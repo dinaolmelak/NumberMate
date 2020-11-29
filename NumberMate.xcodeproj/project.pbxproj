@@ -60,10 +60,12 @@
 		C0F28D942537AE6700C44FA3 /* 26182-happy-star.json in Resources */ = {isa = PBXBuildFile; fileRef = C0F28D932537AE6700C44FA3 /* 26182-happy-star.json */; };
 		C0F28D972537E2F100C44FA3 /* AddFriendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F28D962537E2F000C44FA3 /* AddFriendVC.swift */; };
 		C0F28D992537E92700C44FA3 /* 1204-car.json in Resources */ = {isa = PBXBuildFile; fileRef = C0F28D982537E92600C44FA3 /* 1204-car.json */; };
+		C0F4E8B5257459E10052D31F /* LeaderDescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F4E8B4257459E10052D31F /* LeaderDescriptionVC.swift */; };
 		C0FBC2D9254BF32B0092AC8C /* 4768-trophy.gif in Resources */ = {isa = PBXBuildFile; fileRef = C0FBC2D8254BF32B0092AC8C /* 4768-trophy.gif */; };
 		C0FBC2DB254BF3380092AC8C /* 18880-watch-videos.gif in Resources */ = {isa = PBXBuildFile; fileRef = C0FBC2DA254BF3380092AC8C /* 18880-watch-videos.gif */; };
 		C0FBC2DD254BFE1C0092AC8C /* AuthenticateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FBC2DC254BFE1C0092AC8C /* AuthenticateViewController.swift */; };
 		C0FC20922570F7A300F75953 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FC20912570F7A300F75953 /* TermsViewController.swift */; };
+		C0FC209625719E6800F75953 /* 9804-dynamite.json in Resources */ = {isa = PBXBuildFile; fileRef = C0FC209525719E6800F75953 /* 9804-dynamite.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,10 +126,12 @@
 		C0F28D932537AE6700C44FA3 /* 26182-happy-star.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "26182-happy-star.json"; sourceTree = "<group>"; };
 		C0F28D962537E2F000C44FA3 /* AddFriendVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendVC.swift; sourceTree = "<group>"; };
 		C0F28D982537E92600C44FA3 /* 1204-car.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "1204-car.json"; sourceTree = "<group>"; };
+		C0F4E8B4257459E10052D31F /* LeaderDescriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderDescriptionVC.swift; sourceTree = "<group>"; };
 		C0FBC2D8254BF32B0092AC8C /* 4768-trophy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "4768-trophy.gif"; sourceTree = "<group>"; };
 		C0FBC2DA254BF3380092AC8C /* 18880-watch-videos.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "18880-watch-videos.gif"; sourceTree = "<group>"; };
 		C0FBC2DC254BFE1C0092AC8C /* AuthenticateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateViewController.swift; sourceTree = "<group>"; };
 		C0FC20912570F7A300F75953 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
+		C0FC209525719E6800F75953 /* 9804-dynamite.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "9804-dynamite.json"; sourceTree = "<group>"; };
 		D3ED034C2620CF3887D2723C /* Pods-NumberMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumberMate.debug.xcconfig"; path = "Target Support Files/Pods-NumberMate/Pods-NumberMate.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -275,6 +279,7 @@
 				C0525231256A5A21008A0C60 /* TitleCell.swift */,
 				C052522E256A53D6008A0C60 /* DisplayTextCell.swift */,
 				C009771124B1B51A005C68B0 /* LeaderCell.swift */,
+				C0F4E8B4257459E10052D31F /* LeaderDescriptionVC.swift */,
 			);
 			path = LeaderBoard;
 			sourceTree = "<group>";
@@ -320,6 +325,7 @@
 				C0795635256F877D001D9593 /* 5306-rocket-funk.gif */,
 				C03B6B89256D08E90017EEE7 /* 26184-sad-star.gif */,
 				C03B6B86256D017A0017EEE7 /* 14408-join-your-team.gif */,
+				C0FC209525719E6800F75953 /* 9804-dynamite.json */,
 				C08722F3256B148E003D3319 /* 30308-car.gif */,
 				C0FBC2DA254BF3380092AC8C /* 18880-watch-videos.gif */,
 				C0E9414C254BC69C00E2F7ED /* 6552-search.gif */,
@@ -402,6 +408,7 @@
 				C00976FA24AFBF20005C68B0 /* LaunchScreen.storyboard in Resources */,
 				C0FBC2DB254BF3380092AC8C /* 18880-watch-videos.gif in Resources */,
 				C03B6B87256D017A0017EEE7 /* 14408-join-your-team.gif in Resources */,
+				C0FC209625719E6800F75953 /* 9804-dynamite.json in Resources */,
 				C03B6B8A256D08EA0017EEE7 /* 26184-sad-star.gif in Resources */,
 				C03B6B8E256D0A530017EEE7 /* animation_500_khvs2thz.gif in Resources */,
 				C08722F4256B148E003D3319 /* 30308-car.gif in Resources */,
@@ -481,6 +488,7 @@
 				C052522F256A53D6008A0C60 /* DisplayTextCell.swift in Sources */,
 				C0525232256A5A21008A0C60 /* TitleCell.swift in Sources */,
 				C08722F1256A6446003D3319 /* ProfileTitleCell.swift in Sources */,
+				C0F4E8B5257459E10052D31F /* LeaderDescriptionVC.swift in Sources */,
 				C0366499251C74460096AE3C /* Guess.swift in Sources */,
 				C0FBC2DD254BFE1C0092AC8C /* AuthenticateViewController.swift in Sources */,
 				C0FC20922570F7A300F75953 /* TermsViewController.swift in Sources */,

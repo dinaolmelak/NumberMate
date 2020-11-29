@@ -52,7 +52,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return earnedMoney.count + 3;
+        return earnedMoney.count + 2;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -97,6 +97,10 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
         }
     }
     
+    @IBAction func onTapSetting(_ sender: Any) {
+        performSegue(withIdentifier: "SettingsSegue", sender: self)
+        
+    }
     
     func playerDataFromdb(){
         firy.listenPlayerInfo() { (playerInfo) in

@@ -16,7 +16,6 @@ class SignUpViewController: UIViewController {
     var db: Firestore!
     var firy: Fire!
     var signInFunc = Function()
-    var inviterUID: String?
     @IBOutlet weak var fnameTextfield: UITextField!
     @IBOutlet weak var lnameTextfield: UITextField!
     @IBOutlet weak var emailTextfield: UITextField!
@@ -51,7 +50,6 @@ class SignUpViewController: UIViewController {
             // sign user Up
             firy.signUp(First: fnameTextfield.text!, Last: lnameTextfield.text!, DisplayName: displayTextfield.text != "" && displayTextfield.text != nil ? displayTextfield.text!: fnameTextfield.text!, Email: emailTextfield.text!, Password: passwordTextfield.text!) { (error) in
                 if let err = error{
-                    print(err)
                     let message = err.localizedDescription
                     self.signInFunc.showAlert(Title: "Error", Message: message, ViewController: self)
                     return

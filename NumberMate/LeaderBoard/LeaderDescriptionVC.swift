@@ -1,29 +1,22 @@
 //
-//  PointsIntroViewController.swift
+//  LeaderDescriptionVC.swift
 //  NumberMate
 //
-//  Created by Dinaol Melak on 9/22/20.
+//  Created by Dinaol Melak on 11/29/20.
 //  Copyright © 2020 Dinaol Melak. All rights reserved.
 //
 
 import UIKit
 
-class PointsIntroViewController: UIViewController {
+class LeaderDescriptionVC: UIViewController {
 
-    @IBOutlet weak var gifPicture: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        gifPicture.loadGif(name: "18880-watch-videos")
     }
     
-    @IBAction func onOkay(_ sender: Any) {
-        performSegue(withIdentifier: "FirstPlaceSegue", sender: self)
-    
-    }
-    
-    @IBAction func onBack(_ sender: Any) {
+    @IBAction func onTapBack(_ sender: Any){
         dismiss(animated: true, completion: nil)
     }
     /*

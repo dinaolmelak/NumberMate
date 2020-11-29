@@ -22,6 +22,10 @@ class WinIntroViewController: UIViewController {
     @IBAction func didTapGo(_ sender: Any) {
         performSegue(withIdentifier: "StartSegue", sender: self)
     }
+    
+    @IBAction func onTapBack(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 

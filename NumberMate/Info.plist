@@ -36,7 +36,7 @@
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-8823786344035887~1315642054</string>
 	<key>LSApplicationCategoryType</key>
-	<string></string>
+	<string>public.app-category.lifestyle</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>SKAdNetworkItems</key>
