@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -18,7 +19,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let winScene = (scene as? UIWindowScene) else { return }
+        
+        if UserDefaults.standard.bool(forKey: "isUser") == false || Auth.auth().currentUser == nil{
+            //introduce game
+            print("signed out, deleted, or first time")
+        } else{
+//            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "IntroPageViewController") as IntroPageViewController
+            self.window = UIWindow(windowScene: winScene)
+            guard let rootvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "TabBarController") as? UITabBarController else {return}
+            self.window?.rootViewController = rootvc
+            self.window?.makeKeyAndVisible()
+            //got to App]
+            print("not First time")
+            
+        }
     }
 
     
