@@ -9,10 +9,12 @@
 import Foundation
 
 struct FBParameters {
-    let numbermateLink = "https://numbermate.page.link"
-    let numbermateAppStoreID = "1227019728"   //google rewards 
+    let nmDomainURLPrefix = "https://numbermate.page.link"
+    let nmAppStoreID = "1541507440"//"1227019728"   //google rewards
+    //1541507440 is my apple id for this app
     let nmurlInvitePath = "/invites"
     let nmurlHost = "www.numbermate.me"
     let nmurlScheme = "https"
     let nminviter = "invited_by"
+    let nmurlInviteLink = "https://bit.ly/33vLoAa"
 }

@@ -24,7 +24,8 @@ class AddFriendVC: UIViewController {
         }else{
             nmateImage.loadGif(name: "14408-join-your-team")
         }
-
+        activityIndicator.color = .systemGreen
+        
         // Do any additional setup after loading the view.
     }
     
@@ -45,8 +46,8 @@ class AddFriendVC: UIViewController {
         guard let linkPara = components.url else {
             return
         }//link works
-        
-        guard let sharelink = DynamicLinkComponents.init(link: linkPara, domainURIPrefix: para.numbermateLink) else{
+        print("here is  linkPara \(linkPara.absoluteURL)")
+        guard let sharelink = DynamicLinkComponents.init(link: linkPara, domainURIPrefix: para.nmDomainURLPrefix) else{
             print("coundn't create firebase DL component")
             notify.showAlert(Title: "Error", Message: "couldn't create Link", ViewController: self)
             return
@@ -54,7 +55,7 @@ class AddFriendVC: UIViewController {
         if let myBundleID = Bundle.main.bundleIdentifier{
             sharelink.iOSParameters = DynamicLinkIOSParameters(bundleID: myBundleID)
         }
-        sharelink.iOSParameters?.appStoreID = para.numbermateAppStoreID
+        sharelink.iOSParameters?.appStoreID = para.nmAppStoreID
         sharelink.socialMetaTagParameters = DynamicLinkSocialMetaTagParameters()
         sharelink.socialMetaTagParameters?.title = "Welcome To NumberMate"
         
@@ -73,8 +74,9 @@ class AddFriendVC: UIViewController {
             }
             guard let url = shortUrl else{return}
             print("Here is Short url \(url)")
-            self.inviteSheet(url: url)
+            //self.inviteSheet(url: url)
         }
+        inviteSheet(url: linkPara)
     }
     
     func inviteSheet(url: URL){

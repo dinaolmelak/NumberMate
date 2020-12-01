@@ -61,11 +61,12 @@ class LeadersViewController: UIViewController, UITableViewDelegate, UITableViewD
             return cell
         }else if(indexPath.row == 1){
             let cell = tableView.dequeueReusableCell(withIdentifier: "DisplayTextCell", for: indexPath) as! DisplayTextCell
-            cell.headerLabel.text = "The First Place Winner Get $25 Reward on Due Date!"
+            cell.headerLabel.text = "The first place winner gets $25 reward by the end of the month."
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "LeaderCell", for: indexPath) as! LeaderCell
                     let playerDoc = players[indexPath.row - 2]
+            cell.playerPosLabel.text = String(indexPath.row - 1) + ". "
                     cell.playerNameLabel.text = playerDoc.displayName
                     cell.playerStatusLabel.text = String(playerDoc.points)
             return cell

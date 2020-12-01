@@ -102,7 +102,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.funcs.showAlert(Title: "Error", Message: error.localizedDescription, ViewController: self)
                 }
             }
-        }else if(guesses.count != 0){
+        }
+        if(guesses.count >= 1){
             firy.increamentGameCount { (error) in
                 if let error = error{
                     self.funcs.showAlert(Title: "Error", Message: error.localizedDescription, ViewController: self)
@@ -132,7 +133,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func onTapGuessed(_ sender: Any){
         if(initGuess.count == 4 && !funcs.isRepeated(initGuess)){
         
-            instructionsLabel.text = "Guess the number before bomb to get more points"
+            instructionsLabel.text = "Guess the number before bomb explodes to get more points"
         }else{
             instructionsLabel.text = "Please enter any 4 digit number that is distinct. Press ? for help"
             instructionsLabel.textColor = UIColor.red

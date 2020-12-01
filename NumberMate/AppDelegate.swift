@@ -35,22 +35,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Your incoming parameter is \(url.absoluteString)")
         guard let component = URLComponents(url: url, resolvingAgainstBaseURL: false), let queryItems = component.queryItems else {return}
         let invitedBy = queryItems.first?.value
-        print("first \(invitedBy)")
+        print("first \(String(describing: invitedBy))")
         let user = Auth.auth().currentUser
         if user == nil && invitedBy != nil{
             Auth.auth().signInAnonymously() { (user, error) in
                   if let user = user {
                     
                     print("first 1")
-                    print("\(invitedBy)")
+                    print("\(String(describing: invitedBy))")
                     Firestore.firestore().settings = FirestoreSettings()
                     
-                    Firestore.firestore().collection("Players").addDocument(data: ["userUID": user.user.uid,"referred_by":invitedBy])// .reference().child("users").child(user.uid)
-                    print("Second \(invitedBy)")
+                    Firestore.firestore().collection("Players").addDocument(data: ["userUID": user.user.uid,"referred_by":invitedBy!])// .reference().child("users").child(user.uid)
+                    print("Second \(String(describing: invitedBy))")
                     //userRecord.child("referred_by").setValue(invitedBy)
                     
                   }else{
-                    print(error)
+                    print(error as Any)
                   }
                 }
         }
@@ -96,7 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // apply a promotional offer to the user's account.
         // ...
         self.handleIncomingDynamicLink(dynamicLink)
-        print("Received url through customURLScheme \(dynamicLink.url?.absoluteString)")
+        print("Received url through customURLScheme \(String(describing: dynamicLink.url?.absoluteString))")
         return true
       }
       return false

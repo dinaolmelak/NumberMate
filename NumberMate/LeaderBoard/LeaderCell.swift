@@ -10,6 +10,7 @@ import UIKit
 
 class LeaderCell: UITableViewCell {
 
+    @IBOutlet weak var playerPosLabel: UILabel!
     @IBOutlet weak var playerNameLabel: UILabel!
     @IBOutlet weak var playerStatusLabel: UILabel!
     

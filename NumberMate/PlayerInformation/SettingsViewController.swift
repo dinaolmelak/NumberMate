@@ -40,7 +40,16 @@ class SettingsViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    
+//    @IBAction func onSignOut(_ sender: Any){
+//        self.view.window!.rootViewController?.dismiss(animated: true, completion: {
+//            let firebaseAuth = Auth.auth()
+//           do {
+//             try firebaseAuth.signOut()
+//           } catch let signOutError as NSError {
+//             print ("Error signing out: \( signOutError)")
+//           }
+//        })
+//    }
     
     @IBAction func onChangePassword(_ sender: Any) {
         firy.changePassword(ViewController: self)
